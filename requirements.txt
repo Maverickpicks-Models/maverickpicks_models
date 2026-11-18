@@ -1,0 +1,12 @@
+pyodbc
+sqlalchemy
+pandas
+requests
+openpyxl
+pdfplumber
+tzdata          # time zones on Windows (America/New_York)
+scikit-learn
+lightgbm
+playwright      # card rendering (Phase 3)
+nba_api         # stats pulls (Phase 2)
+pytest
