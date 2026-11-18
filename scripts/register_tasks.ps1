@@ -11,7 +11,8 @@ $py   = Get-MpmPython
 $repo = (Resolve-Path .).Path
 $names = @()
 function Add-MpmTask($name, $args_, $time, [int]$repeatMin = 0, [int]$durationHours = 0) {
-    $action  = New-ScheduledTaskAction -Execute $py -Argument $args_ -WorkingDirectory $repo
+    # every job goes through mpm.run, which logs output and errors to C:\MaverickPicks\logs\<date>.log
+    $action  = New-ScheduledTaskAction -Execute $py -Argument ($args_ -replace '^-m mpm\.', '-m mpm.run ') -WorkingDirectory $repo
     $trigger = New-ScheduledTaskTrigger -Daily -At $time
     if ($repeatMin -gt 0) {
         $rep = (New-ScheduledTaskTrigger -Once -At $time -RepetitionInterval (New-TimeSpan -Minutes $repeatMin) -RepetitionDuration (New-TimeSpan -Hours $durationHours)).Repetition
