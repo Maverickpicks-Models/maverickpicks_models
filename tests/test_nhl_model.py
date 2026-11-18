@@ -52,6 +52,10 @@ def _seed_odds(db, gdate):
     snap = db.insert_id("core.odds_snapshots", {"league": "NHL", "purpose": "pregame", "source": "theoddsapi"}, "snapshot_id")
     rows = [("novig", "h2h", "away", None, None, -150), ("novig", "h2h", "home", None, None, 130),
             ("novig", "totals", "over", None, 6.5, 105), ("novig", "totals", "under", None, 6.5, -125)]
+    rows += [("novig", "totals", "over", None, 5.5, -125), ("novig", "totals", "under", None, 5.5, 105)]   # Novig alternate
+    for bk in ("pinnacle", "draftkings", "fanduel"):
+        rows += [(bk, "totals", "over", None, 6.5, 100), (bk, "totals", "under", None, 6.5, -120)]
+    rows += [("pinnacle", "team_totals", "over", "SJS", 3.0, -102), ("pinnacle", "team_totals", "under", "SJS", 3.0, -118)]
     for bk, o25, u25 in (("pinnacle", -152, 128), ("draftkings", -160, 130), ("fanduel", -155, 125)):
         rows += [(bk, "team_totals", "over", "NYI", 2.5, o25), (bk, "team_totals", "under", "NYI", 2.5, u25),
                  (bk, "team_totals", "over", "SJS", 2.5, 118), (bk, "team_totals", "under", "SJS", 2.5, -142)]
@@ -72,6 +76,8 @@ def test_slate_from_database(tmp_path=None):
     out = nhl_slate.build(db, gdate, ["SJS=Askarov!"])
     r = out["results"][0]
     assert r.game.tt_source == "consensus" and r.game.g_home == "Yaroslav Askarov"
+    assert r.game.total_line == 6.5 and (r.game.over_price, r.game.under_price) == (105, -125)   # main line, Novig price
+    assert all(pt == 2.5 for pt, _, _ in r.game.home_tts)                                     # whole-number 3.0 ignored
     # consensus uses Pinnacle's no-vig price when Pinnacle has the line
     assert abs(no_vig(*r.game.away_tts[0][1:]) - no_vig(-152, 128)) < 0.02
     rid = nhl_slate.save(db, out, "test")

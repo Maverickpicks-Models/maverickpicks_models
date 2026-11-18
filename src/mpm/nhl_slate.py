@@ -60,6 +60,11 @@ def consensus(pairs: dict, team, point):
     return probs[SHARP] if SHARP in probs else statistics.median(probs.values())
 
 
+def _half(pt) -> bool:
+    """x.5 lines only: whole-number lines can push and are priced differently."""
+    return pt is not None and abs(pt - int(pt) - 0.5) < 1e-9
+
+
 def _est_prices(p_over: float):
     return american(min(.97, p_over + EST_VIG)), american(min(.97, 1 - p_over + EST_VIG))
 
@@ -76,19 +81,20 @@ def market_for_game(db: DB, snap: int, gid: int, away: str, home: str):
         if not ps:
             return None
         ph = statistics.median(ps); ml_h, ml_a = _est_prices(ph)
-    tot = _pairs(q("totals"))
-    nv_tot = {k: v for k, v in tot.items() if k[0] == BET_BOOK}
-    if nv_tot:
-        (_, _, line), (o, u) = min(nv_tot.items(), key=lambda kv: abs(no_vig(*kv[1]) - .5))
+    tot = {k: v for k, v in _pairs(q("totals")).items() if _half(k[2])}
+    if not tot:
+        return None
+    # main line = the one most books list (books post one main total; alternates come from few books)
+    count = {}
+    for (bk, _, pt) in tot:
+        count[pt] = count.get(pt, 0) + 1
+    med = lambda pt: statistics.median(no_vig(*ou) for (bk, _, p_), ou in tot.items() if p_ == pt)
+    line = max(count, key=lambda pt: (count[pt], -abs(med(pt) - .5)))
+    if (BET_BOOK, None, line) in tot:
+        o, u = tot[(BET_BOOK, None, line)]
     else:
-        lines = {}
-        for (bk, _, pt), ou in tot.items():
-            lines.setdefault(pt, []).append(no_vig(*ou))
-        if not lines:
-            return None
-        line = min(lines, key=lambda pt: abs(statistics.median(lines[pt]) - .5))
-        o, u = _est_prices(statistics.median(lines[line]))
-    tts = _pairs(q("team_totals"))
+        o, u = _est_prices(med(line))
+    tts = {k: v for k, v in _pairs(q("team_totals")).items() if _half(k[2])}   # Novig only posts x.5 lines
     src, out = "novig", {}
     for team in (away, home):
         mine = [(pt, ou) for (bk, t, pt), ou in tts.items() if bk == BET_BOOK and t == team]

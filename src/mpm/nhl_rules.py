@@ -90,6 +90,7 @@ class Slate:
 
 
 def main_line(tts):
+    tts = [t for t in tts if abs(t[0] - int(t[0]) - 0.5) < 1e-9] or tts
     return min(tts, key=lambda t: abs(no_vig(t[1], t[2]) - 0.5))
 
 
