@@ -25,7 +25,7 @@ TRACK_FIRST_ROW = 13
 C = dict(date=1, aw=2, hm=3, ap=4, hp=5, ml_away_p=8, ml_away=10, ml_home=11, total=16, total_proj=17, over_p=18,
          over_odds=19, under_odds=20, away_spread=21, away_cover_p=22, away_spr_odds=23, home_spread=24, home_spr_odds=26,
          away_tt=27, home_tt=31, market=36, side=37, odds=38, units=39, away_pts=40, home_pts=41, grade=45,
-         profit=46, close=47)
+         profit=46, close=47, rules=49)
 
 
 def _date(v):
@@ -69,6 +69,13 @@ def bet_point(market, side, r):
     return None
 
 
+def _rules(r) -> str:
+    """Tracking column AW ('Rules'), e.g. 'C2+T5'. Empty -> UNTAGGED."""
+    v = r[C["rules"] - 1] if len(r) >= C["rules"] else None
+    s = str(v).strip().upper().replace(" ", "") if v is not None else ""
+    return s.replace(",", "+") or "UNTAGGED"
+
+
 def load_tracking(db: DB, ws, league="NBA") -> dict:
     db.x("DELETE FROM core.bets WHERE source_row IS NOT NULL AND league=?", (league,))
     run_ids: dict[dt.date, int] = {}
@@ -96,10 +103,10 @@ def load_tracking(db: DB, ws, league="NBA") -> dict:
         if market and side and odds is not None and units:
             grade = r[C["grade"] - 1] if r[C["grade"] - 1] in ("W", "L", "P") else None
             db.x("INSERT INTO core.bets (league, game_id, market, side, point, price_american, units, close_price, result, "
-                 "profit_units, source_row) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                 "profit_units, rule_codes, source_row) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
                  (league, gid, market, side, bet_point(market, side, r), int(odds), float(units),
                   int(r[C["close"] - 1]) if _num(r[C["close"] - 1]) is not None else None, grade,
-                  _num(r[C["profit"] - 1]), i))
+                  _num(r[C["profit"] - 1]), _rules(r), i))
             stats["bets"] += 1
     return stats
 
