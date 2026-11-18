@@ -28,9 +28,11 @@ if ($FreePlan) {
     # ~3 credits/day = ~90/month (main markets only)
     Add-MpmTask "NBA odds pregame" "-m mpm.oddsapi --league NBA --purpose pregame --no-team-totals" "6:15PM"
 } else {
+    # staggered so no two jobs call TheOddsAPI in the same minute (the close checks run on :00/:10/:20...)
+    $open = @{ NBA = "10:32AM"; NHL = "10:34AM" }; $pre = @{ NBA = "6:02PM"; NHL = "6:04PM" }
     foreach ($lg in "NBA","NHL") {
-        Add-MpmTask "$lg odds open"    "-m mpm.oddsapi --league $lg --purpose open --no-team-totals" "10:30AM"     # 3 credits
-        Add-MpmTask "$lg odds pregame" "-m mpm.oddsapi --league $lg --purpose pregame"             "6:00PM"      # 3 + 1/game
+        Add-MpmTask "$lg odds open"    "-m mpm.oddsapi --league $lg --purpose open --no-team-totals" $open[$lg]   # 3 credits
+        Add-MpmTask "$lg odds pregame" "-m mpm.oddsapi --league $lg --purpose pregame"             $pre[$lg]    # 3 + 1/game
         Add-MpmTask "$lg odds close"   "-m mpm.oddsapi --league $lg --close-window 15"             "12:00PM" 10 12   # 4/game, once per game
     }
 }

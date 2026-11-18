@@ -45,8 +45,20 @@ class OddsAPI:
         self.remaining = None
 
     def get(self, path: str, **params):
+        """GET with retries: TheOddsAPI answers 429 when several jobs hit it in the same second
+        (e.g. the 6 PM pregame pulls and the close checks), and the odd 5xx/timeout happens."""
+        import time
         params["apiKey"] = self.key
-        r = self.http.get(f"{BASE}{path}", params=params, timeout=30)
+        for attempt in range(5):
+            try:
+                r = self.http.get(f"{BASE}{path}", params=params, timeout=30)
+            except requests.RequestException as e:
+                if attempt == 4:
+                    raise
+                print(f"{path}: {type(e).__name__}, retrying"); time.sleep(2 ** attempt); continue
+            if r.status_code in (429, 500, 502, 503, 504) and attempt < 4:
+                print(f"{path}: HTTP {r.status_code}, retrying in {2 ** attempt}s"); time.sleep(2 ** attempt); continue
+            break
         self.last_cost = _int(r.headers.get("x-requests-last"))
         self.remaining = _int(r.headers.get("x-requests-remaining"))
         self.db.x("INSERT INTO core.api_usage (endpoint, http_status, credits_used, credits_remaining) VALUES (?,?,?,?)",
