@@ -20,6 +20,8 @@ CREATE TABLE core.injury_status (report_id INT, game_date TEXT, matchup TEXT, te
   PRIMARY KEY(report_id, matchup, team_name, player));
 CREATE TABLE core.model_runs (run_id INTEGER PRIMARY KEY AUTOINCREMENT, league TEXT, run_at_utc TEXT, model_version TEXT, rulebook TEXT, snapshot_id INT, injury_report_id INT);
 CREATE TABLE core.projections (run_id INT, game_id INT, away_pts REAL, home_pts REAL, away_win_p REAL, away_cover_p REAL, over_p REAL, PRIMARY KEY(run_id, game_id));
+CREATE TABLE core.recommendations (rec_id INTEGER PRIMARY KEY AUTOINCREMENT, run_id INT, game_id INT, market TEXT, side TEXT, point REAL,
+  price_american INT, units REAL, section TEXT, rule_codes TEXT, note TEXT);
 CREATE TABLE core.bets (bet_id INTEGER PRIMARY KEY AUTOINCREMENT, league TEXT, game_id INT, rec_id INT, placed_at_utc TEXT, book TEXT DEFAULT 'novig',
   market TEXT, side TEXT, point REAL, price_american INT, units REAL, rule_codes TEXT, close_point REAL, close_price INT, result TEXT, profit_units REAL, source_row INT);
 CREATE TABLE core.api_usage (call_id INTEGER PRIMARY KEY AUTOINCREMENT, called_at_utc TEXT, endpoint TEXT, http_status INT, credits_used INT, credits_remaining INT);

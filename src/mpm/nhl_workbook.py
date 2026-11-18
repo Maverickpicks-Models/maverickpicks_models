@@ -372,9 +372,11 @@ def load_settings(db: DB, wb) -> int:
         return 0
     ws = wb["Assumptions"]
     recs, section = {}, None
-    for r in ws.iter_rows(min_row=5, max_col=4, values_only=True):
+    for rn, r in enumerate(ws.iter_rows(min_row=5, max_col=4, values_only=True), start=5):
         sec, name, val, unit = (list(r) + [None] * 4)[:4]
         section = sec or section
+        if not name and _num(val) is not None:
+            name = f"C{rn}"          # unlabeled input (C22 = goalie shrinkage K)
         if not name:
             continue
         num = _num(val)

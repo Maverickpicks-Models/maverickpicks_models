@@ -16,6 +16,7 @@ SQL Server holds the data, Python does the work, Power BI and Excel are the view
 | `sql/010_nhl_schema.sql` | NHL tables: `nhl.game_results` (score before the shootout, shootout winner), `nhl.projection_detail`, MoneyPuck `nhl.team_season` / `nhl.goalie_season` (dated snapshots), `nhl.mp_stat` (MoneyPuck CSVs, long format), `nhl.model_settings`; view `nhl.v_rule_record` (flat ROI, so $0 track-only bets still show) | run once (setup script) |
 | `mpm.nhl_workbook` | Imports the NHL Excel model: Tracking (games with official final scores, every bet incl. $0 track-only, close odds, rule codes), legacy projections, the bet-time Novig board, MoneyPuck team/goalie tables, Assumptions | `python -m mpm.nhl_workbook "C:\path\MaverickPicks_NHL_Simulations_v2.xlsx"` |
 | `mpm.moneypuck` | Downloads MoneyPuck `teams.csv` + `goalies.csv` into dated snapshots (`nhl.mp_stat`) | `python -m mpm.moneypuck --fetch C:\MaverickPicks\moneypuck` |
+| `mpm.nhl_slate` | Tonight's NHL card from the database: latest odds snapshot (Novig moneyline/total; team totals from Novig or the books' consensus), MoneyPuck tables, rulebook + $1,000 bankroll stakes, a minimum Novig price for every play; saves `core.recommendations` and renders the Discord graphics | `python -m mpm.nhl_slate --goalie "BOS=Swayman!" --goalie "DET=Talbot!"` |
 | `mpm.load_workbook` | Imports the Excel model: Tracking (games, scores, every bet, close odds), legacy projections, team and player box scores | `python -m mpm.load_workbook "C:\path\MaverickPicks_NBA_Simulations.xlsx"` |
 
 ## Setup (Windows, one time)
@@ -44,6 +45,17 @@ The Odds API key lives only in `core.config` (`is_secret = 1`).
   each date is kept, so history builds up for point-in-time testing. Finished seasons keep one copy.
 - MoneyPuck data: free for non-commercial use; other uses need MoneyPuck's permission, and MoneyPuck should be credited
   where its data feeds published picks. `register_tasks.ps1` only schedules the download with `-MoneyPuck`.
+
+### Nightly NHL card
+
+```powershell
+& $py -m mpm.nhl_slate --dry-run --goalie "BOS=Swayman!" --goalie "DET=Talbot"   # print only
+& $py -m mpm.nhl_slate --goalie "BOS=Swayman!" --goalie "DET=Talbot!"            # save + graphics
+```
+`!` marks a goalie confirmed on goaliepost (the GU rule needs it); last names are enough. Back-to-backs are found from
+yesterday's games in `core.games`; add others with `--b2b TEAM,TEAM`. Graphics go to `C:\MaverickPicks\cards\<date>`
+(PNG needs `pip install playwright` then `python -m playwright install chromium`; otherwise HTML).
+Engine: `mpm.nhl_model` (same math as the workbook; checked to match it exactly). Rules and stakes: `mpm.nhl_rules`.
 
 ## Odds API credits
 
