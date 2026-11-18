@@ -22,11 +22,12 @@ git clone https://github.com/Maverickpicks-Models/maverickpicks_models.git
 cd maverickpicks_models
 .\scripts\setup.ps1 -Server ECG-L028
 sqlcmd -S ECG-L028 -E -d MaverickPicks -Q "UPDATE core.config SET config_value=N'<YOUR ODDS API KEY>' WHERE config_key='ODDS_API_KEY'"
-python -m mpm.oddsapi --league NBA --test        # costs at most 1 credit
-python -m mpm.load_workbook "C:\...\MaverickPicks_NBA_Simulations.xlsx"
+py -m mpm.oddsapi --league NBA --test            # costs at most 1 credit
+py -m mpm.load_workbook "C:\...\MaverickPicks_NBA_Simulations.xlsx"
 .\scripts\register_tasks.ps1                      # or -FreePlan while on the 500-credit plan
 ```
 
+If `python` opens the Microsoft Store, use the `py` launcher (as above) or set `$env:MPM_PYTHON` to your python.exe.
 Windows authentication is used for the database, so no passwords are stored anywhere.
 The Odds API key lives only in `core.config` (`is_secret = 1`).
 

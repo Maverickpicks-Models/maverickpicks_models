@@ -3,7 +3,8 @@
 #   .\scripts\register_tasks.ps1 -FreePlan       # one cheap NBA pregame pull per day (fits 500 credits)
 #   .\scripts\register_tasks.ps1 -Remove         # remove all MPM tasks
 param([switch]$FreePlan, [switch]$Remove, [string]$InjuryFolder = "C:\MaverickPicks\injury_reports")
-$py   = (Get-Command python).Source
+. "$PSScriptRoot\find_python.ps1"
+$py   = Get-MpmPython
 $repo = (Resolve-Path .).Path
 $names = @()
 function Add-MpmTask($name, $args_, $time, [int]$repeatMin = 0, [int]$durationHours = 0) {

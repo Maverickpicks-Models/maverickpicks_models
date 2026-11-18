@@ -1,9 +1,15 @@
 /* MaverickPicks Models - core schema (SQL Server 2019+ / Developer edition)
    Run in SSMS against server ECG-L028. Idempotent: safe to re-run. */
 
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;   -- required for the filtered index; sqlcmd defaults this OFF
+GO
 IF DB_ID('MaverickPicks') IS NULL CREATE DATABASE MaverickPicks;
 GO
 USE MaverickPicks;
+GO
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
 GO
 IF SCHEMA_ID('core') IS NULL EXEC('CREATE SCHEMA core');
 IF SCHEMA_ID('nba')  IS NULL EXEC('CREATE SCHEMA nba');
