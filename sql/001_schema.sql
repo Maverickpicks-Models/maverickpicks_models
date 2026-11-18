@@ -223,17 +223,16 @@ SELECT b.*, g.game_date, g.away_code, g.home_code,
 FROM core.bets b JOIN core.games g ON g.game_id = b.game_id;
 GO
 CREATE OR ALTER VIEW core.v_rule_record AS
-SELECT b.league, value AS rule_code, COUNT(*) AS bets,
-       SUM(CASE WHEN result='W' THEN 1 ELSE 0 END) AS wins,
-       SUM(CASE WHEN result='L' THEN 1 ELSE 0 END) AS losses,
-       SUM(profit_units) AS units, SUM(units) AS risked,
-       SUM(profit_units)/NULLIF(SUM(units),0) AS roi,
+SELECT c.league, r.value AS rule_code, COUNT(*) AS bets,
+       SUM(CASE WHEN c.result='W' THEN 1 ELSE 0 END) AS wins,
+       SUM(CASE WHEN c.result='L' THEN 1 ELSE 0 END) AS losses,
+       SUM(c.profit_units) AS units, SUM(c.units) AS risked,
+       SUM(c.profit_units)/NULLIF(SUM(c.units),0) AS roi,
        AVG(c.clv_prob_pts) AS avg_clv
-FROM core.bets b
-CROSS APPLY STRING_SPLIT(REPLACE(ISNULL(b.rule_codes,'UNTAGGED'),'+',','), ',')
-JOIN core.v_bet_clv c ON c.bet_id = b.bet_id
-WHERE b.result IS NOT NULL
-GROUP BY b.league, value;
+FROM core.v_bet_clv c
+CROSS APPLY STRING_SPLIT(REPLACE(ISNULL(c.rule_codes,'UNTAGGED'),'+',','), ',') r
+WHERE c.result IS NOT NULL
+GROUP BY c.league, r.value;
 GO
 /* Latest price per game/book/market/side before a given snapshot purpose (e.g. close) */
 CREATE OR ALTER VIEW core.v_closing_odds AS
