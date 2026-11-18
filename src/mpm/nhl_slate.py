@@ -143,7 +143,7 @@ def build(db: DB, gdate: dt.date, goalie_args=None, extra_b2b=()):
     for gid, away, home, start in games:
         mk = market_for_game(db, snap, gid, away, home)
         if not mk:
-            skipped.append(f"{away}@{home}: missing prices in snapshot {snap}")
+            skipped.append(f"{away}@{home}: no team totals in snapshot {snap} ({purpose})")
             continue
         when = ""
         if start:
@@ -218,6 +218,11 @@ def main(argv=None):
     with session() as db:
         out = build(db, gdate, a.goalie, [t for t in a.b2b.split(",") if t])
         print_card(out)
+        if not out["results"]:
+            tip = (" The open pull has no team totals; run after the 6:00 PM pregame pull "
+                   "(or: python -m mpm.oddsapi --league NHL --purpose pregame)." if out["purpose"] == "open" else "")
+            print(f"\nNothing priced - no run saved, no graphics.{tip}")
+            return 1
         if a.dry_run:
             return
         rid = save(db, out, "nhl-engine 1")
