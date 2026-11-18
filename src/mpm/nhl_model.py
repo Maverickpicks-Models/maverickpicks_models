@@ -87,11 +87,11 @@ class Model:
                   "WHERE season=? AND snapshot_date=(SELECT MAX(snapshot_date) FROM nhl.goalie_season WHERE season=?)",
                   (season, season))
         goalies = [dict(name=g[0], team_code=g[1], gp=float(g[2] or 0), ga=float(g[3] or 0), xga=float(g[4] or 0)) for g in gs]
-        # A newer MoneyPuck download (mpm.moneypuck, situation 'all') replaces the pasted workbook tables
+        # A MoneyPuck download (mpm.moneypuck, situation all) from the same day or later replaces the pasted workbook tables
         wb_date = db.one("SELECT MAX(snapshot_date) FROM nhl.team_season WHERE season=?", (season,))[0]
         mp_date = db.one("SELECT MAX(snapshot_date) FROM nhl.mp_stat WHERE source='moneypuck' AND season=? AND entity='team'",
                          (season,))[0]
-        if prefer_download and mp_date and (not wb_date or str(mp_date) > str(wb_date)):
+        if prefer_download and mp_date and (not wb_date or str(mp_date) >= str(wb_date)):   # same day: the download is fresher
             cur = _mp_teams(db, season, mp_date) or cur
             gmp = _mp_goalies(db, season, mp_date)
             goalies = gmp or goalies
