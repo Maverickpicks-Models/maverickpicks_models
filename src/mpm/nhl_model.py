@@ -72,7 +72,7 @@ class Model:
 
     # ---- construction
     @classmethod
-    def from_db(cls, db, season: int | None = None):
+    def from_db(cls, db, season: int | None = None, prefer_download: bool = True):
         if season is None:
             season = db.one("SELECT MAX(season) FROM nhl.team_season")[0]
         cols = "team_code, games_played, goals_for, goals_against, expected_goals_for, expected_goals_against, shot_attempts_pct_corsi_pct"
@@ -87,6 +87,14 @@ class Model:
                   "WHERE season=? AND snapshot_date=(SELECT MAX(snapshot_date) FROM nhl.goalie_season WHERE season=?)",
                   (season, season))
         goalies = [dict(name=g[0], team_code=g[1], gp=float(g[2] or 0), ga=float(g[3] or 0), xga=float(g[4] or 0)) for g in gs]
+        # A newer MoneyPuck download (mpm.moneypuck, situation 'all') replaces the pasted workbook tables
+        wb_date = db.one("SELECT MAX(snapshot_date) FROM nhl.team_season WHERE season=?", (season,))[0]
+        mp_date = db.one("SELECT MAX(snapshot_date) FROM nhl.mp_stat WHERE source='moneypuck' AND season=? AND entity='team'",
+                         (season,))[0]
+        if prefer_download and mp_date and (not wb_date or str(mp_date) > str(wb_date)):
+            cur = _mp_teams(db, season, mp_date) or cur
+            gmp = _mp_goalies(db, season, mp_date)
+            goalies = gmp or goalies
         kw = {}
         for name, val in db.q("SELECT setting, value_num FROM nhl.model_settings"):
             if name in SETTINGS and val is not None:
@@ -189,6 +197,30 @@ class Model:
             dx = (r[0] * j11 - r[1] * j01) / det; dy = (j00 * r[1] - j10 * r[0]) / det
             x = [min(6, max(1, x[0] - dx)), min(6, max(1, x[1] - dy))]
         return self.price(*x)
+
+
+def _mp(db, season, snap, entity, stats):
+    rows = db.q("SELECT entity_id, entity_name, team_code, stat, value FROM nhl.mp_stat WHERE source='moneypuck' AND season=? "
+                f"AND snapshot_date=? AND entity=? AND situation='all' AND stat IN ({','.join('?' * len(stats))})",
+                (season, snap, entity, *stats))
+    out = {}
+    for eid, name, team, stat, val in rows:
+        d = out.setdefault(eid, {"name": name, "team": team})
+        d[stat] = float(val) if val is not None else 0.0
+    return out
+
+
+def _mp_teams(db, season, snap) -> dict:
+    t = _mp(db, season, snap, "team", ["games_played", "goalsFor", "goalsAgainst", "xGoalsFor", "xGoalsAgainst", "corsiPercentage"])
+    return {d["team"]: dict(gp=d.get("games_played", 0), gf=d.get("goalsFor", 0), ga=d.get("goalsAgainst", 0),
+                            xgf=d.get("xGoalsFor", 0), xga=d.get("xGoalsAgainst", 0), cf=d.get("corsiPercentage"))
+            for d in t.values() if d["team"]}
+
+
+def _mp_goalies(db, season, snap) -> list:
+    g = _mp(db, season, snap, "goalie", ["games_played", "goals", "xGoals"])
+    return [dict(name=d["name"], team_code=d["team"], gp=d.get("games_played", 0), ga=d.get("goals", 0), xga=d.get("xGoals", 0))
+            for d in g.values() if d["name"]]
 
 
 class Prices:

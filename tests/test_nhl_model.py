@@ -103,3 +103,19 @@ def test_real_workbook_parity():
 if __name__ == "__main__":
     test_prices_are_coherent(); test_stakes(); test_home_dog_under_and_caps(); test_slate_from_database(); test_real_workbook_parity()
     print("test_nhl_model OK")
+
+
+def test_model_prefers_newer_moneypuck_download():
+    import tempfile
+    from test_nhl_workbook import make_workbook
+    from test_moneypuck import HTTP
+    from mpm import moneypuck as mp
+    d = tempfile.mkdtemp(); path = os.path.join(d, "nhl.xlsx"); make_workbook(path)
+    db = make_db()
+    nw.load(db, path, dt.date(2026, 11, 1), verbose=False)          # pasted tables, older date
+    assert Model.from_db(db).cur["SJS"]["xgf"] == 55.5
+    mp.fetch(db, d, season=2026, http=HTTP())                       # today's download
+    m = Model.from_db(db)
+    assert m.cur["SJS"]["xgf"] == 55.5 and m.cur["SJS"]["gp"] == 20 and "TBL" in m.cur
+    assert m.goalies and m.goalies[0]["name"] == "Yaroslav Askarov" and m.goalies[0]["xga"] == 41.5
+    assert Model.from_db(db, prefer_download=False).cur.keys() == {"SJS", "NYI"}
