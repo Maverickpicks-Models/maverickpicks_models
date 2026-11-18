@@ -172,18 +172,24 @@ def pull_closing(db: DB, api: OddsAPI, league: str, window_min: int = 20, team_t
 
 
 def test_call(db: DB, api: OddsAPI, league: str):
-    """Cheapest possible check: list events (free), then team totals for ONE game from Novig only (<=1 credit)."""
+    """Cheap check (<=2 credits): list events (free), then ONE game with moneyline + team totals from
+    every configured book, so we can see which books (Novig included) carry each market."""
     sport = SPORT[league]
     evs = api.get(f"/sports/{sport}/events", dateFormat="iso")
     print(f"{len(evs)} upcoming {league} events (free call). Remaining credits: {api.remaining}")
     if not evs:
         return
     ev = evs[0]
-    out = api.get(f"/sports/{sport}/events/{ev['id']}/odds", bookmakers="novig", markets="team_totals",
+    books = db.config("ODDS_BOOKMAKERS", "novig")
+    out = api.get(f"/sports/{sport}/events/{ev['id']}/odds", bookmakers=books, markets="h2h,team_totals",
                   oddsFormat="american", dateFormat="iso")
-    mk = [m["key"] for b in out.get("bookmakers", []) for m in b.get("markets", [])]
-    print(f"{ev['away_team']} @ {ev['home_team']}: Novig markets returned = {mk or 'NONE'}; cost {api.last_cost}; remaining {api.remaining}")
-    print(json.dumps(out.get("bookmakers", [])[:1], indent=1)[:1500])
+    print(f"{ev['away_team']} @ {ev['home_team']} (tip {ev['commence_time']}): cost {api.last_cost}; remaining {api.remaining}")
+    got = {b["key"]: [m["key"] for m in b.get("markets", [])] for b in out.get("bookmakers", [])}
+    for bk in books.split(","):
+        print(f"  {bk:15s} {', '.join(got.get(bk, [])) or '-'}")
+    nv = next((b for b in out.get("bookmakers", []) if b["key"] == "novig"), None)
+    if nv:
+        print(json.dumps(nv, indent=1)[:1200])
 
 
 def main(argv=None):
