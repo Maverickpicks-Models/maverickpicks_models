@@ -2,7 +2,10 @@
 #   .\scripts\register_tasks.ps1                 # full schedule (needs the 20K Odds API plan)
 #   .\scripts\register_tasks.ps1 -FreePlan       # one cheap NBA pregame pull per day (fits 500 credits)
 #   .\scripts\register_tasks.ps1 -Remove         # remove all MPM tasks
-param([switch]$FreePlan, [switch]$Remove, [string]$InjuryFolder = "C:\MaverickPicks\injury_reports")
+#   .\scripts\register_tasks.ps1 -MoneyPuck      # also the daily MoneyPuck download (get MoneyPuck's permission first:
+#                                                 #  moneypuck.com/data.htm allows non-commercial use only without it)
+param([switch]$FreePlan, [switch]$Remove, [switch]$MoneyPuck, [string]$InjuryFolder = "C:\MaverickPicks\injury_reports",
+      [string]$MoneyPuckFolder = "C:\MaverickPicks\moneypuck")
 . "$PSScriptRoot\find_python.ps1"
 $py   = Get-MpmPython
 $repo = (Resolve-Path .).Path
@@ -32,5 +35,8 @@ if ($FreePlan) {
 }
 foreach ($t in "1:45PM","5:45PM","6:45PM") {
     Add-MpmTask "NBA injury report $($t.Replace(':',''))" "-m mpm.injuries --fetch `"$InjuryFolder`"" $t
+}
+if ($MoneyPuck) {
+    Add-MpmTask "NHL MoneyPuck daily" "-m mpm.moneypuck --fetch `"$MoneyPuckFolder`"" "9:30AM"     # free, 2 small CSVs
 }
 Write-Host "Done. See Task Scheduler > Task Scheduler Library > MaverickPicks."

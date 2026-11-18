@@ -13,6 +13,9 @@ SQL Server holds the data, Python does the work, Power BI and Excel are the view
 | `mpm.oddsapi` | Pulls Novig + up to 9 other books from TheOddsAPI, stores every price as a timestamped snapshot, logs credits | `python -m mpm.oddsapi --league NBA --purpose pregame` |
 | `mpm.oddsapi --close-window 15` | Closing snapshot for each game tipping within 15 minutes (once per game) | scheduled every 10 min in the evening |
 | `mpm.injuries` | Downloads and parses the official NBA injury report PDF into rows | `python -m mpm.injuries --fetch C:\MaverickPicks\injury_reports` |
+| `sql/010_nhl_schema.sql` | NHL tables: `nhl.game_results` (score before the shootout, shootout winner), `nhl.projection_detail`, MoneyPuck `nhl.team_season` / `nhl.goalie_season` (dated snapshots), `nhl.mp_stat` (MoneyPuck CSVs, long format), `nhl.model_settings`; view `nhl.v_rule_record` (flat ROI, so $0 track-only bets still show) | run once (setup script) |
+| `mpm.nhl_workbook` | Imports the NHL Excel model: Tracking (games with official final scores, every bet incl. $0 track-only, close odds, rule codes), legacy projections, the bet-time Novig board, MoneyPuck team/goalie tables, Assumptions | `python -m mpm.nhl_workbook "C:\path\MaverickPicks_NHL_Simulations_v2.xlsx"` |
+| `mpm.moneypuck` | Downloads MoneyPuck `teams.csv` + `goalies.csv` into dated snapshots (`nhl.mp_stat`) | `python -m mpm.moneypuck --fetch C:\MaverickPicks\moneypuck` |
 | `mpm.load_workbook` | Imports the Excel model: Tracking (games, scores, every bet, close odds), legacy projections, team and player box scores | `python -m mpm.load_workbook "C:\path\MaverickPicks_NBA_Simulations.xlsx"` |
 
 ## Setup (Windows, one time)
@@ -30,6 +33,17 @@ py -m mpm.load_workbook "C:\...\MaverickPicks_NBA_Simulations.xlsx"
 If `python` opens the Microsoft Store, use the `py` launcher (as above) or set `$env:MPM_PYTHON` to your python.exe.
 Windows authentication is used for the database, so no passwords are stored anywhere.
 The Odds API key lives only in `core.config` (`is_secret = 1`).
+
+## NHL notes
+
+- Scores: `core.games` holds the **official final** (the shootout winner is credited one goal), which is how Novig settles
+  totals and team totals. `nhl.game_results` keeps the regulation+OT score and the shootout winner as typed in Tracking.
+- Rule codes are comma-separated as in the workbook (`HU,GU`). `OFF` = picks made outside the rules, `UNTAGGED` = a bet
+  with no code. Query `nhl.v_rule_record` for NHL (it adds `roi_flat` and `staked_bets`).
+- `--as-of` on the NHL importer stamps the pasted MoneyPuck tables with the date they were taken (default today);
+  each date is kept, so history builds up for point-in-time testing. Finished seasons keep one copy.
+- MoneyPuck data: free for non-commercial use; other uses need MoneyPuck's permission, and MoneyPuck should be credited
+  where its data feeds published picks. `register_tasks.ps1` only schedules the download with `-MoneyPuck`.
 
 ## Odds API credits
 
