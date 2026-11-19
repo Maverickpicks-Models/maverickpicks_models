@@ -152,7 +152,7 @@ def load_tracking(db: DB, ws, verbose: bool = True) -> dict:
     _clear_tracking(db)
     stats = dict(rows=0, games=0, bets=0, staked_bets=0, zero_unit_bets=0, graded=0, wins=0, losses=0,
                  profit_units=0.0, risked_units=0.0, close_odds=0, shootouts=0, projections=0, odds_prices=0,
-                 untagged=0)
+                 untagged=0, no_cache=0)
     warnings = []
     seen, run_ids, snaps = {}, {}, {}
     odds_rows = []
@@ -205,6 +205,8 @@ def load_tracking(db: DB, ws, verbose: bool = True) -> dict:
         if not (market and side and odds is not None and units is not None):
             continue
         grade = f["grade"] if f["grade"] in ("W", "L", "P") else None
+        if grade is None and ag is not None and hg is not None and f["rule"] is None:
+            stats["no_cache"] += 1
         close = _int(f["close"])
         profit = _num(f["profit"])
         codes = rule_codes(f["rule"])
@@ -226,6 +228,10 @@ def load_tracking(db: DB, ws, verbose: bool = True) -> dict:
             if abs(implied(close) - implied(odds)) > SUSPECT_CLV:
                 warnings.append(f"row {i}: {gdate} {away}@{home} {market} {side} taken {odds:+d}, close {close:+d} "
                                 f"({100 * (implied(close) - implied(odds)):+.1f} pts) - check for a typo")
+    if stats["bets"] >= 10 and (stats["bets"] - stats["graded"]) > max(5, stats["bets"] // 4) and stats["no_cache"] > 5:
+        raise SystemExit(f"{stats['no_cache']} bets have scores but no Grade/Rule values: the workbook was saved without "
+                         "Excel recalculating it (e.g. by a script). Open it in Excel, let it calculate, Save, close it, "
+                         "and run the import again. Nothing was committed.")
     stats["odds_prices"] = db.many("INSERT INTO core.odds (snapshot_id, game_id, bookmaker, market, side, team_code, point, "
                                    "price_american, implied_prob, book_update_utc) VALUES (?,?,?,?,?,?,?,?,?,?)", odds_rows)
     stats["profit_units"] = round(stats["profit_units"], 3)
@@ -234,6 +240,7 @@ def load_tracking(db: DB, ws, verbose: bool = True) -> dict:
         for w in warnings:
             print("WARNING", w)
     stats["warnings"] = len(warnings)
+    stats.pop("no_cache", None)
     return stats
 
 
