@@ -35,6 +35,10 @@ if ($FreePlan) {
         Add-MpmTask "$lg odds pregame" "-m mpm.oddsapi --league $lg --purpose pregame"             $pre[$lg]    # 3 + 1/game
         Add-MpmTask "$lg odds close"   "-m mpm.oddsapi --league $lg --close-window 15"             "12:00PM" 10 12   # 4/game, once per game
     }
+    # stale-line scan: main markets from all 10 books every 10 min, 4 PM to 11 PM (3 credits a pull,
+    # ~130/night for both leagues). Each pull is checked for Novig prices lagging Pinnacle (mpm.stale).
+    Add-MpmTask "NBA odds scan" "-m mpm.oddsapi --league NBA --purpose scan --no-team-totals" "4:05PM" 10 7
+    Add-MpmTask "NHL odds scan" "-m mpm.oddsapi --league NHL --purpose scan --no-team-totals" "4:07PM" 10 7
 }
 # injury report: check every 15 minutes, 11:50 AM to midnight (free). A new report is loaded once and
 # checked against tonight's watch list (mpm.watch), which pops up an alert when a player in a game we bet changes.

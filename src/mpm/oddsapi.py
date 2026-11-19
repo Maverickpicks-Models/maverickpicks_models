@@ -227,7 +227,13 @@ def main(argv=None):
         elif a.close_window:
             pull_closing(db, api, a.league, a.close_window, team_totals=tt, bookmakers=a.bookmakers)
         else:
-            pull(db, api, a.league, a.purpose, team_totals=tt, bookmakers=a.bookmakers)
+            snap = pull(db, api, a.league, a.purpose, team_totals=tt, bookmakers=a.bookmakers)
+            if snap:
+                try:                                  # Novig prices lagging the sharp market
+                    from .stale import scan
+                    scan(db, snap, a.league)
+                except Exception as e:
+                    print(f"stale scan skipped: {e}")
 
 
 if __name__ == "__main__":
