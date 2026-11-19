@@ -125,3 +125,13 @@ def test_model_prefers_newer_moneypuck_download():
     assert m.cur["SJS"]["xgf"] == 55.5 and m.cur["SJS"]["gp"] == 20 and "TBL" in m.cur
     assert m.goalies and m.goalies[0]["name"] == "Yaroslav Askarov" and m.goalies[0]["xga"] == 41.5
     assert Model.from_db(db, prefer_download=False).cur.keys() == {"SJS", "NYI"}
+
+
+def test_goalie_names_tolerate_typos_and_accents():
+    m = toy_model()
+    m.goalies.append(dict(name="Leevi Meriläinen", team_code="SJS", gp=5, ga=12, xga=13.0))
+    class A: pass
+    g, conf = nhl_slate.parse_goalies(m, ["SJS=Merilainen!", "NYI=orokin!"])
+    assert g["SJS"] == "Leevi Meriläinen" and g["NYI"] == "Ilya Sorokin" and "Ilya Sorokin" in conf
+    g, _ = nhl_slate.parse_goalies(m, ["SJS=MerilÃ¤inen"])
+    assert g["SJS"] == "Leevi Meriläinen"

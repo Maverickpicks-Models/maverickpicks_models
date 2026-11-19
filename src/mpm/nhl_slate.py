@@ -18,8 +18,10 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import os
+import difflib
 import statistics
 import sys
+import unicodedata
 from zoneinfo import ZoneInfo
 
 from .db import DB, session
@@ -110,6 +112,18 @@ def market_for_game(db: DB, snap: int, gid: int, away: str, home: str):
                 away_tts=out[away], home_tts=out[home], tt_source=src)
 
 
+def _plain(x: str) -> str:
+    """Lower-case, accents removed; also repairs UTF-8 text mangled by a Windows console ('MerilÃ¤inen')."""
+    x = str(x)
+    if "Ã" in x:
+        try:
+            x = x.encode("cp1252").decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            pass
+    x = unicodedata.normalize("NFKD", x)
+    return "".join(c for c in x if not unicodedata.combining(c)).lower().strip()
+
+
 def parse_goalies(model: Model, args) -> tuple[dict, set]:
     """'BOS=Swayman!' -> {'BOS': 'Jeremy Swayman'}, confirmed {'Jeremy Swayman'}."""
     out, conf = {}, set()
@@ -119,8 +133,15 @@ def parse_goalies(model: Model, args) -> tuple[dict, set]:
         c = name.endswith("!")
         name = name.rstrip("!").strip()
         cands = [g["name"] for g in model.goalies if g["team_code"] == team]
-        full = next((n for n in cands if n.lower() == name.lower()), None) or \
-            next((n for n in cands if n.lower().split()[-1] == name.lower().split()[-1]), None) or name
+        key = lambda x: _plain(x).split()[-1] if _plain(x).split() else ""
+        full = next((n for n in cands if _plain(n) == _plain(name)), None) or \
+            next((n for n in cands if key(n) == key(name)), None)
+        if not full:                      # typo or partial name: closest last name on that team
+            close = difflib.get_close_matches(key(name), [key(n) for n in cands], n=1, cutoff=0.75)
+            full = next((n for n in cands if close and key(n) == close[0]), None)
+        if full and key(full) != key(name):
+            print(f"note: {team} goalie '{name}' read as {full}")
+        full = full or name
         if full not in cands:
             print(f"note: {team} goalie '{name}' not in the MoneyPuck table - priced as league average")
         out[team] = full
