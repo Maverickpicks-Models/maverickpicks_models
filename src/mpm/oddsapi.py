@@ -103,6 +103,12 @@ def parse_event(db: DB, league: str, ev: dict, game_id: int):
                 if price is None:
                     continue
                 price = int(round(price))
+                # exchange placeholders: Novig reports an empty book as a far-off line at -99900 / -6567;
+                # real spread and total prices never get near +/-1000, so drop those rows
+                if mk != "h2h" and abs(price) >= 1000:
+                    continue
+                if abs(price) >= 50000:
+                    continue
                 team_code = None
                 if mk in ("h2h", "spreads"):
                     side = "away" if name == away else "home" if name == home else None
