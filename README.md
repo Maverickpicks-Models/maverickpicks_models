@@ -17,6 +17,7 @@ SQL Server holds the data, Python does the work, Power BI and Excel are the view
 | `mpm.nhl_workbook` | Imports the NHL Excel model: Tracking (games with official final scores, every bet incl. $0 track-only, close odds, rule codes), legacy projections, the bet-time Novig board, MoneyPuck team/goalie tables, Assumptions | `python -m mpm.nhl_workbook "C:\path\MaverickPicks_NHL_Simulations_v2.xlsx"` |
 | `mpm.moneypuck` | Downloads MoneyPuck `teams.csv` + `goalies.csv` into dated snapshots (`nhl.mp_stat`) | `python -m mpm.moneypuck --fetch C:\MaverickPicks\moneypuck` |
 | `mpm.nhl_slate` | Tonight's NHL card from the database: latest odds snapshot (Novig moneyline/total; team totals from Novig or the books' consensus), MoneyPuck tables, rulebook + $1,000 bankroll stakes, a minimum Novig price for every play; saves `core.recommendations` and renders the Discord graphics | `python -m mpm.nhl_slate --goalie "BOS=Swayman!" --goalie "DET=Talbot!"` |
+| `mpm.watch` | Tonight's bets; after every injury report it pops up a Windows alert when a 20+ mpg player in one of those games goes Out/Doubtful or comes back before tip | `python -m mpm.watch set "DET@NOP\|Pistons -4.5 ($13)\|8:05PM" ...` |
 | `mpm.load_workbook` | Imports the Excel model: Tracking (games, scores, every bet, close odds), legacy projections, team and player box scores | `python -m mpm.load_workbook "C:\path\MaverickPicks_NBA_Simulations.xlsx"` |
 
 ## Setup (Windows, one time)
@@ -29,6 +30,7 @@ sqlcmd -S ECG-L028 -E -d MaverickPicks -Q "UPDATE core.config SET config_value=N
 py -m mpm.oddsapi --league NBA --test            # costs at most 1 credit
 py -m mpm.load_workbook "C:\...\MaverickPicks_NBA_Simulations.xlsx"
 .\scripts\register_tasks.ps1                      # or -FreePlan while on the 500-credit plan
+py -m mpm.watch test                               # should pop up a test notification
 ```
 
 If `python` opens the Microsoft Store, use the `py` launcher (as above) or set `$env:MPM_PYTHON` to your python.exe.

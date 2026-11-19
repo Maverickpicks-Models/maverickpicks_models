@@ -144,13 +144,18 @@ def store(db, path: str, league: str = "NBA") -> int:
     db.many("INSERT INTO core.injury_status (report_id, game_date, matchup, team_name, player, status, reason) "
             "VALUES (?,?,?,?,?,?,?)", recs)
     print(f"{rtime:%Y-%m-%d %I:%M %p}: {len(recs)} rows stored (report_id {rid})")
+    try:                                   # alert on changes that touch tonight's bets
+        from .watch import check
+        check(db, rid, league)
+    except Exception as e:                 # never let an alert problem stop the report load
+        print(f"watch check skipped: {e}")
     return rid
 
 
 REPORT_URL = "https://ak-static.cms.nba.com/referee/injury/Injury-Report_{d:%Y-%m-%d}_{d:%I_%M%p}.pdf"
 
 
-def fetch_latest(folder: str, lookback_hours: int = 6) -> str | None:
+def fetch_latest(folder: str, lookback_hours: int = 6, skip_existing: bool = False) -> str | None:
     """Download the most recent official report (they post on the hour/half-hour/quarter-hour)."""
     import os
     import requests
@@ -163,6 +168,9 @@ def fetch_latest(folder: str, lookback_hours: int = 6) -> str | None:
         if r.status_code == 200 and r.content[:4] == b"%PDF":
             os.makedirs(folder, exist_ok=True)
             path = os.path.join(folder, url.rsplit("/", 1)[1])
+            if skip_existing and os.path.exists(path):
+                print(f"latest report already loaded: {os.path.basename(path)}")
+                return None
             with open(path, "wb") as fh:
                 fh.write(r.content)
             print(f"downloaded {url}")
@@ -179,7 +187,7 @@ def main(argv=None):
     ap.add_argument("--fetch", metavar="FOLDER", help="download the latest official report into FOLDER and load it")
     a = ap.parse_args(argv)
     if a.fetch:
-        p = fetch_latest(a.fetch)
+        p = fetch_latest(a.fetch, skip_existing=True)
         a.pdf = ([p] if p else [])
     if a.dry_run:
         for f in a.pdf:

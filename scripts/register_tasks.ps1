@@ -36,9 +36,10 @@ if ($FreePlan) {
         Add-MpmTask "$lg odds close"   "-m mpm.oddsapi --league $lg --close-window 15"             "12:00PM" 10 12   # 4/game, once per game
     }
 }
-foreach ($t in "1:45PM","5:45PM","6:45PM") {
-    Add-MpmTask "NBA injury report $($t.Replace(':',''))" "-m mpm.injuries --fetch `"$InjuryFolder`"" $t
-}
+# injury report: check every 15 minutes, 11:50 AM to midnight (free). A new report is loaded once and
+# checked against tonight's watch list (mpm.watch), which pops up an alert when a player in a game we bet changes.
+foreach ($old in "145PM","545PM","645PM") { Unregister-ScheduledTask -TaskName "MPM NBA injury report $old" -TaskPath "\MaverickPicks\" -Confirm:$false -ErrorAction SilentlyContinue }
+Add-MpmTask "NBA injury report" "-m mpm.injuries --fetch `"$InjuryFolder`"" "11:50AM" 15 12
 if ($MoneyPuck) {
     Add-MpmTask "NHL MoneyPuck daily" "-m mpm.moneypuck --fetch `"$MoneyPuckFolder`"" "9:30AM"     # free, 2 small CSVs
 }

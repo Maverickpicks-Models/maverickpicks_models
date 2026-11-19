@@ -24,6 +24,8 @@ CREATE TABLE core.recommendations (rec_id INTEGER PRIMARY KEY AUTOINCREMENT, run
   price_american INT, units REAL, section TEXT, rule_codes TEXT, note TEXT);
 CREATE TABLE core.bets (bet_id INTEGER PRIMARY KEY AUTOINCREMENT, league TEXT, game_id INT, rec_id INT, placed_at_utc TEXT, book TEXT DEFAULT 'novig',
   market TEXT, side TEXT, point REAL, price_american INT, units REAL, rule_codes TEXT, close_point REAL, close_price INT, result TEXT, profit_units REAL, source_row INT);
+CREATE TABLE core.watchlist (watch_id INTEGER PRIMARY KEY AUTOINCREMENT, league TEXT DEFAULT 'NBA', game_date TEXT, matchup TEXT, bet_label TEXT, tip_et TEXT, created_at TEXT);
+CREATE TABLE core.injury_alerts (league TEXT, game_date TEXT, matchup TEXT, player TEXT, status TEXT, report_id INT, sent_at TEXT, PRIMARY KEY(league, game_date, matchup, player, status));
 CREATE TABLE core.api_usage (call_id INTEGER PRIMARY KEY AUTOINCREMENT, called_at_utc TEXT, endpoint TEXT, http_status INT, credits_used INT, credits_remaining INT);
 CREATE TABLE nba.team_box (team_code TEXT, game_date TEXT, matchup TEXT, wl TEXT, mins INT, pts INT, fgm INT, fga INT, fg3m INT, fg3a INT, ftm INT, fta INT,
   oreb INT, dreb INT, reb INT, ast INT, tov INT, stl INT, blk INT, pf INT, plus_minus INT, PRIMARY KEY(team_code, game_date));
