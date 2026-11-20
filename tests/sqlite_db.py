@@ -34,6 +34,11 @@ CREATE TABLE nba.player_box_adv (player TEXT, team_code TEXT, matchup TEXT, game
   ast_pct REAL, ast_to REAL, ast_ratio REAL, oreb_pct REAL, dreb_pct REAL, reb_pct REAL, tov_ratio REAL, efg_pct REAL, ts_pct REAL, usg_pct REAL, pace REAL, pie REAL);
 CREATE TABLE nba.team_box_adv (team_code TEXT, matchup TEXT, game_date TEXT, wl TEXT, mins REAL, off_rtg REAL, def_rtg REAL, net_rtg REAL, ast_pct REAL,
   ast_to REAL, ast_ratio REAL, oreb_pct REAL, dreb_pct REAL, reb_pct REAL, tov_pct REAL, efg_pct REAL, ts_pct REAL, pace REAL, pie REAL);
+CREATE TABLE nba.team_game_log (season TEXT, nba_game_id TEXT, game_date TEXT, team_code TEXT, opp_code TEXT, is_home INT, wl TEXT,
+  mins INT, fgm INT, fga INT, fg3m INT, fg3a INT, ftm INT, fta INT, oreb INT, dreb INT, reb INT, ast INT, stl INT, blk INT, tov INT, pf INT,
+  pts INT, plus_minus INT, opp_pts INT, PRIMARY KEY(nba_game_id, team_code));
+CREATE TABLE core.hist_pulls (league TEXT, game_date TEXT, kind TEXT, snap_utc TEXT, snapshot_id INT, games INT, credits_used INT, pulled_at TEXT,
+  PRIMARY KEY(league, game_date, kind, snap_utc));
 CREATE TABLE core.api_usage (call_id INTEGER PRIMARY KEY AUTOINCREMENT, called_at_utc TEXT, endpoint TEXT, http_status INT, credits_used INT, credits_remaining INT);
 CREATE TABLE nba.team_box (team_code TEXT, game_date TEXT, matchup TEXT, wl TEXT, mins INT, pts INT, fgm INT, fga INT, fg3m INT, fg3a INT, ftm INT, fta INT,
   oreb INT, dreb INT, reb INT, ast INT, tov INT, stl INT, blk INT, pf INT, plus_minus INT, PRIMARY KEY(team_code, game_date));

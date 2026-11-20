@@ -3,7 +3,7 @@ param([string]$Server = "ECG-L028")
 $ErrorActionPreference = "Stop"
 . "$PSScriptRoot\find_python.ps1"
 Write-Host "Creating database objects on $Server ..."
-foreach ($f in "001_schema.sql","002_seed_teams.sql","003_config.sql","010_nhl_schema.sql","011_watchlist.sql","012_close_cleanup.sql","013_stale_lines.sql","014_rating_snapshots.sql","015_box_advanced.sql") {
+foreach ($f in "001_schema.sql","002_seed_teams.sql","003_config.sql","010_nhl_schema.sql","011_watchlist.sql","012_close_cleanup.sql","013_stale_lines.sql","014_rating_snapshots.sql","015_box_advanced.sql","016_history.sql") {
     sqlcmd -S $Server -E -b -I -i "sql\$f"          # -I = QUOTED_IDENTIFIER ON
     if ($LASTEXITCODE -ne 0) { throw "sqlcmd failed on $f" }
 }
