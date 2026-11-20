@@ -5,6 +5,8 @@ Loads, idempotently (re-running replaces what it loaded before):
                           legacy projections -> core.model_runs ('excel-legacy') + core.projections
   * TeamBoxAdvanced A:X -> nba.team_box
   * BoxScores A:Z       -> nba.player_box
+  * BoxScores AB:AV (advanced)       -> nba.player_box_adv
+  * TeamBoxAdvanced AA:AS (advanced) -> nba.team_box_adv
   * Ratings and stats sheets (Ratings_2026_27, TeamRatings, TeamShooting, PlayerRatings, PlayerDefense,
     26-27NBAPlayer, CraftedNBA) -> one dated snapshot per import in nba.snapshots / nba.sheet_rows
     (each row stored as JSON; re-running on the same day replaces that day's snapshot)
@@ -147,6 +149,38 @@ def _box_rows(ws, cols, first_row=2, ncol=None):
         yield rec
 
 
+# second (advanced) table on each box sheet: (sheet, first column 1-based, columns in order)
+ADV = {
+    "nba.player_box_adv": ("BoxScores", 28, ["player", "team_code", "matchup", "game_date", "wl", "mins", "off_rtg", "def_rtg",
+                           "net_rtg", "ast_pct", "ast_to", "ast_ratio", "oreb_pct", "dreb_pct", "reb_pct", "tov_ratio",
+                           "efg_pct", "ts_pct", "usg_pct", "pace", "pie"]),
+    "nba.team_box_adv": ("TeamBoxAdvanced", 27, ["team_code", "matchup", "game_date", "wl", "mins", "off_rtg", "def_rtg",
+                         "net_rtg", "ast_pct", "ast_to", "ast_ratio", "oreb_pct", "dreb_pct", "reb_pct", "tov_pct",
+                         "efg_pct", "ts_pct", "pace", "pie"]),
+}
+_TEXT = {"player", "team_code", "matchup", "game_date", "wl"}
+
+
+def _adv_rows(ws, first_col, cols):
+    seen = set()
+    for r in ws.iter_rows(min_row=2, min_col=first_col, max_col=first_col + len(cols) - 1, values_only=True):
+        rec = dict(zip(cols, r))
+        d = _date(rec.get("game_date"))
+        key_name = rec.get("player") if "player" in cols else rec.get("team_code")
+        if not d or not key_name or not rec.get("team_code"):
+            continue
+        rec["game_date"] = d.isoformat()
+        for c in cols:
+            if c not in _TEXT:
+                v = rec[c]
+                rec[c] = float(v) if isinstance(v, (int, float)) and not isinstance(v, bool) else None   # '-' -> NULL
+        k = (rec.get("player"), rec["team_code"], rec["game_date"])
+        if k in seen:
+            continue
+        seen.add(k)
+        yield rec
+
+
 def load_box(db: DB, wb) -> dict:
     out = {}
     for sheet, table, cols in (("TeamBoxAdvanced", "nba.team_box", TEAM_COLS), ("BoxScores", "nba.player_box", PLAYER_COLS)):
@@ -157,6 +191,14 @@ def load_box(db: DB, wb) -> dict:
         db.x(f"DELETE FROM {table}")
         db.many(f"INSERT INTO {table} ({', '.join(names)}) VALUES ({', '.join('?' * len(names))})",
                 [tuple(rec[c] for c in names) for rec in recs])
+        out[table] = len(recs)
+    for table, (sheet, first, cols) in ADV.items():
+        if sheet not in wb.sheetnames:
+            continue
+        recs = list(_adv_rows(wb[sheet], first, cols))
+        db.x(f"DELETE FROM {table}")
+        db.many(f"INSERT INTO {table} ({', '.join(cols)}) VALUES ({', '.join('?' * len(cols))})",
+                [tuple(r[c] for c in cols) for r in recs])
         out[table] = len(recs)
     return out
 

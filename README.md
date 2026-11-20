@@ -19,7 +19,7 @@ SQL Server holds the data, Python does the work, Power BI and Excel are the view
 | `mpm.nhl_slate` | Tonight's NHL card from the database: latest odds snapshot (Novig moneyline/total; team totals from Novig or the books' consensus), MoneyPuck tables, rulebook + $1,000 bankroll stakes, a minimum Novig price for every play; saves `core.recommendations` and renders the Discord graphics | `python -m mpm.nhl_slate --goalie "BOS=Swayman!" --goalie "DET=Talbot!"` |
 | `mpm.stale` | After every odds pull, flags Novig prices that lag Pinnacle's no-vig fair price by 3%+ (Windows alert, `core.stale_lines`); a 10-minute scan job runs 4-11 PM | runs automatically; `python -m mpm.stale` to scan now |
 | `mpm.watch` | Tonight's bets; after every injury report it pops up a Windows alert when a 20+ mpg player in one of those games goes Out/Doubtful or comes back before tip | `python -m mpm.watch set "DET@NOP\|Pistons -4.5 ($13)\|8:05PM" ...` |
-| `mpm.load_workbook` | Imports the Excel model: Tracking (games, scores, every bet, close odds, rule codes), legacy projections, team and player box scores, and a dated snapshot of the ratings/stats sheets (`nba.v_team_ratings`, `nba.v_player_ratings`) | `python -m mpm.load_workbook "C:\path\MaverickPicks_NBA_Simulations.xlsx"` |
+| `mpm.load_workbook` | Imports the Excel model: Tracking (games, scores, every bet, close odds, rule codes), legacy projections, team and player box scores (basic + advanced), and a dated snapshot of the ratings/stats sheets (`nba.v_team_ratings`, `nba.v_player_ratings`) | `python -m mpm.load_workbook "C:\path\MaverickPicks_NBA_Simulations.xlsx"` |
 
 ## Setup (Windows, one time)
 

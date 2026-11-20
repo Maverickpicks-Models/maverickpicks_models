@@ -30,6 +30,10 @@ CREATE TABLE core.stale_lines (stale_id INTEGER PRIMARY KEY AUTOINCREMENT, snaps
   novig_price INT, novig_prob REAL, sharp_point REAL, fair_prob REAL, edge REAL, sharp_move REAL, novig_move REAL, alerted INT DEFAULT 0, found_at_utc TEXT);
 CREATE TABLE nba.snapshots (snapshot_id INTEGER PRIMARY KEY AUTOINCREMENT, snapshot_date TEXT UNIQUE, source_file TEXT, loaded_at TEXT);
 CREATE TABLE nba.sheet_rows (snapshot_id INT, sheet TEXT, row_num INT, entity TEXT, team_code TEXT, data TEXT, PRIMARY KEY(snapshot_id, sheet, row_num));
+CREATE TABLE nba.player_box_adv (player TEXT, team_code TEXT, matchup TEXT, game_date TEXT, wl TEXT, mins REAL, off_rtg REAL, def_rtg REAL, net_rtg REAL,
+  ast_pct REAL, ast_to REAL, ast_ratio REAL, oreb_pct REAL, dreb_pct REAL, reb_pct REAL, tov_ratio REAL, efg_pct REAL, ts_pct REAL, usg_pct REAL, pace REAL, pie REAL);
+CREATE TABLE nba.team_box_adv (team_code TEXT, matchup TEXT, game_date TEXT, wl TEXT, mins REAL, off_rtg REAL, def_rtg REAL, net_rtg REAL, ast_pct REAL,
+  ast_to REAL, ast_ratio REAL, oreb_pct REAL, dreb_pct REAL, reb_pct REAL, tov_pct REAL, efg_pct REAL, ts_pct REAL, pace REAL, pie REAL);
 CREATE TABLE core.api_usage (call_id INTEGER PRIMARY KEY AUTOINCREMENT, called_at_utc TEXT, endpoint TEXT, http_status INT, credits_used INT, credits_remaining INT);
 CREATE TABLE nba.team_box (team_code TEXT, game_date TEXT, matchup TEXT, wl TEXT, mins INT, pts INT, fgm INT, fga INT, fg3m INT, fg3a INT, ftm INT, fta INT,
   oreb INT, dreb INT, reb INT, ast INT, tov INT, stl INT, blk INT, pf INT, plus_minus INT, PRIMARY KEY(team_code, game_date));
