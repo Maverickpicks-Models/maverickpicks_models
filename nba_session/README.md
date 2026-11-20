@@ -9,7 +9,7 @@ Paths in the scripts are relative to this folder (`work/...`, `inMMDD/...`).
 |---|---|
 | `work/prod.py` | Python port of the workbook's projection (roster ratings, injuries, B2B, pace). `Prod('inMMDD/s3.xlsx')` |
 | `work/runMMDD.py` | One night's projections: Novig lines in `G`, B2B set, outs from `work/outs_MMDD.py` -> `work/runMMDD.json` |
-| `work/rules.py` | Rulebook v5.1 engine (C1-C4, K1-K4, T1-T12, X1-X8, ROI unit pricing) -> `work/runMMDD_recs.json` |
+| `work/rules.py` | Rulebook v5.1 engine (C1-C4, K1-K4, T1-T12, X1-X8, ROI unit pricing; P1/P2 $5 from 11/20, needs WB set to the workbook) -> `work/runMMDD_recs.json` |
 | `work/cards_v7.py`, `work/summary_card.py` | Game cards and the recommended card (Playwright PNG) |
 | `work/add_tracking_MMDD.py` | Writes a night's games, bets (one row per bet, rule codes in AW) and scores into Tracking |
 | `work/rule_tags_backfill.py` | Rule codes for bets since 11/12 from the saved engine outputs |

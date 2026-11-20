@@ -1,4 +1,4 @@
-"""Rules engine. usage: python3 work/rules.py RUN.json CONFIG.json  -> prints sections, writes RUN_recs.json
+"""Rules engine (Rulebook v5.1 + P1/P2 from 11/20). usage: python3 work/rules.py RUN.json CONFIG.json  -> prints sections, writes RUN_recs.json
 CONFIG: {"date":"2026-11-12","crafted":{"AW|HM":{"home_margin":x,"total":y,"picks":["spread","under",...]}}, "stars_out":["Team",...], "b2b":["Team",...]}"""
 import json,sys,runpy,io,contextlib,datetime as dt,numpy as np
 RUN,CFG=sys.argv[1],sys.argv[2]
@@ -22,6 +22,21 @@ def fatigue(tm):
     L=_TD.get(tm,set()); b2b=(day-dt.timedelta(1)) in L
     g4=1+sum(1 for x in L if day-dt.timedelta(3)<=x<day); g6=1+sum(1 for x in L if day-dt.timedelta(5)<=x<day)
     return int(b2b)+int(g4>=3)+int(g6>=4), dict(b2b=b2b,g4=g4,g6=g6)
+# P1/P2 (11/20, from mpm.mine): season-only, shooting-luck-adjusted ratings, as in the 2025-26 / 2026-27 test
+_PM=runpy.run_path('work/prod.py')['Prod'](_os.environ['WB'])
+_NETLUCK={r[0]:r[14] for r in _PM.wb['TeamShooting'].iter_rows(min_row=7,max_row=36,values_only=True) if r[0]}
+def season_team(t):
+    c=_PM.R27.get(t); lo,ld=_PM.luck.get(t,(0,0))
+    return None if not c or c['gp']<8 else dict(o=c['o']-(lo or 0),d=c['d']-(ld or 0),p=c['p'],gp=c['gp'])
+def season_margin(aw,hm,ab,hb):
+    """away margin from season-to-date ratings only (current-season weight 1), no roster prior"""
+    A=_PM.A; a,h=season_team(aw),season_team(hm)
+    if not a or not h: return None
+    pace=_PM.LP+A[11]*((a['p']-_PM.LP)+(h['p']-_PM.LP))
+    ra=pace/100*(a['o']+h['d']-_PM.LB); rh=pace/100*(h['o']+a['d']-_PM.LB)
+    ta=-(A[13] if ab else 0); th=-(A[13] if hb else 0)
+    return (ra+(ta-th)/2-A[12]/2)-(rh+(th-ta)/2+A[12]/2), (a['o']-a['d'])-(h['o']-h['d'])
+P_GAP,P_LUCK,P_NET=1.8,0.47,3.63
 def dec(o): return 100/-o if o<0 else o/100
 def am(p): return round(-100*p/(1-p)) if p>0.5 else round(100*(1-p)/p)
 out=[]
@@ -105,6 +120,17 @@ for g in D:
     for tm,side in ((aw,'away'),(hm,'home')):
         if tm in C.get('stars_out',[]) and not (aw in C.get('stars_out',[]) and hm in C.get('stars_out',[])): add('TEST','T6 team missing star','spread',side,lab_sp(side),(spA if side=='away' else spH)['odds'],'0.25u')
     if P>=235: add('TEST','T8 total 235+','total','under',f'Under {P:g}',un['odds'],'0.25u')
+    # P1 / P2 (11/20): $5 each (0.25u at $20)
+    sm=season_margin(aw,hm,awb,hb)
+    if sm:
+        smg,snet=sm
+        for side,my_gap,my_net,opp in (('away',smg+U,snet,hm),('home',-smg-U,-snet,aw)):
+            if my_gap>=P_GAP and (_NETLUCK.get(opp) or 0)>=P_LUCK:
+                add('TEST',f'P1 fade 3P-lucky {opp.split()[-1]} (luck {_NETLUCK[opp]:+.1f}, gap {my_gap:+.1f})','spread',side,lab_sp(side),(spA if side=='away' else spH)['odds'],'0.25u')
+            if my_gap>=P_GAP and my_net>=P_NET:
+                leg=mlA if side=='away' else mlH
+                if leg['nv']>0.87: pre_notes.append(f"P2 {(aw if side=='away' else hm).split()[-1]} ML over 87% no-vig: pass (X7)")
+                else: add('TEST',f'P2 better team ML (net {my_net:+.1f}, gap {my_gap:+.1f})','ml',side,f"{(aw if side=='away' else hm).split()[-1]} ML",leg['odds'],'0.25u')
     # AVOID filters
     notes=list(pre_notes)
     keep=[]
@@ -158,17 +184,23 @@ for g in D:
         codes=[rc(r) for r in rows]; secs={r['sec'] for r in rows}
         why=[]
         if mk=='ml':
-            if 'C3' in codes: plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units=[r for r in rows if rc(r)=='C3'][0]['size'],sec='CORE',why='C3 sizing (to win 0.25u, max risk 1u)'))
+            p2=0.25 if 'P2' in codes else 0
+            if 'C3' in codes and p2: plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units=[r for r in rows if rc(r)=='C3'][0]['size']+' + risk 0.25u (P2)',sec='CORE',why='C3 sizing plus $5 for P2'))
+            elif 'P2' in codes and not ({'C3','T10'}&set(codes)): plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units='risk 0.25u',sec='TEST',why='P2 $5'))
+            elif 'T10' in codes and p2: plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units='0.75u',sec='TEST',why='T10 0.5u + P2 0.25u'))
+            elif 'C3' in codes: plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units=[r for r in rows if rc(r)=='C3'][0]['size'],sec='CORE',why='C3 sizing (to win 0.25u, max risk 1u)'))
             else: plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units='0.5u',sec='TEST',why='T10 ML favorite <=4.5 (36-23, +9.9%)'))
             continue
-        u=max(UN.get(c,0.25) for c in codes)
+        pc=[c for c in codes if c in ('P1','P2')]; base=[c for c in codes if c not in ('P1','P2')]
+        u=max(UN.get(c,0.25) for c in base) if base else 0
         if mk=='spread' and 'CORE' in secs and ({'T5','T6','T9'}&set(codes)): u=1.0; why.append('core+test spread combo 17-5, +55%')
         if mk=='total' and 'T8' in codes and ({'T2l','T3'}&set(codes)): u=0.25; why.append('T8 stacked with T2/T3 Unders 2-7')
         if mk=='total' and len(codes)>1 and not why: why.append('stacked totals: no extra size')
         if mk=='total' and side=='under' and mt<=P-3: u=TIERS[max(0,TIERS.index(u)-1)] if u in TIERS else 0.25; why.append('X5 flag: model 3+ below the line, one tier down')
-        if mk=='spread' and abs(gap)>=6 and side==('away' if gap>0 else 'home'): u=TIERS[max(0,TIERS.index(u)-1)]; why.append('X1 flag, one tier down')
+        if mk=='spread' and abs(gap)>=6 and side==('away' if gap>0 else 'home') and u in TIERS: u=TIERS[max(0,TIERS.index(u)-1)]; why.append('X1 flag, one tier down')
         cap=max(CAP[x] for x in secs if x in CAP); u=min(u,cap)
         if mk=='tt': u=0.25; why.append('0.25u each leg')
+        if pc: u+=0.25; why.append(('P1 $5' if not base else 'plus $5 for P1'))
         plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units=f'{u:g}u',sec=('CORE' if 'CORE' in secs else 'CRAFTED' if 'CRAFTED' in secs else 'TEST'),why='; '.join(why)))
     tier=f"{a} #{rank[a]} vs {h} #{rank[h]}"
     out.append(dict(game=f'{aw}|{hm}',tier=tier,recs=final,plays=plays,notes=notes,skips=[r for r in keep if r['sec']=='SKIP']))
