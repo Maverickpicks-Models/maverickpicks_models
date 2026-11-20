@@ -35,3 +35,17 @@ def test_stale_spread_and_ml():
     assert stale.scan(db, s3, "NBA", notify=False, now=now) == []
     # game started: nothing
     assert stale.scan(db, s2, "NBA", notify=False, now=dt.datetime(2026, 11, 19, 0, 30)) == []
+
+
+def test_gap_without_pinnacle_move_is_not_alerted():
+    """S1 v2: Novig moves away from a steady Pinnacle (news on Novig first) -> stored, no alert."""
+    db = make_db()
+    db.x("INSERT INTO core.games (game_id, league, game_date, start_utc, away_code, home_code) VALUES (1,'NBA','2026-11-18','2026-11-19 00:00:00','HOU','IND')")
+    now = dt.datetime(2026, 11, 18, 23, 0)
+    pin = [("pinnacle", "h2h", "away", None, -150), ("pinnacle", "h2h", "home", None, 130)]
+    _snap(db, pin + [("novig", "h2h", "away", None, -150), ("novig", "h2h", "home", None, 140)])
+    s2 = _snap(db, pin + [("novig", "h2h", "away", None, -130), ("novig", "h2h", "home", None, 170)])   # Novig drifts, Pinnacle still
+    assert stale.scan(db, s2, "NBA", notify=False, now=now) == []
+    assert db.one("SELECT COUNT(*) FROM core.stale_lines WHERE alerted=0")[0] >= 1
+    db.x("INSERT INTO core.config (config_key, config_value) VALUES ('STALE_REQUIRE_MOVE','0')")
+    assert stale.scan(db, s2, "NBA", notify=False, now=now)              # old behaviour still available

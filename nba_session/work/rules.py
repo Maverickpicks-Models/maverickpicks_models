@@ -1,4 +1,4 @@
-"""Rules engine (Rulebook v5.1 + P1/P2 from 11/20). usage: python3 work/rules.py RUN.json CONFIG.json  -> prints sections, writes RUN_recs.json
+"""Rules engine (Rulebook v5.1 + P1/P2/P3 from 11/20). usage: python3 work/rules.py RUN.json CONFIG.json  -> prints sections, writes RUN_recs.json
 CONFIG: {"date":"2026-11-12","crafted":{"AW|HM":{"home_margin":x,"total":y,"picks":["spread","under",...]}}, "stars_out":["Team",...], "b2b":["Team",...]}"""
 import json,sys,runpy,io,contextlib,datetime as dt,numpy as np
 RUN,CFG=sys.argv[1],sys.argv[2]
@@ -37,6 +37,7 @@ def season_margin(aw,hm,ab,hb):
     ta=-(A[13] if ab else 0); th=-(A[13] if hb else 0)
     return (ra+(ta-th)/2-A[12]/2)-(rh+(th-ta)/2+A[12]/2), (a['o']-a['d'])-(h['o']-h['d'])
 P_GAP,P_LUCK,P_NET=1.8,0.47,3.63
+P_PACE=-1.15   # P3: away pace + home pace - 2 x league pace (season-to-date) in the slowest third of 2025-26
 def dec(o): return 100/-o if o<0 else o/100
 def am(p): return round(-100*p/(1-p)) if p>0.5 else round(100*(1-p)/p)
 out=[]
@@ -120,6 +121,11 @@ for g in D:
     for tm,side in ((aw,'away'),(hm,'home')):
         if tm in C.get('stars_out',[]) and not (aw in C.get('stars_out',[]) and hm in C.get('stars_out',[])): add('TEST','T6 team missing star','spread',side,lab_sp(side),(spA if side=='away' else spH)['odds'],'0.25u')
     if P>=235: add('TEST','T8 total 235+','total','under',f'Under {P:g}',un['odds'],'0.25u')
+    # P3 (11/20): Under when both teams play slow; $5
+    ra,rh=_PM.R27.get(aw),_PM.R27.get(hm)
+    if ra and rh and min(ra['gp'],rh['gp'])>=5 and ra['p'] and rh['p']:
+        psum=ra['p']+rh['p']-2*_PM.LP
+        if psum<=P_PACE: add('TEST',f'P3 slow-pace Under (pace {psum:+.1f})','total','under',f'Under {P:g}',un['odds'],'0.25u')
     # P1 / P2 (11/20): $5 each (0.25u at $20)
     sm=season_margin(aw,hm,awb,hb)
     if sm:
@@ -191,16 +197,16 @@ for g in D:
             elif 'C3' in codes: plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units=[r for r in rows if rc(r)=='C3'][0]['size'],sec='CORE',why='C3 sizing (to win 0.25u, max risk 1u)'))
             else: plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units='0.5u',sec='TEST',why='T10 ML favorite <=4.5 (36-23, +9.9%)'))
             continue
-        pc=[c for c in codes if c in ('P1','P2')]; base=[c for c in codes if c not in ('P1','P2')]
+        pc=[c for c in codes if c in ('P1','P2','P3')]; base=[c for c in codes if c not in ('P1','P2','P3')]
         u=max(UN.get(c,0.25) for c in base) if base else 0
         if mk=='spread' and 'CORE' in secs and ({'T5','T6','T9'}&set(codes)): u=1.0; why.append('core+test spread combo 17-5, +55%')
         if mk=='total' and 'T8' in codes and ({'T2l','T3'}&set(codes)): u=0.25; why.append('T8 stacked with T2/T3 Unders 2-7')
         if mk=='total' and len(codes)>1 and not why: why.append('stacked totals: no extra size')
-        if mk=='total' and side=='under' and mt<=P-3: u=TIERS[max(0,TIERS.index(u)-1)] if u in TIERS else 0.25; why.append('X5 flag: model 3+ below the line, one tier down')
+        if mk=='total' and side=='under' and mt<=P-3 and base: u=TIERS[max(0,TIERS.index(u)-1)] if u in TIERS else 0.25; why.append('X5 flag: model 3+ below the line, one tier down')
         if mk=='spread' and abs(gap)>=6 and side==('away' if gap>0 else 'home') and u in TIERS: u=TIERS[max(0,TIERS.index(u)-1)]; why.append('X1 flag, one tier down')
         cap=max(CAP[x] for x in secs if x in CAP); u=min(u,cap)
         if mk=='tt': u=0.25; why.append('0.25u each leg')
-        if pc: u+=0.25; why.append(('P1 $5' if not base else 'plus $5 for P1'))
+        if pc: u+=0.25; why.append((f'{pc[0]} $5' if not base else f'plus $5 for {pc[0]}'))
         plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units=f'{u:g}u',sec=('CORE' if 'CORE' in secs else 'CRAFTED' if 'CRAFTED' in secs else 'TEST'),why='; '.join(why)))
     tier=f"{a} #{rank[a]} vs {h} #{rank[h]}"
     out.append(dict(game=f'{aw}|{hm}',tier=tier,recs=final,plays=plays,notes=notes,skips=[r for r in keep if r['sec']=='SKIP']))
