@@ -5,6 +5,9 @@ Loads, idempotently (re-running replaces what it loaded before):
                           legacy projections -> core.model_runs ('excel-legacy') + core.projections
   * TeamBoxAdvanced A:X -> nba.team_box
   * BoxScores A:Z       -> nba.player_box
+  * Ratings and stats sheets (Ratings_2026_27, TeamRatings, TeamShooting, PlayerRatings, PlayerDefense,
+    26-27NBAPlayer, CraftedNBA) -> one dated snapshot per import in nba.snapshots / nba.sheet_rows
+    (each row stored as JSON; re-running on the same day replaces that day's snapshot)
 
 Usage:
   python -m mpm.load_workbook "C:\\path\\MaverickPicks_NBA_Simulations.xlsx"
@@ -158,16 +161,96 @@ def load_box(db: DB, wb) -> dict:
     return out
 
 
+# sheet -> (header row, entity column header, team column header or None)
+RATING_SHEETS = {
+    "Ratings_2026_27": (1, "Team", "Team"),
+    "TeamRatings":     (5, "Team", "Team"),
+    "TeamShooting":    (6, "Team", "Code"),
+    "PlayerRatings":   (5, "Player", "BBRef team"),
+    "PlayerDefense":   (1, "Name", None),
+    "26-27NBAPlayer":  (1, "Player", "Team"),
+    "CraftedNBA":      (1, "Matchup", None),
+}
+
+
+def _json_val(v):
+    if isinstance(v, (dt.datetime, dt.date)):
+        return v.isoformat()[:10] if isinstance(v, dt.datetime) and v.time() == dt.time(0) else v.isoformat()
+    if isinstance(v, float) and v != v:
+        return None
+    return v
+
+
+def _l10(col, v):
+    """Excel turns a pasted L10 record like 9-1 into a date (Sep 1); turn it back into "9-1"."""
+    return f"{v.month}-{v.day}" if isinstance(v, (dt.datetime, dt.date)) else _json_val(v)
+
+
+def _team_or_none(db, league, name):
+    if not name or not isinstance(name, str):
+        return None
+    try:
+        return teams.code(db, league, name.strip())
+    except KeyError:
+        n = name.strip().upper()
+        row = db.one("SELECT team_code FROM core.teams WHERE league=? AND team_code=?", (league, n)) if len(n) == 3 else None
+        return row[0] if row else None
+
+
+def load_ratings(db: DB, wb, snap_date: dt.date, source: str = "", league: str = "NBA") -> dict:
+    import json
+    old = db.one("SELECT snapshot_id FROM nba.snapshots WHERE snapshot_date=?", (snap_date.isoformat(),))
+    if old:
+        sid = int(old[0])
+        db.x("DELETE FROM nba.sheet_rows WHERE snapshot_id=?", (sid,))
+    else:
+        sid = db.insert_id("nba.snapshots", {"snapshot_date": snap_date.isoformat(), "source_file": source[:400]}, "snapshot_id")
+    out = {}
+    for sheet, (hrow, ent_col, team_col) in RATING_SHEETS.items():
+        if sheet not in wb.sheetnames:
+            continue
+        rows = wb[sheet].iter_rows(min_row=hrow, values_only=True)
+        header = next(rows, None) or ()
+        cols, seen = [], {}
+        for h in header:                                  # headers up to the first blank one
+            if h is None or str(h).strip() == "":
+                break
+            h = str(h).strip()
+            seen[h] = seen.get(h, 0) + 1
+            cols.append(h if seen[h] == 1 else f"{h} ({seen[h]})")
+        if ent_col not in cols:
+            print(f"{sheet}: no '{ent_col}' column in row {hrow}, skipped")
+            continue
+        ei, ti = cols.index(ent_col), (cols.index(team_col) if team_col in cols else None)
+        recs = []
+        for i, r in enumerate(rows, start=hrow + 1):
+            ent = r[ei] if ei < len(r) else None
+            if ent is None or str(ent).strip() == "" or str(ent).strip() == ent_col:   # blank or a repeated header row
+                continue
+            data = {c: _l10(c, r[j]) if c == "L10" else _json_val(r[j]) for j, c in enumerate(cols) if j < len(r) and r[j] is not None and r[j] != ""}
+            tc = _team_or_none(db, league, r[ti]) if ti is not None and ti < len(r) else None
+            recs.append((sid, sheet, i, str(ent).strip()[:80], tc, json.dumps(data, ensure_ascii=False, default=str)))
+        db.many("INSERT INTO nba.sheet_rows (snapshot_id, sheet, row_num, entity, team_code, data) VALUES (?,?,?,?,?,?)", recs)
+        out[sheet] = len(recs)
+    return out
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("workbook")
     ap.add_argument("--league", default="NBA")
+    ap.add_argument("--snapshot-date", help="date to file the ratings snapshot under (default: today)")
+    ap.add_argument("--no-ratings", action="store_true", help="skip the ratings/stats snapshot")
     a = ap.parse_args(argv)
     wb = openpyxl.load_workbook(a.workbook, read_only=True, data_only=True)
     with session() as db:
         s1 = load_tracking(db, wb["Tracking"], a.league)
         s2 = load_box(db, wb)
+        s3 = {} if a.no_ratings else load_ratings(
+            db, wb, dt.date.fromisoformat(a.snapshot_date) if a.snapshot_date else dt.date.today(), a.workbook)
     print(f"Tracking: {s1}  Box: {s2}")
+    if s3:
+        print(f"Ratings snapshot {a.snapshot_date or dt.date.today().isoformat()}: {s3}")
 
 
 if __name__ == "__main__":
