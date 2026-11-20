@@ -1,14 +1,14 @@
-# 11/20 ESPN injuries page ~6:25 PM (official PDF not received). Out/Doubtful=1, Questionable=.5, probable=0
+# 11/20 official 6:15 PM report. Out/Doubtful=1, Questionable=.5
 OUTS={'Grant Williams':1,'Grayson Allen':1,'Kon Knueppel':1,'Dennis Schroder':1,
-'Jock Landale':1,'Kingston Flemings':.5,'Asa Newell':1,'CJ McCollum':1,'Mouhamed Gueye':1,'Henri Veesaar':1,
-'Andrew Nembhard':.5,'Braden Smith':.5,'Tyrese Haliburton':1,'Johnny Furphy':1,'Ben Sheppard':1,
+'Jock Landale':1,'Kingston Flemings':1,'Asa Newell':1,'CJ McCollum':1,'Mouhamed Gueye':1,'Henri Veesaar':1,
+'Tyrese Haliburton':1,'Johnny Furphy':1,'Ben Sheppard':1,
 'Jaylon Tyson':1,'Peyton Watson':.5,"Nae'Qwan Tomlin":1,'Evan Mobley':1,
 'Izaiyah Nelson':1,'Jonathan Isaac':1,'Noah Penda':1,'Paolo Banchero':1,
 'Grant Nelson':1,
 'Collin Murray-Boyles':1,'RJ Barrett':1,'Kawhi Leonard':1,'Nate Bittle':1,
 'Ronald Holland II':1,'Taurean Prince':1,'Ebuka Okorie':1,'Duncan Robinson':1,'Jalen Duren':1,
 'Bryce McGowens':1,'Trendon Watford':1,'Bennedict Mathurin':1,'Trey Murphy III':.5,'Dejounte Murray':1,
-'Nikola Topic':1,'Alex Caruso':.5,'Thomas Sorber':1,'Cason Wallace':1,'Chet Holmgren':1,'Jalen Williams':1,
+'Nikola Topic':1,'Alex Caruso':1,'Thomas Sorber':1,'Cason Wallace':1,'Chet Holmgren':1,'Jalen Williams':1,
 'Tristan Vukcevic':1,'Reece Beekman':1,'Justin Champagnie':1,'Jamir Watkins':1,
 'Jalen Smith':.5,'Tobe Awaka':1,'Caleb Wilson':1,
 'Mark Williams':1,
