@@ -116,6 +116,8 @@ def holds(row, cond, cuts):
         return bool(row[f]) == (v == "yes")
     lo, hi = cuts[f]
     x = row[f]
+    if lo == hi:                      # mostly-zero features (rest, fatigue difference): less / equal / more
+        return (x < lo) if v == "low" else (x > hi) if v == "high" else (x == lo)
     return (x < lo) if v == "low" else (x >= hi) if v == "high" else (lo <= x < hi)
 
 
