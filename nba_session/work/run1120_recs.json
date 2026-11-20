@@ -201,6 +201,15 @@
   "tier": "NOP #24 vs OKC #9",
   "recs": [
    {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Thunder -11.5",
+    "odds": 100,
+    "size": "0.5u"
+   },
+   {
     "sec": "TEST",
     "code": "T5 top-10 vs bottom-10",
     "mk": "spread",
@@ -262,11 +271,12 @@
     "lab": "Thunder -11.5",
     "odds": 100,
     "codes": [
+     "K1",
      "T5",
      "T6"
     ],
     "units": "0.5u",
-    "sec": "TEST",
+    "sec": "CRAFTED",
     "why": ""
    },
    {
@@ -305,6 +315,24 @@
   "recs": [
    {
     "sec": "TEST",
+    "code": "T11 home fav <=4.5",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Bulls -1.5",
+    "odds": -108,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Bulls -1.5",
+    "odds": -108,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
     "code": "T2 low turnovers",
     "mk": "total",
     "side": "under",
@@ -333,6 +361,19 @@
   ],
   "plays": [
    {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Bulls -1.5",
+    "odds": -108,
+    "codes": [
+     "T11",
+     "K1"
+    ],
+    "units": "0.5u",
+    "sec": "CRAFTED",
+    "why": ""
+   },
+   {
     "mk": "total",
     "side": "under",
     "lab": "Under 238.5",
@@ -359,62 +400,21 @@
    }
   ],
   "notes": [
-   "conflict on spread: T11 home fav <=4.5->Bulls -1.5, T12 more tired team (fatigue 1 vs 0)->Wizards +1.5 -> pass"
+   "X6 T12 more tired team (fatigue 1 vs 0) (Wizards +1.5) passed: opposite CraftedNBA's pick"
   ],
   "skips": []
  },
  {
   "game": "Phoenix Suns|Utah Jazz",
   "tier": "PHX #17 vs UTA #26",
-  "recs": [
-   {
-    "sec": "CORE",
-    "code": "C2 road fav <=4.5",
-    "mk": "spread",
-    "side": "away",
-    "lab": "Suns -4.5",
-    "odds": -104,
-    "size": "0.75u"
-   },
-   {
-    "sec": "CORE",
-    "code": "C3 ML fav 60%+",
-    "mk": "ml",
-    "side": "away",
-    "lab": "Suns ML",
-    "odds": -170,
-    "size": "risk 0.42u to win 0.25u"
-   }
-  ],
-  "plays": [
-   {
-    "mk": "spread",
-    "side": "away",
-    "lab": "Suns -4.5",
-    "odds": -104,
-    "codes": [
-     "C2"
-    ],
-    "units": "0.75u",
-    "sec": "CORE",
-    "why": ""
-   },
-   {
-    "mk": "ml",
-    "side": "away",
-    "lab": "Suns ML",
-    "odds": -170,
-    "codes": [
-     "C3"
-    ],
-    "units": "risk 0.42u to win 0.25u",
-    "sec": "CORE",
-    "why": "C3 sizing (to win 0.25u, max risk 1u)"
-   }
-  ],
+  "recs": [],
+  "plays": [],
   "notes": [
+   "X2 home dog Jazz +4.5 removed (K2 dog we disagree)",
    "X2 home dog Jazz +4.5 removed (T12 more tired team (fatigue 1 vs 2))",
-   "X2 home dog Jazz +4.5 removed (T6 team missing star)"
+   "X2 home dog Jazz +4.5 removed (T6 team missing star)",
+   "X6 C2 road fav <=4.5 (Suns -4.5) passed: opposite CraftedNBA's pick",
+   "X6 C3 ML fav 60%+ (Suns ML) passed: opposite CraftedNBA's pick"
   ],
   "skips": []
  },
