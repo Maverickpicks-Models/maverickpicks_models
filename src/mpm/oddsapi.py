@@ -82,6 +82,13 @@ def ensure_game(db: DB, league: str, ev: dict) -> int:
     away, home = teams.code(db, league, ev["away_team"]), teams.code(db, league, ev["home_team"])
     row = db.one("SELECT game_id FROM core.games WHERE league=? AND game_date=? AND away_code=? AND home_code=?",
                  (league, gdate.isoformat(), away, home))
+    if not row:      # neutral-site game stored the other way round (e.g. from an NBA.com box score): adopt this orientation
+        sw = db.one("SELECT game_id FROM core.games WHERE league=? AND game_date=? AND away_code=? AND home_code=?",
+                    (league, gdate.isoformat(), home, away))
+        if sw:
+            db.x("UPDATE core.games SET away_code=?, home_code=?, away_score=home_score, home_score=away_score WHERE game_id=?",
+                 (away, home, sw[0]))
+            row = sw
     if row:
         db.x("UPDATE core.games SET odds_event_id=?, start_utc=? WHERE game_id=?",
              (ev["id"], start.replace(tzinfo=None).isoformat(sep=" "), row[0]))

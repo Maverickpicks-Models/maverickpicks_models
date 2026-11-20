@@ -181,6 +181,13 @@ def _adv_rows(ws, first_col, cols):
         yield rec
 
 
+def _clear_range(db: DB, table: str, recs: list[dict]):
+    """Replace only the dates this load covers, so past seasons loaded by mpm.history stay put."""
+    if recs:
+        ds = [r["game_date"] for r in recs]
+        db.x(f"DELETE FROM {table} WHERE game_date BETWEEN ? AND ?", (min(ds), max(ds)))
+
+
 def load_box(db: DB, wb) -> dict:
     out = {}
     for sheet, table, cols in (("TeamBoxAdvanced", "nba.team_box", TEAM_COLS), ("BoxScores", "nba.player_box", PLAYER_COLS)):
@@ -188,7 +195,7 @@ def load_box(db: DB, wb) -> dict:
             continue
         recs = list(_box_rows(wb[sheet], cols))
         names = [c for c in cols if c]
-        db.x(f"DELETE FROM {table}")
+        _clear_range(db, table, recs)
         db.many(f"INSERT INTO {table} ({', '.join(names)}) VALUES ({', '.join('?' * len(names))})",
                 [tuple(rec[c] for c in names) for rec in recs])
         out[table] = len(recs)
@@ -196,7 +203,7 @@ def load_box(db: DB, wb) -> dict:
         if sheet not in wb.sheetnames:
             continue
         recs = list(_adv_rows(wb[sheet], first, cols))
-        db.x(f"DELETE FROM {table}")
+        _clear_range(db, table, recs)
         db.many(f"INSERT INTO {table} ({', '.join(cols)}) VALUES ({', '.join('?' * len(cols))})",
                 [tuple(r[c] for c in cols) for r in recs])
         out[table] = len(recs)

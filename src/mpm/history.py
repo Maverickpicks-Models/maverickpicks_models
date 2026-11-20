@@ -1,6 +1,8 @@
 """Phase 2: past seasons - results from NBA.com and bet-time / closing odds from TheOddsAPI historical.
 
-  python -m mpm.history games --season 2025-26 --season 2024-25   # team game logs + final scores (free)
+  python -m mpm.history games --season 2025-26 --season 2024-25   # team game logs + final scores from stats.nba.com
+  python -m mpm.history boxfile "C:\path\Player_Team_Box_25_26.xlsx" --season 2025-26
+        # or: the four NBA.com box score tables saved to one workbook (team, team advanced, player, player advanced)
   python -m mpm.history estimate --season 2025-26                 # credits it would cost (free)
   python -m mpm.history odds --season 2025-26 --max-credits 7000  # bet-time lines, resumable
   python -m mpm.history odds --season 2025-26 --close             # + a closing snapshot per tip time
@@ -98,6 +100,109 @@ def store_game_log(db, season: str, rows: list[dict], league: str = "NBA") -> di
                                         "away_score": ap, "home_score": hp, "status": "final"}, "game_id")
             n_new += 1
     return {"team_rows": len(recs), "games": len(games), "new_games": n_new}
+
+
+# ---------------------------------------------------------------- box score workbook (manual download)
+HDR = {"TEAM": "team_code", "PLAYER": "player", "MATCH UP": "matchup", "GAME DATE": "game_date", "W/L": "wl", "MIN": "mins",
+       "PTS": "pts", "FGM": "fgm", "FGA": "fga", "3PM": "fg3m", "3PA": "fg3a", "FTM": "ftm", "FTA": "fta", "OREB": "oreb",
+       "DREB": "dreb", "REB": "reb", "AST": "ast", "STL": "stl", "BLK": "blk", "TOV": "tov", "PF": "pf", "+/-": "plus_minus",
+       "OFFRTG": "off_rtg", "DEFRTG": "def_rtg", "NETRTG": "net_rtg", "AST%": "ast_pct", "AST/TO": "ast_to",
+       "AST RATIO": "ast_ratio", "OREB%": "oreb_pct", "DREB%": "dreb_pct", "REB%": "reb_pct", "TO RATIO": "tov_ratio",
+       "TOV%": "tov_pct", "EFG%": "efg_pct", "TS%": "ts_pct", "USG%": "usg_pct", "PACE": "pace", "PIE": "pie"}
+BOX_TABLES = {   # table -> columns it takes
+    "nba.team_box": ["team_code", "game_date", "matchup", "wl", "mins", "pts", "fgm", "fga", "fg3m", "fg3a", "ftm", "fta",
+                     "oreb", "dreb", "reb", "ast", "tov", "stl", "blk", "pf", "plus_minus"],
+    "nba.player_box": ["player", "team_code", "game_date", "matchup", "wl", "mins", "pts", "fgm", "fga", "fg3m", "fg3a", "ftm",
+                       "fta", "oreb", "dreb", "reb", "ast", "stl", "blk", "tov", "pf", "plus_minus"],
+    "nba.team_box_adv": ["team_code", "matchup", "game_date", "wl", "mins", "off_rtg", "def_rtg", "net_rtg", "ast_pct", "ast_to",
+                         "ast_ratio", "oreb_pct", "dreb_pct", "reb_pct", "tov_pct", "efg_pct", "ts_pct", "pace", "pie"],
+    "nba.player_box_adv": ["player", "team_code", "matchup", "game_date", "wl", "mins", "off_rtg", "def_rtg", "net_rtg",
+                           "ast_pct", "ast_to", "ast_ratio", "oreb_pct", "dreb_pct", "reb_pct", "tov_ratio", "efg_pct",
+                           "ts_pct", "usg_pct", "pace", "pie"],
+}
+INT_COLS = {"mins", "pts", "fgm", "fga", "fg3m", "fg3a", "ftm", "fta", "oreb", "dreb", "reb", "ast", "stl", "blk", "tov", "pf", "plus_minus"}
+
+
+def _sheet_table(name: str) -> str | None:
+    n = name.lower()
+    who = "player" if "player" in n else "team" if "team" in n else None
+    if not who:
+        return None
+    return f"nba.{who}_box_adv" if "adv" in n else f"nba.{who}_box"
+
+
+def _num(v, as_int):
+    if isinstance(v, str):
+        v = v.strip()
+        try:
+            v = float(v)
+        except ValueError:
+            return None
+    if isinstance(v, (int, float)) and not isinstance(v, bool):
+        return int(round(v)) if as_int else float(v)
+    return None
+
+
+def import_box_file(db, path: str, season: str, league: str = "NBA") -> dict:
+    """Load the four NBA.com box score tables from one workbook into nba.team_box / player_box / *_adv
+    (replacing those dates), then build nba.team_game_log and final core.games for the season."""
+    import openpyxl
+    wb = openpyxl.load_workbook(path, read_only=True, data_only=True)
+    out, team_rows = {}, []
+    for ws in wb.worksheets:
+        table = _sheet_table(ws.title)
+        if not table:
+            continue
+        rows = ws.iter_rows(values_only=True)
+        header = [HDR.get(str(h or "").replace("\xa0", " ").strip().upper()) for h in next(rows)]
+        if table == "nba.team_box_adv":                       # NBA.com labels AST Ratio just "AST" on this table
+            header = ["ast_ratio" if h == "ast" else h for h in header]
+        cols = BOX_TABLES[table]
+        recs, seen = [], set()
+        for r in rows:
+            rec = {h: v for h, v in zip(header, r) if h}
+            if not rec.get("team_code") or not rec.get("game_date") or ("player" in cols and not rec.get("player")):
+                continue
+            d = rec["game_date"]
+            rec["game_date"] = (d.date() if hasattr(d, "date") else _gdate(d)).isoformat()
+            for c in cols:
+                if c not in ("player", "team_code", "matchup", "game_date", "wl"):
+                    rec[c] = _num(rec.get(c), c in INT_COLS and not table.endswith("_adv") and not (table == "nba.player_box" and c == "mins"))
+            k = (rec.get("player"), rec["team_code"], rec["game_date"])
+            if k in seen:
+                continue
+            seen.add(k)
+            recs.append(rec)
+        if not recs:
+            continue
+        ds = [r["game_date"] for r in recs]
+        db.x(f"DELETE FROM {table} WHERE game_date BETWEEN ? AND ?", (min(ds), max(ds)))
+        db.many(f"INSERT INTO {table} ({', '.join(cols)}) VALUES ({', '.join('?' * len(cols))})",
+                [tuple(r.get(c) for c in cols) for r in recs])
+        out[table] = len(recs)
+        if table == "nba.team_box":
+            team_rows = recs
+    if team_rows:                                             # same shape as the stats.nba.com game log
+        pairs = {}
+        for r in team_rows:
+            other = r["matchup"].replace(" vs. ", " @ ").split(" @ ")[1].strip()
+            pairs.setdefault((r["game_date"], *sorted((r["team_code"], other))), []).append(r)
+        log = []
+        for (d, t1, t2), rs in pairs.items():
+            homes = [r for r in rs if " vs. " in r["matchup"]]
+            if len(homes) != 1 and len(rs) == 2:          # neutral site (Cup knockout, international games): both rows
+                home_team = t2                            # read "@" or both "vs."; call the 2nd team alphabetically home
+                for r in rs:
+                    opp_ = t1 if r["team_code"] == t2 else t2
+                    r["matchup"] = f"{r['team_code']} vs. {opp_}" if r["team_code"] == home_team else f"{r['team_code']} @ {opp_}"
+            home_row = next((r for r in rs if " vs. " in r["matchup"]), None)
+            h = home_row["team_code"] if home_row else t2
+            a = t1 if h == t2 else t2
+            for r in rs:
+                log.append({"GAME_ID": f"{d[2:].replace('-', '')}{a}{h}", "GAME_DATE": d, "TEAM_ABBREVIATION": r["team_code"],
+                            "MATCHUP": r["matchup"], "WL": r.get("wl"), **{v: r.get(k) for k, v in NBA_KEYS.items()}})
+        out["game_log"] = store_game_log(db, season, log, league)
+    return out
 
 
 # ---------------------------------------------------------------- odds
@@ -234,6 +339,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     g = sub.add_parser("games"); g.add_argument("--season", action="append", required=True)
+    bf = sub.add_parser("boxfile"); bf.add_argument("path"); bf.add_argument("--season", required=True)
     e = sub.add_parser("estimate"); e.add_argument("--season", action="append", required=True); e.add_argument("--close", action="store_true")
     o = sub.add_parser("odds"); o.add_argument("--season", required=True); o.add_argument("--max-credits", type=int, default=7000)
     o.add_argument("--reserve", type=int, default=5000); o.add_argument("--close", action="store_true")
@@ -246,6 +352,8 @@ def main(argv=None):
             for s in a.season:
                 print(s, store_game_log(db, s, fetch_game_log(s)))
                 db.commit()
+        elif a.cmd == "boxfile":
+            print(import_box_file(db, a.path, a.season))
         elif a.cmd == "estimate":
             for s in a.season:
                 print(estimate(db, s, a.close))

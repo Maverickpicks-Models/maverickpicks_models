@@ -57,3 +57,24 @@ def test_history_day_and_backtest():
     assert "C2 road fav <=4.5" in text and "| 1 | 1-0-0 |" in text, text      # BOS -3.5 won by 10
     assert "T9 home B2B vs rested road" in text                               # CHI played 12/19 at home
     print(text)
+
+
+def test_boxfile_neutral_site(tmp_path=None):
+    import openpyxl, os, tempfile
+    wb = openpyxl.Workbook(); ws = wb.active; ws.title = "TeamBox_25_26"
+    ws.append(["Team", "Match Up", "Game Date", "W/L", "MIN", "PTS", "FGM", "FGA", "FG%", "3PM", "3PA", "3P%", "FTM", "FTA", "FT%",
+               "OREB", "DREB", "REB", "AST", "STL", "BLK", "TOV", "PF", "+/-"])
+    d = dt.datetime(2025, 12, 13)
+    for row in (["NYK", "NYK @ ORL", d, "W", 240, 132] + [1] * 17 + [12], ["ORL", "ORL @ NYK", d, "L", 240, 120] + [1] * 17 + [-12],
+                ["BOS", "BOS @ MIA", d, "W", 240, 110] + [1] * 17 + [5], ["MIA", "MIA vs. BOS", d, "L", 240, 105] + [1] * 17 + [-5]):
+        ws.append(row)
+    adv = wb.create_sheet("TeamAdvancedBox_25_26")
+    adv.append(["Team", "Match\xa0Up", "Game\xa0Date", "W/L", "MIN", "OffRtg", "DefRtg", "NetRtg", "AST%", "AST/TO", "AST", "OREB%",
+                "DREB%", "REB%", "TOV%", "eFG%", "TS%", "PACE", "PIE"])
+    adv.append(["BOS", "BOS @ MIA", d, "W", 48, 120, 110, 10, 60, 2, 18.5, 25, 75, 50, 12, 55, 58, 99, 55])
+    path = os.path.join(tempfile.mkdtemp(), "box.xlsx"); wb.save(path)
+    db = make_db()
+    r = history.import_box_file(db, path, "2025-26")
+    assert r["game_log"]["games"] == 2 and r["nba.team_box_adv"] == 1, r
+    assert db.one("SELECT ast_ratio FROM nba.team_box_adv")[0] == 18.5
+    assert sorted(db.q("SELECT away_code, home_code, away_score, home_score FROM core.games")) == [("BOS", "MIA", 110, 105), ("NYK", "ORL", 132, 120)]
