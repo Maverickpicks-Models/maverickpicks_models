@@ -1,4 +1,4 @@
-"""Phase 2: past seasons - results from NBA.com and bet-time / closing odds from TheOddsAPI historical.
+r"""Phase 2: past seasons - results from NBA.com and bet-time / closing odds from TheOddsAPI historical.
 
   python -m mpm.history games --season 2025-26 --season 2024-25   # team game logs + final scores from stats.nba.com
   python -m mpm.history boxfile "C:\path\Player_Team_Box_25_26.xlsx" --season 2025-26
