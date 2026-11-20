@@ -3,6 +3,7 @@ r"""Phase 2: past seasons - results from NBA.com and bet-time / closing odds fro
   python -m mpm.history games --season 2025-26 --season 2024-25   # team game logs + final scores from stats.nba.com
   python -m mpm.history boxfile "C:\path\Player_Team_Box_25_26.xlsx" --season 2025-26
         # or: the four NBA.com box score tables saved to one workbook (team, team advanced, player, player advanced)
+  python -m mpm.history fromdb --season 2026-27 --start 2026-10-01 --end 2027-06-30   # this season, from the workbook's box scores
   python -m mpm.history estimate --season 2025-26                 # credits it would cost (free)
   python -m mpm.history odds --season 2025-26 --max-credits 7000  # bet-time lines, resumable
   python -m mpm.history odds --season 2025-26 --close             # + a closing snapshot per tip time
@@ -182,27 +183,44 @@ def import_box_file(db, path: str, season: str, league: str = "NBA") -> dict:
         out[table] = len(recs)
         if table == "nba.team_box":
             team_rows = recs
-    if team_rows:                                             # same shape as the stats.nba.com game log
-        pairs = {}
-        for r in team_rows:
-            other = r["matchup"].replace(" vs. ", " @ ").split(" @ ")[1].strip()
-            pairs.setdefault((r["game_date"], *sorted((r["team_code"], other))), []).append(r)
-        log = []
-        for (d, t1, t2), rs in pairs.items():
-            homes = [r for r in rs if " vs. " in r["matchup"]]
-            if len(homes) != 1 and len(rs) == 2:          # neutral site (Cup knockout, international games): both rows
-                home_team = t2                            # read "@" or both "vs."; call the 2nd team alphabetically home
-                for r in rs:
-                    opp_ = t1 if r["team_code"] == t2 else t2
-                    r["matchup"] = f"{r['team_code']} vs. {opp_}" if r["team_code"] == home_team else f"{r['team_code']} @ {opp_}"
-            home_row = next((r for r in rs if " vs. " in r["matchup"]), None)
-            h = home_row["team_code"] if home_row else t2
-            a = t1 if h == t2 else t2
-            for r in rs:
-                log.append({"GAME_ID": f"{d[2:].replace('-', '')}{a}{h}", "GAME_DATE": d, "TEAM_ABBREVIATION": r["team_code"],
-                            "MATCHUP": r["matchup"], "WL": r.get("wl"), **{v: r.get(k) for k, v in NBA_KEYS.items()}})
-        out["game_log"] = store_game_log(db, season, log, league)
+    if team_rows:
+        out["game_log"] = log_from_team_rows(db, season, team_rows, league)
     return out
+
+
+def log_from_team_rows(db, season: str, team_rows: list[dict], league: str = "NBA") -> dict:
+    """Pair team box rows into games -> nba.team_game_log + final core.games (handles neutral sites)."""
+    # rows are shaped like the stats.nba.com game log, so store_game_log handles both sources
+    pairs = {}
+    for r in team_rows:
+        other = r["matchup"].replace(" vs. ", " @ ").split(" @ ")[1].strip()
+        pairs.setdefault((r["game_date"], *sorted((r["team_code"], other))), []).append(r)
+    log = []
+    for (d, t1, t2), rs in pairs.items():
+        homes = [r for r in rs if " vs. " in r["matchup"]]
+        if len(homes) != 1 and len(rs) == 2:          # neutral site (Cup knockout, international games): both rows
+            home_team = t2                            # read "@" or both "vs."; call the 2nd team alphabetically home
+            for r in rs:
+                opp_ = t1 if r["team_code"] == t2 else t2
+                r["matchup"] = f"{r['team_code']} vs. {opp_}" if r["team_code"] == home_team else f"{r['team_code']} @ {opp_}"
+        home_row = next((r for r in rs if " vs. " in r["matchup"]), None)
+        h = home_row["team_code"] if home_row else t2
+        a = t1 if h == t2 else t2
+        for r in rs:
+            log.append({"GAME_ID": f"{d[2:].replace('-', '')}{a}{h}", "GAME_DATE": d, "TEAM_ABBREVIATION": r["team_code"],
+                        "MATCHUP": r["matchup"], "WL": r.get("wl"), **{v: r.get(k) for k, v in NBA_KEYS.items()}})
+    return store_game_log(db, season, log, league)
+
+
+def log_from_db(db, season: str, d0: str, d1: str, league: str = "NBA") -> dict:
+    """Build the season game log from nba.team_box already in the database (e.g. this season, loaded by
+    load_workbook), so the backtest, fatigue and the historical odds pull work on it too."""
+    cols = ["team_code", "game_date", "matchup", "wl", "mins", "pts", "fgm", "fga", "fg3m", "fg3a", "ftm", "fta",
+            "oreb", "dreb", "reb", "ast", "tov", "stl", "blk", "pf", "plus_minus"]
+    rows = [dict(zip(cols, r)) for r in db.q(f"SELECT {', '.join(cols)} FROM nba.team_box WHERE game_date BETWEEN ? AND ?", (d0, d1))]
+    for r in rows:
+        r["game_date"] = str(r["game_date"])[:10]
+    return log_from_team_rows(db, season, rows, league) if rows else {}
 
 
 # ---------------------------------------------------------------- odds
@@ -340,6 +358,8 @@ def main(argv=None):
     sub = ap.add_subparsers(dest="cmd", required=True)
     g = sub.add_parser("games"); g.add_argument("--season", action="append", required=True)
     bf = sub.add_parser("boxfile"); bf.add_argument("path"); bf.add_argument("--season", required=True)
+    fd = sub.add_parser("fromdb", help="build a season's game log from box scores already in the database")
+    fd.add_argument("--season", required=True); fd.add_argument("--start", required=True); fd.add_argument("--end", required=True)
     e = sub.add_parser("estimate"); e.add_argument("--season", action="append", required=True); e.add_argument("--close", action="store_true")
     o = sub.add_parser("odds"); o.add_argument("--season", required=True); o.add_argument("--max-credits", type=int, default=7000)
     o.add_argument("--reserve", type=int, default=5000); o.add_argument("--close", action="store_true")
@@ -354,6 +374,8 @@ def main(argv=None):
                 db.commit()
         elif a.cmd == "boxfile":
             print(import_box_file(db, a.path, a.season))
+        elif a.cmd == "fromdb":
+            print(log_from_db(db, a.season, a.start, a.end))
         elif a.cmd == "estimate":
             for s in a.season:
                 print(estimate(db, s, a.close))
