@@ -1,0 +1,26 @@
+{"date":"FRI NOV 13, 2026","lead":"9 games · injuries from the 6:15 PM report · Odds: Novig",
+"sections":[
+{"name":"CORE","sub":"validated rules · 0.5u, ML sized to win 0.25u","items":[
+["NYK @ IND","Pacers +8.5 (−108)","0.5u",["CORE"]],
+["MEM @ NOP","Grizzlies −3.5 (+104)","0.5u",["CORE","TEST"]],
+["MIL @ ORL","Magic ML (−365)","0.91u",["CORE"]],
+["NYK @ IND","Knicks ML (−300)","0.75u",["CORE"]],
+["ATL @ CHI","Hawks ML (−251)","0.63u",["CORE"]],
+["OKC @ LAC","Thunder ML (−251)","0.63u",["CORE"]],
+["POR @ SAC","Blazers ML (−413)","1.03u",["CORE"]],
+["GSW @ SAS","Spurs ML (−567)","1.42u",["CORE"]],
+["UTA @ HOU","Rockets ML (−953)","2.38u",["CORE"]],
+["ATL @ CHI","Over 245.5 (−104)","0.25u",["CORE"]],
+["CLE @ MIA","Over 236.5 (−104)","0.25u",["CORE"]],
+["OKC @ LAC","Over 222.5 (+102)","0.25u",["CORE"]]]},
+{"name":"CRAFTED","sub":"CraftedNBA follow rules · 0.5u","items":[
+["CLE @ MIA","Cavaliers +2.5 (−102)","0.5u",["CRAFTED"]],
+["GSW @ SAS","Warriors +12.5 (−104)","0.5u",["CRAFTED","TEST"]],
+["MEM @ NOP","Under 235.5 (−102)","0.5u",["CRAFTED","TEST"]]]},
+{"name":"TEST","sub":"paper / small · 0.25u","items":[
+["MIL @ ORL","Under 223.5 (+106)","0.25u",["TEST"]],
+["NYK @ IND","Under 219.5 (−104)","0.25u",["TEST"]],
+["GSW @ SAS","Under 217.5 (+104)","0.25u",["TEST"]],
+["UTA @ HOU","Rockets −15.5 (+104)","0.25u",["TEST"]],
+["POR @ SAC","Blazers −10.5 (+108)","0.25u",["TEST"]]]}],
+"foot":"Passed: ATL/CHI spread (core rules conflict), OKC/LAC spread (road favorite vs CraftedNBA LAC +7.5). CraftedNBA Overs skipped.<br>Core Overs at half size while the recent-pace adjustment is new. <b>21+</b> · Bet responsibly."}

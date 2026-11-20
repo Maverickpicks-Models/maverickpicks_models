@@ -1,0 +1,15 @@
+{"New York Knicks|Toronto Raptors":{"crafted":"CraftedNBA: no pick yet","recs":[
+ ["Spread New York Knicks",["CORE"],"0.75u","Knicks −2.5 (−102)"],
+ ["ML New York Knicks",["TEST"],"0.5u","Knicks ML (−127)"]]},
+"Detroit Pistons|San Antonio Spurs":{"crafted":"CraftedNBA: no pick yet","recs":[
+ ["Spread San Antonio Spurs",["CORE"],"0.25u","Spurs −9.5 (−104) · cut: 5–9.5 fav"],
+ ["Under",["TEST"],"0.5u","Under 221.5 (+102)"]]},
+"Portland Trail Blazers|Minnesota Timberwolves":{"crafted":"CraftedNBA: no pick yet","recs":[
+ ["Spread Minnesota Timberwolves",["TEST"],"0.5u","Timberwolves −3.5 (+108)"],
+ ["ML Minnesota Timberwolves",["TEST"],"0.5u","Timberwolves ML (−133)"],
+ ["Under",["TEST"],"0.5u","Under 224.5 (+108)"]]},
+"Utah Jazz|LA Clippers":{"crafted":"CraftedNBA: no pick yet","recs":[
+ ["Over",["CORE"],"0.75u","Over 225.5 (−108)"]]},
+"Charlotte Hornets|Los Angeles Lakers":{"crafted":"CraftedNBA: no pick yet","recs":[
+ ["Spread Los Angeles Lakers",["CORE","TEST"],"1u","Lakers −7.5 (+108)"],
+ ["Over",["TEST"],"0.5u","Over 221.5 (−102)"]]}}

@@ -1,0 +1,16 @@
+{"date":"SAT NOV 14, 2026","lead":"5 games · injuries from the 5:15 PM report · Odds: Novig",
+"sections":[
+{"name":"CORE","sub":"validated rules · 0.5u, ML sized to win 0.25u","items":[
+["DET @ MIA","Pistons −3.5 (−115)","0.5u",["CORE"]],
+["DET @ MIA","Pistons ML (−153)","0.38u",["CORE"]],
+["DAL @ CLE","Mavericks ML (−223)","0.56u",["CORE"]],
+["DEN @ NOP","Nuggets ML (−525)","1.31u",["CORE"]],
+["CHI @ MIN","Timberwolves ML (−809)","2.02u",["CORE"]],
+["DET @ MIA","Over 229.5 (+102)","0.25u",["CORE"]]]},
+{"name":"CRAFTED","sub":"CraftedNBA follow rules · 0.5u","items":[
+["DEN @ NOP","Under 235.5 (+106)","0.5u",["CRAFTED","TEST"]],
+["CHI @ MIN","Timberwolves −15.5 (−106)","0.5u",["CRAFTED","TEST"]],
+["BKN @ MEM","Grizzlies −1.5 (−108)","0.5u",["CRAFTED","TEST"]]]},
+{"name":"TEST","sub":"paper / small · 0.25u","items":[
+["DAL @ CLE","Under 227.5 (+104)","0.25u",["TEST"]]]}],
+"foot":"Passed: DAL/CLE spread (DAL road favorite vs our model and CraftedNBA on CLE; Vegas moved to DAL −8.5). BKN/MEM model spread 6+ off. CraftedNBA Over skipped.<br>Core Over at half size while the recent-pace adjustment is new. <b>21+</b> · Bet responsibly."}

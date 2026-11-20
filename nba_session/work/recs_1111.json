@@ -1,0 +1,24 @@
+{"Boston Celtics|Toronto Raptors":{"crafted":"CraftedNBA: BOS −5.4 · O/U 221.3","recs":[
+ ["Spread Toronto Raptors",["TEST"],"0.25u","Raptors +5.5 (−111)"],
+ ["Over",["TEST"],"0.25u","Over 216.5 (+102)"]]},
+"Cleveland Cavaliers|New York Knicks":{"crafted":"CraftedNBA: NYK −4.5 · O/U 218.4","recs":[
+ ["Under",["CRAFTED","TEST"],"0.5u","Under 222.5 (−104)"],
+ ["Spread Cleveland Cavaliers",["CRAFTED"],"0.5u","Cavaliers +4.5 (+111)"]]},
+"Washington Wizards|Indiana Pacers":{"crafted":"CraftedNBA: IND −5.1 · O/U 227.8","recs":[
+ ["Spread Indiana Pacers",["CRAFTED"],"0.5u","Pacers −3.5 (+104)"],
+ ["Under",["TEST"],"0.25u","Under 227.5 (+100)"]]},
+"Brooklyn Nets|New Orleans Pelicans":{"crafted":"CraftedNBA: NOP −2.8 · O/U 229.0","recs":[
+ ["Over",["TEST"],"0.25u","Over 228.5 (+104)"]]},
+"Denver Nuggets|Memphis Grizzlies":{"crafted":"CraftedNBA: DEN −4.1 · O/U 225.9","recs":[
+ ["Under",["CRAFTED","TEST"],"0.5u","Under 230.5 (−102)"]]},
+"Los Angeles Lakers|Milwaukee Bucks":{"crafted":"CraftedNBA: LAL −16.7 · O/U 231.5","recs":[
+ ["Spread Los Angeles Lakers",["CORE","CRAFTED"],"0.5u","Lakers −14.5 (−104)"],
+ ["ML Los Angeles Lakers",["CORE"],"0.25u","Lakers ML (−770)"]]},
+"San Antonio Spurs|Chicago Bulls":{"crafted":"CraftedNBA: SAS −17.5 · O/U 237.1","recs":[
+ ["Spread San Antonio Spurs",["CORE","CRAFTED"],"0.5u","Spurs −15.5 (+104)"],
+ ["Under",["TEST"],"0.25u","Under 238.5 (−113)"]]},
+"Orlando Magic|Utah Jazz":{"crafted":"CraftedNBA: ORL −1.1 · O/U 219.7","recs":[]},
+"Golden State Warriors|Houston Rockets":{"crafted":"CraftedNBA: HOU −5.8 · O/U 220.8","recs":[]},
+"Oklahoma City Thunder|Portland Trail Blazers":{"crafted":"CraftedNBA: POR −4.0 · O/U 224.6","recs":[
+ ["Spread Portland Trail Blazers",["CRAFTED"],"0.5u","Trail Blazers −2.5 (−106)"],
+ ["Under",["TEST"],"0.25u","Under 224.5 (−102)"]]}}

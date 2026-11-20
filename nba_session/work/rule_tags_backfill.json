@@ -1,0 +1,278 @@
+{
+ "180": {
+  "date": "2026-11-12",
+  "game": "Detroit Pistons @ Washington Wizards",
+  "bet": "Spread Away",
+  "rules": "K1"
+ },
+ "181": {
+  "date": "2026-11-12",
+  "game": "Toronto Raptors @ Philadelphia 76ers",
+  "bet": "Spread Away",
+  "rules": "C1+K2"
+ },
+ "182": {
+  "date": "2026-11-12",
+  "game": "Dallas Mavericks @ Minnesota Timberwolves",
+  "bet": "ML Home",
+  "rules": "C3"
+ },
+ "183": {
+  "date": "2026-11-12",
+  "game": "Charlotte Hornets @ Phoenix Suns",
+  "bet": "Spread Away",
+  "rules": "C1+K2"
+ },
+ "184": {
+  "date": "2026-11-13",
+  "game": "Milwaukee Bucks @ Orlando Magic",
+  "bet": "ML Home",
+  "rules": "C3"
+ },
+ "185": {
+  "date": "2026-11-13",
+  "game": "Milwaukee Bucks @ Orlando Magic",
+  "bet": "Total Under",
+  "rules": "T1"
+ },
+ "186": {
+  "date": "2026-11-13",
+  "game": "New York Knicks @ Indiana Pacers",
+  "bet": "Total Under",
+  "rules": "T2+T3"
+ },
+ "187": {
+  "date": "2026-11-13",
+  "game": "New York Knicks @ Indiana Pacers",
+  "bet": "Spread Home",
+  "rules": "C1"
+ },
+ "188": {
+  "date": "2026-11-13",
+  "game": "Atlanta Hawks @ Chicago Bulls",
+  "bet": "Total Over",
+  "rules": "C4"
+ },
+ "189": {
+  "date": "2026-11-13",
+  "game": "Cleveland Cavaliers @ Miami Heat",
+  "bet": "Spread Away",
+  "rules": "K2"
+ },
+ "190": {
+  "date": "2026-11-13",
+  "game": "Memphis Grizzlies @ New Orleans Pelicans",
+  "bet": "Spread Away",
+  "rules": "C2+T5"
+ },
+ "191": {
+  "date": "2026-11-13",
+  "game": "Utah Jazz @ Houston Rockets",
+  "bet": "ML Home",
+  "rules": "C3"
+ },
+ "192": {
+  "date": "2026-11-13",
+  "game": "Utah Jazz @ Houston Rockets",
+  "bet": "Spread Home",
+  "rules": "T5"
+ },
+ "193": {
+  "date": "2026-11-13",
+  "game": "Golden State Warriors @ San Antonio Spurs",
+  "bet": "Spread Away",
+  "rules": "K2+T6"
+ },
+ "194": {
+  "date": "2026-11-13",
+  "game": "Portland Trail Blazers @ Sacramento Kings",
+  "bet": "ML Away",
+  "rules": "C3"
+ },
+ "195": {
+  "date": "2026-11-13",
+  "game": "Portland Trail Blazers @ Sacramento Kings",
+  "bet": "Spread Away",
+  "rules": "T5"
+ },
+ "196": {
+  "date": "2026-11-13",
+  "game": "Oklahoma City Thunder @ LA Clippers",
+  "bet": "Total Over",
+  "rules": "C4"
+ },
+ "197": {
+  "date": "2026-11-14",
+  "game": "Denver Nuggets @ New Orleans Pelicans",
+  "bet": "Total Under",
+  "rules": "K3+T1+T2+T3+T8"
+ },
+ "199": {
+  "date": "2026-11-14",
+  "game": "Detroit Pistons @ Miami Heat",
+  "bet": "Spread Away",
+  "rules": "OFF"
+ },
+ "200": {
+  "date": "2026-11-14",
+  "game": "Chicago Bulls @ Minnesota Timberwolves",
+  "bet": "Spread Home",
+  "rules": "K1+T4+T5+T6"
+ },
+ "203": {
+  "date": "2026-11-15",
+  "game": "Los Angeles Lakers @ Phoenix Suns",
+  "bet": "Spread Away",
+  "rules": "C1+C2+K1"
+ },
+ "205": {
+  "date": "2026-11-15",
+  "game": "San Antonio Spurs @ Utah Jazz",
+  "bet": "Spread Away",
+  "rules": "C1+T5"
+ },
+ "206": {
+  "date": "2026-11-15",
+  "game": "Dallas Mavericks @ Boston Celtics",
+  "bet": "Spread Home",
+  "rules": "OFF"
+ },
+ "207": {
+  "date": "2026-11-15",
+  "game": "New York Knicks @ Toronto Raptors",
+  "bet": "Spread Away",
+  "rules": "C2+K1"
+ },
+ "208": {
+  "date": "2026-11-15",
+  "game": "New York Knicks @ Toronto Raptors",
+  "bet": "ML Away",
+  "rules": "C3"
+ },
+ "209": {
+  "date": "2026-11-15",
+  "game": "Houston Rockets @ Washington Wizards",
+  "bet": "Spread Away",
+  "rules": "K1+T5"
+ },
+ "210": {
+  "date": "2026-11-15",
+  "game": "Houston Rockets @ Washington Wizards",
+  "bet": "ML Away",
+  "rules": "C3"
+ },
+ "211": {
+  "date": "2026-11-15",
+  "game": "Atlanta Hawks @ Milwaukee Bucks",
+  "bet": "Spread Away",
+  "rules": "C2"
+ },
+ "212": {
+  "date": "2026-11-15",
+  "game": "Atlanta Hawks @ Milwaukee Bucks",
+  "bet": "ML Away",
+  "rules": "C3"
+ },
+ "213": {
+  "date": "2026-11-15",
+  "game": "Atlanta Hawks @ Milwaukee Bucks",
+  "bet": "Total Over",
+  "rules": "C4"
+ },
+ "214": {
+  "date": "2026-11-15",
+  "game": "Oklahoma City Thunder @ Sacramento Kings",
+  "bet": "ML Away",
+  "rules": "C3"
+ },
+ "215": {
+  "date": "2026-11-16",
+  "game": "Memphis Grizzlies @ Washington Wizards",
+  "bet": "Total Under",
+  "rules": "K3+T2"
+ },
+ "216": {
+  "date": "2026-11-16",
+  "game": "Orlando Magic @ Boston Celtics",
+  "bet": "Spread Home",
+  "rules": "T12+T5+T9"
+ },
+ "218": {
+  "date": "2026-11-16",
+  "game": "Philadelphia 76ers @ Brooklyn Nets",
+  "bet": "Spread Away",
+  "rules": "C2+T12+T6"
+ },
+ "219": {
+  "date": "2026-11-16",
+  "game": "Houston Rockets @ Miami Heat",
+  "bet": "Spread Away",
+  "rules": "C2+K1+T12"
+ },
+ "221": {
+  "date": "2026-11-16",
+  "game": "Phoenix Suns @ Denver Nuggets",
+  "bet": "Spread Home",
+  "rules": "K1"
+ },
+ "222": {
+  "date": "2026-11-17",
+  "game": "New York Knicks @ Toronto Raptors",
+  "bet": "Spread Away",
+  "rules": "C2"
+ },
+ "223": {
+  "date": "2026-11-17",
+  "game": "New York Knicks @ Toronto Raptors",
+  "bet": "ML Away",
+  "rules": "T10"
+ },
+ "224": {
+  "date": "2026-11-17",
+  "game": "Detroit Pistons @ San Antonio Spurs",
+  "bet": "Spread Home",
+  "rules": "C1"
+ },
+ "225": {
+  "date": "2026-11-17",
+  "game": "Detroit Pistons @ San Antonio Spurs",
+  "bet": "Total Under",
+  "rules": "T2"
+ },
+ "226": {
+  "date": "2026-11-17",
+  "game": "Portland Trail Blazers @ Minnesota Timberwolves",
+  "bet": "Spread Home",
+  "rules": "T11+T12"
+ },
+ "227": {
+  "date": "2026-11-17",
+  "game": "Portland Trail Blazers @ Minnesota Timberwolves",
+  "bet": "ML Home",
+  "rules": "T10"
+ },
+ "228": {
+  "date": "2026-11-17",
+  "game": "Portland Trail Blazers @ Minnesota Timberwolves",
+  "bet": "Total Under",
+  "rules": "T1"
+ },
+ "229": {
+  "date": "2026-11-17",
+  "game": "Utah Jazz @ LA Clippers",
+  "bet": "Total Over",
+  "rules": "C4"
+ },
+ "230": {
+  "date": "2026-11-17",
+  "game": "Charlotte Hornets @ Los Angeles Lakers",
+  "bet": "Spread Home",
+  "rules": "C1+T5"
+ },
+ "231": {
+  "date": "2026-11-17",
+  "game": "Charlotte Hornets @ Los Angeles Lakers",
+  "bet": "Total Over",
+  "rules": "T2"
+ }
+}

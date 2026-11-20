@@ -1,0 +1,29 @@
+{"Milwaukee Bucks|Orlando Magic":{"crafted":"CraftedNBA: ORL −9.5 · O/U 222.9","recs":[
+ ["ML Orlando Magic",["CORE"],"0.91u","Magic ML (−365) to win 0.25u"],
+ ["Under",["TEST"],"0.25u","Under 223.5 (+106)"]]},
+"New York Knicks|Indiana Pacers":{"crafted":"CraftedNBA: NYK −7.7 · O/U 217.8","recs":[
+ ["Spread Indiana Pacers",["CORE"],"0.5u","Pacers +8.5 (−108)"],
+ ["ML New York Knicks",["CORE"],"0.75u","Knicks ML (−300) to win 0.25u"],
+ ["Under",["TEST"],"0.25u","Under 219.5 (−104)"]]},
+"Atlanta Hawks|Chicago Bulls":{"crafted":"CraftedNBA: ATL −7.3 · O/U 245.6","recs":[
+ ["ML Atlanta Hawks",["CORE"],"0.63u","Hawks ML (−251) to win 0.25u"],
+ ["Over",["CORE"],"0.25u","Over 245.5 (−104)"]]},
+"Cleveland Cavaliers|Miami Heat":{"crafted":"CraftedNBA: MIA −1.2 · O/U 235.8","recs":[
+ ["Spread Cleveland Cavaliers",["CRAFTED"],"0.5u","Cavaliers +2.5 (−102)"],
+ ["Over",["CORE"],"0.25u","Over 236.5 (−104)"]]},
+"Memphis Grizzlies|New Orleans Pelicans":{"crafted":"CraftedNBA: MEM −3.3 · O/U 233.5","recs":[
+ ["Spread Memphis Grizzlies",["CORE","TEST"],"0.5u","Grizzlies −3.5 (+104)"],
+ ["Under",["CRAFTED","TEST"],"0.5u","Under 235.5 (−102)"]]},
+"Utah Jazz|Houston Rockets":{"crafted":"CraftedNBA: HOU −16.3 · O/U 220.2","recs":[
+ ["ML Houston Rockets",["CORE"],"2.38u","Rockets ML (−953) to win 0.25u"],
+ ["Spread Houston Rockets",["TEST"],"0.25u","Rockets −15.5 (+104)"]]},
+"Golden State Warriors|San Antonio Spurs":{"crafted":"CraftedNBA: SAS −9.9 · O/U 223.9","recs":[
+ ["Spread Golden State Warriors",["CRAFTED","TEST"],"0.5u","Warriors +12.5 (−104)"],
+ ["ML San Antonio Spurs",["CORE"],"1.42u","Spurs ML (−567) to win 0.25u"],
+ ["Under",["TEST"],"0.25u","Under 217.5 (+104)"]]},
+"Portland Trail Blazers|Sacramento Kings":{"crafted":"CraftedNBA: POR −10.6 · O/U 233.6","recs":[
+ ["ML Portland Trail Blazers",["CORE"],"1.03u","Blazers ML (−413) to win 0.25u"],
+ ["Spread Portland Trail Blazers",["TEST"],"0.25u","Blazers −10.5 (+108)"]]},
+"Oklahoma City Thunder|LA Clippers":{"crafted":"CraftedNBA: OKC −5.9 · O/U 224.2","recs":[
+ ["ML Oklahoma City Thunder",["CORE"],"0.63u","Thunder ML (−251) to win 0.25u"],
+ ["Over",["CORE"],"0.25u","Over 222.5 (+102)"]]}}

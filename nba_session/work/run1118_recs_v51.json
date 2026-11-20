@@ -1,0 +1,898 @@
+[
+ {
+  "game": "Houston Rockets|Indiana Pacers",
+  "tier": "HOU #2 vs IND #21",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Pacers +8.5",
+    "odds": -104,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T6 team missing star",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Pacers +8.5",
+    "odds": -104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T1 juiced Over",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 224.5",
+    "odds": 104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 224.5",
+    "odds": 104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T3 fav TT U + dog TT O",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 224.5",
+    "odds": 104,
+    "size": "0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Pacers +8.5",
+    "odds": -104,
+    "codes": [
+     "C1",
+     "T6"
+    ],
+    "units": "1u",
+    "sec": "CORE",
+    "why": "core+test spread combo 17-5, +55%"
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 224.5",
+    "odds": 104,
+    "codes": [
+     "T1",
+     "T2l",
+     "T3"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": "stacked totals: no extra size"
+   }
+  ],
+  "notes": [
+   "C3 v5: ML favorite with a 8.5-pt spread not played (5-9.5 favorites leak)",
+   "test T12 more tired team (fatigue 2 vs 0) (Rockets -8.5) dropped: opposite a core/CraftedNBA play",
+   "test T5 top-10 vs bottom-10 (Rockets -8.5) dropped: opposite a core/CraftedNBA play"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Memphis Grizzlies|Cleveland Cavaliers",
+  "tier": "MEM #6 vs CLE #14",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Grizzlies +4.5",
+    "odds": 102,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K2 dog we agree",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Grizzlies +4.5",
+    "odds": 102,
+    "size": "0.5u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "Grizzlies +4.5",
+    "odds": 102,
+    "codes": [
+     "C1",
+     "K2"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   }
+  ],
+  "notes": [
+   "X6 C3 ML fav 60%+ (Cavaliers ML) passed: opposite CraftedNBA's pick",
+   "X6 T11 home fav <=4.5 (Cavaliers -4.5) passed: opposite CraftedNBA's pick",
+   "T7 TT Overs vs total Under conflict -> pass both"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Milwaukee Bucks|Miami Heat",
+  "tier": "MIL #29 vs MIA #15",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Heat -12.5",
+    "odds": 108,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T12 more tired team (fatigue 0 vs 1)",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Heat -12.5",
+    "odds": 108,
+    "size": "0.25u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C4 fade model total 6+",
+    "mk": "total",
+    "side": "over",
+    "lab": "Over 236.5",
+    "odds": 104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C3 ML fav 60%+",
+    "mk": "ml",
+    "side": "home",
+    "lab": "Heat ML",
+    "odds": -614,
+    "size": "risk 1u (capped) to win 0.16u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Heat -12.5",
+    "odds": 108,
+    "codes": [
+     "C1",
+     "T12"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "over",
+    "lab": "Over 236.5",
+    "odds": 104,
+    "codes": [
+     "C4"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   },
+   {
+    "mk": "ml",
+    "side": "home",
+    "lab": "Heat ML",
+    "odds": -614,
+    "codes": [
+     "C3"
+    ],
+    "units": "risk 1u (capped) to win 0.16u",
+    "sec": "CORE",
+    "why": "C3 sizing (to win 0.25u, max risk 1u)"
+   }
+  ],
+  "notes": [
+   "test T2 low turnovers (Under 236.5) dropped: opposite a core/CraftedNBA play",
+   "test T8 total 235+ (Under 236.5) dropped: opposite a core/CraftedNBA play"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Philadelphia 76ers|Orlando Magic",
+  "tier": "PHI #10 vs ORL #20",
+  "recs": [
+   {
+    "sec": "CRAFTED",
+    "code": "K2 dog we agree",
+    "mk": "spread",
+    "side": "away",
+    "lab": "76ers +2.5",
+    "odds": 100,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T12 more tired team (fatigue 1 vs 0)",
+    "mk": "spread",
+    "side": "away",
+    "lab": "76ers +2.5",
+    "odds": 100,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 219.5",
+    "odds": -111,
+    "size": "0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "76ers +2.5",
+    "odds": 100,
+    "codes": [
+     "K2",
+     "T12"
+    ],
+    "units": "0.25u",
+    "sec": "CRAFTED",
+    "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 219.5",
+    "odds": -111,
+    "codes": [
+     "T2l"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": ""
+   }
+  ],
+  "notes": [
+   "X6 T11 home fav <=4.5 (Magic -2.5) passed: opposite CraftedNBA's pick",
+   "X6 T10 ML fav spread <=4.5 (Magic ML) passed: opposite CraftedNBA's pick"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Washington Wizards|Toronto Raptors",
+  "tier": "WAS #23 vs TOR #17",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Raptors -4.5",
+    "odds": 104,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T11 home fav <=4.5",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Raptors -4.5",
+    "odds": 104,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Raptors -4.5",
+    "odds": 104,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T12 more tired team (fatigue 1 vs 2)",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Raptors -4.5",
+    "odds": 104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T9 home B2B vs rested road",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Raptors -4.5",
+    "odds": 104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T6 team missing star",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Raptors -4.5",
+    "odds": 104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C4 fade model total 6+",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 224.5",
+    "odds": -111,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 224.5",
+    "odds": -111,
+    "size": "0.25u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C3 ML fav 60%+",
+    "mk": "ml",
+    "side": "home",
+    "lab": "Raptors ML",
+    "odds": -163,
+    "size": "risk 0.41u to win 0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Raptors -4.5",
+    "odds": 104,
+    "codes": [
+     "C1",
+     "T11",
+     "K1",
+     "T12",
+     "T9",
+     "T6"
+    ],
+    "units": "1u",
+    "sec": "CORE",
+    "why": "core+test spread combo 17-5, +55%"
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 224.5",
+    "odds": -111,
+    "codes": [
+     "C4",
+     "T2l"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": "stacked totals: no extra size"
+   },
+   {
+    "mk": "ml",
+    "side": "home",
+    "lab": "Raptors ML",
+    "odds": -163,
+    "codes": [
+     "C3"
+    ],
+    "units": "risk 0.41u to win 0.25u",
+    "sec": "CORE",
+    "why": "C3 sizing (to win 0.25u, max risk 1u)"
+   }
+  ],
+  "notes": [],
+  "skips": []
+ },
+ {
+  "game": "Chicago Bulls|Brooklyn Nets",
+  "tier": "CHI #26 vs BKN #25",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C4 fade model total 6+",
+    "mk": "total",
+    "side": "over",
+    "lab": "Over 239.5",
+    "odds": -102,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T10 ML fav spread <=4.5",
+    "mk": "ml",
+    "side": "home",
+    "lab": "Nets ML",
+    "odds": -113,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T7 both TT Overs",
+    "mk": "tt",
+    "side": "over",
+    "lab": "Both TT Overs (117.5/120.5)",
+    "odds": null,
+    "size": "0.25u each"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "total",
+    "side": "over",
+    "lab": "Over 239.5",
+    "odds": -102,
+    "codes": [
+     "C4"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   },
+   {
+    "mk": "ml",
+    "side": "home",
+    "lab": "Nets ML",
+    "odds": -113,
+    "codes": [
+     "T10"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
+   },
+   {
+    "mk": "tt",
+    "side": "over",
+    "lab": "Both TT Overs (117.5/120.5)",
+    "odds": null,
+    "codes": [
+     "T7"
+    ],
+    "units": "0.25u",
+    "sec": "TEST",
+    "why": "0.25u each leg"
+   }
+  ],
+  "notes": [
+   "conflict on spread: T11 home fav <=4.5->Nets -1.5, T12 more tired team (fatigue 1 vs 0)->Bulls +1.5 -> pass",
+   "test T8 total 235+ (Under 239.5) dropped: opposite a core/CraftedNBA play"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Detroit Pistons|New Orleans Pelicans",
+  "tier": "DET #8 vs NOP #22",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C2 road fav <=4.5",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Pistons -4.5",
+    "odds": 104,
+    "size": "0.75u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Pistons -4.5",
+    "odds": 104,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T5 top-10 vs bottom-10",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Pistons -4.5",
+    "odds": 104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T1 juiced Over",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 225.5",
+    "odds": 102,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T3 fav TT U + dog TT O",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 225.5",
+    "odds": 102,
+    "size": "0.25u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C3 ML fav 60%+",
+    "mk": "ml",
+    "side": "away",
+    "lab": "Pistons ML",
+    "odds": -174,
+    "size": "risk 0.44u to win 0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "Pistons -4.5",
+    "odds": 104,
+    "codes": [
+     "C2",
+     "K1",
+     "T5"
+    ],
+    "units": "1u",
+    "sec": "CORE",
+    "why": "core+test spread combo 17-5, +55%"
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 225.5",
+    "odds": 102,
+    "codes": [
+     "T1",
+     "T3"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": "stacked totals: no extra size"
+   },
+   {
+    "mk": "ml",
+    "side": "away",
+    "lab": "Pistons ML",
+    "odds": -174,
+    "codes": [
+     "C3"
+    ],
+    "units": "risk 0.44u to win 0.25u",
+    "sec": "CORE",
+    "why": "C3 sizing (to win 0.25u, max risk 1u)"
+   }
+  ],
+  "notes": [
+   "T4 (paper since 11/17): rested home vs road B2B -> would be home spread",
+   "X2 home dog Pelicans +4.5 removed (T6 team missing star)"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Atlanta Hawks|Oklahoma City Thunder",
+  "tier": "ATL #16 vs OKC #9",
+  "recs": [
+   {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Thunder -6.5",
+    "odds": 100,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T6 team missing star",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Thunder -6.5",
+    "odds": 100,
+    "size": "0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Thunder -6.5",
+    "odds": 100,
+    "codes": [
+     "K1",
+     "T6"
+    ],
+    "units": "0.5u",
+    "sec": "CRAFTED",
+    "why": ""
+   }
+  ],
+  "notes": [
+   "C3 v5: ML favorite at 70% no-vig not played (65-75% leak, -6.7%)",
+   "T7 TT Overs vs total Under conflict -> pass both"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Golden State Warriors|Dallas Mavericks",
+  "tier": "GSW #13 vs DAL #18",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Warriors +4.5",
+    "odds": 104,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K2 dog we agree",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Warriors +4.5",
+    "odds": 104,
+    "size": "0.5u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "Warriors +4.5",
+    "odds": 104,
+    "codes": [
+     "C1",
+     "K2"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   }
+  ],
+  "notes": [
+   "X6 C3 ML fav 60%+ (Mavericks ML) passed: opposite CraftedNBA's pick",
+   "X6 T11 home fav <=4.5 (Mavericks -4.5) passed: opposite CraftedNBA's pick",
+   "T7 TT Overs vs total Under conflict -> pass both"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Boston Celtics|Denver Nuggets",
+  "tier": "BOS #7 vs DEN #12",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C2 road fav <=4.5",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Celtics -2.5",
+    "odds": 100,
+    "size": "0.75u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T12 more tired team (fatigue 1 vs 0)",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Celtics -2.5",
+    "odds": 100,
+    "size": "0.25u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K3 Under",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 220.5",
+    "odds": -102,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 220.5",
+    "odds": -102,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T10 ML fav spread <=4.5",
+    "mk": "ml",
+    "side": "away",
+    "lab": "Celtics ML",
+    "odds": -125,
+    "size": "0.5u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "Celtics -2.5",
+    "odds": 100,
+    "codes": [
+     "C2",
+     "T12"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 220.5",
+    "odds": -102,
+    "codes": [
+     "K3",
+     "T2l"
+    ],
+    "units": "0.5u",
+    "sec": "CRAFTED",
+    "why": "stacked totals: no extra size"
+   },
+   {
+    "mk": "ml",
+    "side": "away",
+    "lab": "Celtics ML",
+    "odds": -125,
+    "codes": [
+     "T10"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
+   }
+  ],
+  "notes": [],
+  "skips": []
+ },
+ {
+  "game": "Utah Jazz|Los Angeles Lakers",
+  "tier": "UTA #28 vs LAL #3",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Lakers -12.5",
+    "odds": 108,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Lakers -12.5",
+    "odds": 108,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T5 top-10 vs bottom-10",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Lakers -12.5",
+    "odds": 108,
+    "size": "0.25u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K3 Under",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 231.5",
+    "odds": -111,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C3 ML fav 60%+",
+    "mk": "ml",
+    "side": "home",
+    "lab": "Lakers ML",
+    "odds": -488,
+    "size": "risk 1u (capped) to win 0.20u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Lakers -12.5",
+    "odds": 108,
+    "codes": [
+     "C1",
+     "K1",
+     "T5"
+    ],
+    "units": "1u",
+    "sec": "CORE",
+    "why": "core+test spread combo 17-5, +55%"
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 231.5",
+    "odds": -111,
+    "codes": [
+     "K3"
+    ],
+    "units": "0.25u",
+    "sec": "CRAFTED",
+    "why": "X5 flag: model 3+ below the line, one tier down"
+   },
+   {
+    "mk": "ml",
+    "side": "home",
+    "lab": "Lakers ML",
+    "odds": -488,
+    "codes": [
+     "C3"
+    ],
+    "units": "risk 1u (capped) to win 0.20u",
+    "sec": "CORE",
+    "why": "C3 sizing (to win 0.25u, max risk 1u)"
+   }
+  ],
+  "notes": [
+   "X6 T12 more tired team (fatigue 3 vs 2) (Jazz +12.5) passed: opposite CraftedNBA's pick"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Phoenix Suns|Sacramento Kings",
+  "tier": "PHX #19 vs SAC #30",
+  "recs": [],
+  "plays": [],
+  "notes": [
+   "C2 v5: road fav -7.5 not played (favorites 5-9.5 ATS 28-39, -17%)",
+   "C3 v5: ML favorite at 71% no-vig not played (65-75% leak, -6.7%)",
+   "X6 T12 more tired team (fatigue 1 vs 0) (Suns -7.5) passed: opposite CraftedNBA's pick"
+  ],
+  "skips": [
+   {
+    "sec": "SKIP",
+    "code": "K2 dog we disagree",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Kings +7.5",
+    "odds": null,
+    "size": ""
+   }
+  ]
+ }
+]

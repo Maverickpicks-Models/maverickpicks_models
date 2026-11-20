@@ -1,0 +1,21 @@
+{"date":"MON NOV 16, 2026","lead":"7 games (GSW @ NOP: no Novig odds) · injuries from the 5:30 PM report · Rulebook v4 ROI pricing",
+"sections":[
+{"name":"CORE","sub":"validated rules · ROI-priced · ML to win 0.25u (max risk 1u)","items":[
+["PHI @ BKN","76ers −4.5 (−113) · core+test","1u",["CORE","TEST"]],
+["HOU @ MIA","Rockets −1.5 (−106)","0.5u",["CORE","CRAFTED"]],
+["ORL @ BOS","Celtics ML (−335)","0.84u",["CORE"]],
+["CHI @ CLE","Cavaliers ML (−292)","0.73u",["CORE"]],
+["PHI @ BKN","76ers ML (−203)","0.51u",["CORE"]],
+["PHX @ DEN","Nuggets ML (−388)","0.97u",["CORE"]]]},
+{"name":"CRAFTED","sub":"CraftedNBA follow rules","items":[
+["CHI @ CLE","Cavaliers −8.5 (+102)","0.5u",["CRAFTED"]],
+["PHX @ DEN","Nuggets −10.5 (+108)","0.5u",["CRAFTED","TEST"]],
+["PHX @ DEN","Under 229.5 (+108)","0.5u",["CRAFTED","TEST"]],
+["MEM @ WAS","Under 231.5 (+100)","0.5u",["CRAFTED","TEST"]],
+["MEM @ WAS","Grizzlies −3.5 (−108) · X1 flag","0.25u",["CRAFTED","TEST"]]]},
+{"name":"TEST","sub":"ROI-priced, 0.5u cap","items":[
+["ORL @ BOS","Celtics −9.5 (+111)","0.5u",["TEST"]],
+["PHI @ BKN","Under 226.5 (+104)","0.5u",["TEST"]],
+["HOU @ MIA","Under 233.5 (−106)","0.5u",["TEST"]],
+["CHI @ CLE","Under 241.5 (−102)","0.25u",["TEST"]]]}],
+"foot":"Passed: POR/MIN spread (core MIN −2.5 opposite CraftedNBA POR +2.5, X6). X2 removed WAS +3.5, BKN +4.5, MIA +1.5. CraftedNBA Overs skipped.<br><b>21+</b> · Bet responsibly."}

@@ -1,0 +1,15 @@
+{"Denver Nuggets|New Orleans Pelicans":{"crafted":"CraftedNBA: DEN −11.5 · O/U 230.7","recs":[
+ ["Under",["CRAFTED","TEST"],"0.5u","Under 235.5 (+106)"],
+ ["ML Denver Nuggets",["CORE"],"1.31u","Nuggets ML (−525) to win 0.25u"]]},
+"Dallas Mavericks|Cleveland Cavaliers":{"crafted":"CraftedNBA: DAL −4.6 · O/U 227.2","recs":[
+ ["ML Dallas Mavericks",["CORE"],"0.56u","Mavericks ML (−223) to win 0.25u"],
+ ["Under",["TEST"],"0.25u","Under 227.5 (+104)"]]},
+"Detroit Pistons|Miami Heat":{"crafted":"CraftedNBA: DET −4.3 · O/U 229.7","recs":[
+ ["Spread Detroit Pistons",["CORE"],"0.5u","Pistons −3.5 (−115)"],
+ ["ML Detroit Pistons",["CORE"],"0.38u","Pistons ML (−153) to win 0.25u"],
+ ["Over",["CORE"],"0.25u","Over 229.5 (+102)"]]},
+"Chicago Bulls|Minnesota Timberwolves":{"crafted":"CraftedNBA: MIN −16.5 · O/U 237.7","recs":[
+ ["Spread Minnesota Timberwolves",["CRAFTED","TEST"],"0.5u","Timberwolves −15.5 (−106)"],
+ ["ML Minnesota Timberwolves",["CORE"],"2.02u","Timberwolves ML (−809) to win 0.25u"]]},
+"Brooklyn Nets|Memphis Grizzlies":{"crafted":"CraftedNBA: MEM −3.1 · O/U 227.9","recs":[
+ ["Spread Memphis Grizzlies",["CRAFTED","TEST"],"0.5u","Grizzlies −1.5 (−108)"]]}}

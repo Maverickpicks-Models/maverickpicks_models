@@ -1,0 +1,62 @@
+[
+ {
+  "date": "2026-11-19",
+  "aw": "New York Knicks",
+  "hm": "Minnesota Timberwolves",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.48,
+  "odds": 108,
+  "stake": 8,
+  "units": 0.4,
+  "rules": "C2"
+ },
+ {
+  "date": "2026-11-19",
+  "aw": "New York Knicks",
+  "hm": "Minnesota Timberwolves",
+  "market": "ML",
+  "side": "Away",
+  "price_pct": 0.51,
+  "odds": -104,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "T10"
+ },
+ {
+  "date": "2026-11-19",
+  "aw": "New York Knicks",
+  "hm": "Minnesota Timberwolves",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.49,
+  "odds": 104,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "T2+T3"
+ },
+ {
+  "date": "2026-11-19",
+  "aw": "Portland Trail Blazers",
+  "hm": "Milwaukee Bucks",
+  "market": "ML",
+  "side": "Away",
+  "price_pct": 0.82,
+  "odds": -456,
+  "stake": 10,
+  "units": 0.5,
+  "rules": "C3"
+ },
+ {
+  "date": "2026-11-19",
+  "aw": "LA Clippers",
+  "hm": "San Antonio Spurs",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.51,
+  "odds": -104,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "T2"
+ }
+]

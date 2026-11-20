@@ -1,0 +1,16 @@
+{"Milwaukee Bucks|New York Knicks":{"crafted":"CraftedNBA: NYK −14.3 · O/U 220.8","recs":[
+ ["Spread Milwaukee Bucks",["CORE","CRAFTED"],"0.5u","Bucks +15.5 (−106)"],
+ ["ML New York Knicks",["CORE"],"0.25u","Knicks ML (−900)"],
+ ["Under",["TEST"],"0.25u","Under 221.5 (+106)"],
+ ["TT Milwaukee Bucks Over",["TEST"],"0.25u","Bucks TT Over 101.5 (−141)"]]},
+"Boston Celtics|Philadelphia 76ers":{"crafted":"CraftedNBA: BOS −2.2 · O/U 219.0","recs":[
+ ["Spread Boston Celtics",["CORE"],"0.5u","Celtics −1.5 (−108)"]]},
+"LA Clippers|Phoenix Suns":{"crafted":"CraftedNBA: PHX −1.2 · O/U 225.7","recs":[
+ ["Spread LA Clippers",["CRAFTED"],"0.5u","Clippers +3.5 (+100)"]]},
+"Miami Heat|Utah Jazz":{"crafted":"CraftedNBA: MIA −4.7 · O/U 231.3","recs":[
+ ["Spread Utah Jazz",["CRAFTED"],"0.5u","Jazz +9.5 (−108)"]]},
+"Orlando Magic|Sacramento Kings":{"crafted":"CraftedNBA: ORL −3.6 · O/U 225.7","recs":[
+ ["Spread Sacramento Kings",["CRAFTED"],"0.5u","Kings +5.5 (+106)"]]},
+"Oklahoma City Thunder|Portland Trail Blazers":{"crafted":"CraftedNBA: POR −0.4 · O/U 225.3","recs":[
+ ["Spread Portland Trail Blazers",["CRAFTED"],"0.5u","Trail Blazers +1.5 (+102)"],
+ ["Under",["TEST"],"0.25u","Under 225.5 (+104)"]]}}

@@ -1,0 +1,14 @@
+{"Detroit Pistons|Washington Wizards":{"crafted":"CraftedNBA: DET −11.5 · O/U 221.0","recs":[
+ ["Spread Detroit Pistons",["CRAFTED"],"0.5u","Pistons −10.5 (+104)"],
+ ["ML Detroit Pistons",["CORE"],"1.0u","Pistons ML (−400) to win 0.25u"],
+ ["Under",["TEST"],"0.25u","Under 220.5 (+108)"]]},
+"Toronto Raptors|Philadelphia 76ers":{"crafted":"CraftedNBA: PHI −6.3 · O/U 226.7","recs":[
+ ["Spread Toronto Raptors",["CORE","CRAFTED"],"0.5u","Raptors +7.5 (−111)"],
+ ["ML Philadelphia 76ers",["CORE"],"0.61u","76ers ML (−245) to win 0.25u"],
+ ["Under",["TEST"],"0.25u","Under 223.5 (+108)"]]},
+"Dallas Mavericks|Minnesota Timberwolves":{"crafted":"CraftedNBA: MIN −5.9 · O/U 225.7","recs":[
+ ["ML Minnesota Timberwolves",["CORE"],"0.51u","Timberwolves ML (−203) to win 0.25u"],
+ ["Spread Minnesota Timberwolves",["TEST"],"0.25u","Timberwolves −5.5 (−113)"]]},
+"Charlotte Hornets|Phoenix Suns":{"crafted":"CraftedNBA: PHX −5.6 · O/U 216.3","recs":[
+ ["Spread Charlotte Hornets",["CORE","CRAFTED"],"0.5u","Hornets +6.5 (−104)"],
+ ["ML Phoenix Suns",["CORE"],"0.52u","Suns ML (−208) to win 0.25u"]]}}

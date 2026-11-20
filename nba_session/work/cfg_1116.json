@@ -1,0 +1,10 @@
+{"date":"2026-11-16","b2b":["Houston Rockets","Washington Wizards","Boston Celtics","Phoenix Suns","Philadelphia 76ers"],
+ "stars_out":["Golden State Warriors","Philadelphia 76ers","Minnesota Timberwolves","Portland Trail Blazers"],
+ "crafted":{"Orlando Magic|Boston Celtics":{"home_margin":9.6,"total":213.4},
+ "Chicago Bulls|Cleveland Cavaliers":{"home_margin":10.3,"total":239.7},
+ "Memphis Grizzlies|Washington Wizards":{"home_margin":-6.4,"total":228.9},
+ "Philadelphia 76ers|Brooklyn Nets":{"home_margin":-3.7,"total":227.0},
+ "Houston Rockets|Miami Heat":{"home_margin":-2.9,"total":231.6},
+ "Golden State Warriors|New Orleans Pelicans":{"home_margin":-5.0,"total":231.4},
+ "Portland Trail Blazers|Minnesota Timberwolves":{"home_margin":0.5,"total":231.3},
+ "Phoenix Suns|Denver Nuggets":{"home_margin":11.5,"total":224.8}}}
