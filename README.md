@@ -21,6 +21,7 @@ SQL Server holds the data, Python does the work, Power BI and Excel are the view
 | `mpm.watch` | Tonight's bets; after every injury report it pops up a Windows alert when a 20+ mpg player in one of those games goes Out/Doubtful or comes back before tip | `python -m mpm.watch set "DET@NOP\|Pistons -4.5 ($13)\|8:05PM" ...` |
 | `mpm.history` | Phase 2: past-season game logs from NBA.com (`games`), bet-time / closing odds from TheOddsAPI historical (`odds`, resumable, credit-capped), `estimate`, `status` | `python -m mpm.history games --season 2025-26` |
 | `mpm.backtest` | Re-tests the market and schedule rules on past seasons (by season and half-season, ROI at book and no-vig prices, CLV when closes exist); writes `C:\MaverickPicks\reports\backtest_<date>.md` | `python -m mpm.backtest --season 2025-26` |
+| `mpm.model` | Phase 3: the NBA projection in Python from the database (season-to-date ratings, shooting luck removed, pace, home court, B2B; matches the workbook once teams have 20 games). `--season` back-tests C1 / C4 and every model-vs-market gap on a past season | `python -m mpm.model --season 2025-26` |
 | `mpm.load_workbook` | Imports the Excel model: Tracking (games, scores, every bet, close odds, rule codes), legacy projections, team and player box scores (basic + advanced), and a dated snapshot of the ratings/stats sheets (`nba.v_team_ratings`, `nba.v_player_ratings`) | `python -m mpm.load_workbook "C:\path\MaverickPicks_NBA_Simulations.xlsx"` |
 
 ## Setup (Windows, one time)
