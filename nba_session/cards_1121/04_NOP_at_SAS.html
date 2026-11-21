@@ -1,0 +1,107 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#05070B;font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:'tnum' 1,'cv11' 1}
+.card{width:1080px;height:1350px;position:relative;overflow:hidden;color:#E9EDF4;
+ background:radial-gradient(1200px 600px at 50% -10%,#18202E 0%,#0C1119 55%,#090D14 100%);display:flex;flex-direction:column}
+.glow{position:absolute;top:-220px;width:620px;height:620px;border-radius:50%;filter:blur(110px);opacity:.28}
+.top{display:flex;justify-content:space-between;align-items:center;padding:38px 56px 0;position:relative}
+.brand{font-family:'Inter Display';font-weight:800;font-size:26px;letter-spacing:.14em}
+.brand span{color:#F5C451}
+.meta{font-size:17px;font-weight:600;letter-spacing:.16em;color:#8C97AA;text-transform:uppercase}
+.hero{position:relative;display:grid;grid-template-columns:1fr 400px 1fr;align-items:center;padding:30px 56px 0}
+.team{display:flex;flex-direction:column;gap:6px}
+.team.h{align-items:flex-end;text-align:right}
+.abbr{font-family:'Inter Display';font-weight:900;font-size:88px;line-height:.9;letter-spacing:-.02em}
+.nick{font-size:22px;font-weight:600;color:#C9D1DE}
+.tag{font-size:13px;font-weight:700;letter-spacing:.2em;color:#6F7A8D;text-transform:uppercase;margin-bottom:4px}
+.bar{height:6px;width:64px;border-radius:3px;margin-bottom:12px}
+.mid{text-align:center}
+.ptag{font-size:13px;font-weight:700;letter-spacing:.22em;color:#F5C451;text-transform:uppercase}
+.score{font-family:'Inter Display';font-weight:800;font-size:58px;letter-spacing:-.02em;margin-top:8px;white-space:nowrap}
+.score i{font-style:normal;color:#4A5466;margin:0 8px;font-weight:500}
+.sub{font-size:16px;color:#9AA4B5;margin-top:8px;font-weight:500}
+.wp{padding:24px 56px 0}
+.wpl{display:flex;justify-content:space-between;font-size:15px;font-weight:700;letter-spacing:.06em;margin-bottom:10px;color:#C9D1DE}
+.wpl span.c{color:#6F7A8D;letter-spacing:.2em;font-size:13px}
+.track{display:flex;height:12px;border-radius:6px;overflow:hidden;gap:3px}
+.table{margin:22px 56px 0;border-radius:18px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);padding:8px 0 10px}
+.hdr,.row{display:grid;grid-template-columns:1fr 120px 120px 120px 130px 104px;align-items:center;padding:0 28px}
+.hdr{height:42px;font-size:12px;font-weight:700;letter-spacing:.18em;color:#6F7A8D;text-transform:uppercase}
+.hdr div:not(:first-child),.row div:not(:first-child){text-align:right}
+.sec{padding:10px 28px 4px;font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#8C97AA;border-top:1px solid rgba(255,255,255,.05);margin-top:2px}
+.sec:first-of-type{border-top:none}
+.row{height:44px;font-size:20px;font-weight:600;position:relative}
+.row .lab{display:flex;align-items:center;gap:12px;color:#E9EDF4}
+.row .dot{width:9px;height:9px;border-radius:50%}
+.row .muted{color:#7F8A9C}
+.pos{color:#3DDC97}.neg{color:#E86F78}.flat{color:#7F8A9C}
+.row.play{background:linear-gradient(90deg,rgba(245,196,81,.16),rgba(245,196,81,.04));}
+.row.play::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:4px;border-radius:2px;background:#F5C451}
+.pill{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.16em;color:#0B0F17;background:#F5C451;border-radius:6px;padding:5px 9px}
+.foot{margin-top:auto;padding:0 56px 26px;display:flex;justify-content:space-between;align-items:flex-end;font-size:14px;color:#6F7A8D;line-height:1.5}
+.foot b{color:#C9D1DE;font-weight:700}
+.count{font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F5C451;text-align:right}
+.pill.core{background:#F5C451}.pill.test{background:#8FA3C2}.pill.crafted{background:#3DD6C4}
+.pill{font-size:11px;padding:4px 7px;letter-spacing:.12em;margin-left:4px}
+.recs{margin:18px 56px 0;border-radius:18px;border:1px solid rgba(245,196,81,.25);background:rgba(245,196,81,.05);padding:14px 26px 12px}
+.recs h4{font-size:13px;font-weight:800;letter-spacing:.2em;color:#F5C451;text-transform:uppercase;margin-bottom:8px}
+.ritem{display:flex;align-items:center;justify-content:space-between;font-size:20px;font-weight:700;height:38px}
+.ritem .u{color:#C9D1DE;font-size:18px;width:64px;text-align:right}
+.ritem .pills{display:flex;gap:6px;align-items:center}
+.none{font-size:18px;color:#8C97AA;height:34px;display:flex;align-items:center}
+.craft{font-size:15px;color:#3DD6C4;margin-top:6px;font-weight:600}
+.legend{font-size:13px;color:#6F7A8D}
+</style></head><body>
+<div class="card" id="card">
+ <div class="glow" style="left:-160px;background:#C8A86B"></div>
+ <div class="glow" style="right:-160px;background:#A7ADB7"></div>
+ <div class="top"><div class="brand">MAVERICK<span>PICKS</span></div><div class="meta">NBA &nbsp;·&nbsp; SAT NOV 21, 2026</div></div>
+ <div class="hero">
+  <div class="team"><div class="bar" style="background:#C8A86B"></div><div class="tag">Away</div><div class="abbr">NOP</div><div class="nick">New Orleans Pelicans</div></div>
+  <div class="mid"><div class="ptag">Projected Score</div>
+   <div class="score">103.0<i>–</i>127.0</div>
+   <div class="sub">Total 230.0 &nbsp;·&nbsp; SAS by 24.0</div><div class="craft">CraftedNBA: SAS −20.5 · O/U 229.7</div></div>
+  <div class="team h"><div class="bar" style="background:#A7ADB7"></div><div class="tag">Home</div><div class="abbr">SAS</div><div class="nick">San Antonio Spurs</div></div>
+ </div>
+ <div class="wp">
+  <div class="wpl"><span>NOP 2.8%</span><span class="c">WIN PROBABILITY</span><span>97.2% SAS</span></div>
+  <div class="track"><div style="width:2.77%;background:#C8A86B"></div><div style="flex:1;background:#A7ADB7"></div></div>
+ </div>
+ <div class="table">
+  <div class="hdr"><div>Market</div><div>Line</div><div>Odds</div><div>Model</div><div>Edge</div><div></div></div>
+  <div class="sec">Moneyline</div><div class="row">
+              <div class="lab"><span class="dot" style="background:#C8A86B"></span>Pelicans</div><div><span class="muted">—</span></div><div>+1011</div>
+              <div class="muted">2.8%</div><div class="neg">−6.1%</div>
+              <div></div></div><div class="row">
+              <div class="lab"><span class="dot" style="background:#A7ADB7"></span>Spurs</div><div><span class="muted">—</span></div><div>−1150</div>
+              <div class="muted">97.2%</div><div class="pos">+6.1%</div>
+              <div></div></div><div class="sec">Spread</div><div class="row">
+              <div class="lab"><span class="dot" style="background:#C8A86B"></span>Pelicans</div><div>+18.5</div><div>+102</div>
+              <div class="muted">33.1%</div><div class="neg">−16.1%</div>
+              <div></div></div><div class="row">
+              <div class="lab"><span class="dot" style="background:#A7ADB7"></span>Spurs</div><div>−18.5</div><div>−104</div>
+              <div class="muted">66.9%</div><div class="pos">+16.1%</div>
+              <div></div></div><div class="sec">Game Total</div><div class="row">
+              <div class="lab">Over</div><div>228.5</div><div>−111</div>
+              <div class="muted">53.3%</div><div class="pos">+1.3%</div>
+              <div></div></div><div class="row">
+              <div class="lab">Under</div><div>228.5</div><div>+106</div>
+              <div class="muted">46.7%</div><div class="neg">−1.3%</div>
+              <div></div></div><div class="sec">Pelicans Team Total</div><div class="row">
+              <div class="lab">Over</div><div>105.5</div><div>−102</div>
+              <div class="muted">41.0%</div><div class="neg">−7.3%</div>
+              <div></div></div><div class="row">
+              <div class="lab">Under</div><div>105.5</div><div>−117</div>
+              <div class="muted">59.0%</div><div class="pos">+7.3%</div>
+              <div></div></div><div class="sec">Spurs Team Total</div><div class="row">
+              <div class="lab">Over</div><div>121.5</div><div>−160</div>
+              <div class="muted">69.1%</div><div class="pos">+9.4%</div>
+              <div></div></div><div class="row">
+              <div class="lab">Under</div><div>121.5</div><div>+141</div>
+              <div class="muted">30.9%</div><div class="neg">−9.4%</div>
+              <div></div></div>
+ </div>
+ <div class="recs"><h4>Recommendations</h4><div class="none">No play</div></div>
+ <div class="foot"><div><span class="legend">CORE = validated rule &middot; TEST = paper / small &middot; CRAFTED = CraftedNBA follow rule</span><br><b>Odds: Novig</b> &nbsp;·&nbsp; 21+ &nbsp;·&nbsp; Bet responsibly.</div>
+  <div class="count">0 recommendations</div></div>
+</div></body></html>
