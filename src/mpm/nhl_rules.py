@@ -224,13 +224,13 @@ def evaluate(sl: Slate, g: Game) -> Result:
     return Result(g, la, lh, p, keep, notes, info)
 
 
-def size_slate(results) -> float:
-    """Nightly cap: if the night's stakes exceed NIGHT_CAP, scale every stake down proportionally."""
+def size_slate(results, cap: float = NIGHT_CAP) -> float:
+    """Nightly cap: if the night's stakes exceed the cap, scale every stake down proportionally."""
     day = sum(pl.stake for r in results for pl in r.plays)
-    if day > NIGHT_CAP:
-        f = NIGHT_CAP / day
+    if day > cap:
+        f = cap / day if day else 0
         for r in results:
             for pl in r.plays:
                 pl.stake = round(pl.stake * f, 2)
-        day = NIGHT_CAP
+        day = cap
     return day

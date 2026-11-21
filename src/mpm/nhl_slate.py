@@ -26,7 +26,7 @@ from zoneinfo import ZoneInfo
 
 from .db import DB, session
 from .nhl_model import Model, american, no_vig
-from .nhl_rules import RULEBOOK, Game, Slate, evaluate, size_slate
+from .nhl_rules import NIGHT_CAP, RULEBOOK, Game, Slate, evaluate, size_slate
 
 ET = ZoneInfo("America/New_York")
 BET_BOOK = "novig"
@@ -156,7 +156,7 @@ def back_to_back(db: DB, gdate: dt.date) -> set:
     return {t for r in rows for t in r}
 
 
-def build(db: DB, gdate: dt.date, goalie_args=None, extra_b2b=()):
+def build(db: DB, gdate: dt.date, goalie_args=None, extra_b2b=(), include_started=False, spent=0.0, now=None):
     model = Model.from_db(db)
     snap, purpose = latest_snapshot(db, gdate)
     if not snap:
@@ -167,7 +167,12 @@ def build(db: DB, gdate: dt.date, goalie_args=None, extra_b2b=()):
     games = db.q("SELECT game_id, away_code, home_code, start_utc FROM core.games WHERE league='NHL' AND game_date=? "
                  "ORDER BY start_utc, game_id", (gdate.isoformat(),))
     results, skipped = [], []
+    now = now or dt.datetime.now(dt.timezone.utc)
     for gid, away, home, start in games:
+        if start and not include_started and \
+                dt.datetime.fromisoformat(str(start)).replace(tzinfo=dt.timezone.utc) <= now:
+            skipped.append(f"{away}@{home}: already started (prices would be live, not pregame)")
+            continue
         mk = market_for_game(db, snap, gid, away, home)
         if not mk:
             skipped.append(f"{away}@{home}: no team totals in snapshot {snap} ({purpose})")
@@ -181,8 +186,8 @@ def build(db: DB, gdate: dt.date, goalie_args=None, extra_b2b=()):
         r = evaluate(sl, g)
         r.game_id = gid
         results.append(r)
-    night = size_slate(results)
-    return dict(results=results, snapshot_id=snap, purpose=purpose, night=night, skipped=skipped, b2b=b2b, model=model)
+    night = size_slate(results, max(0.0, NIGHT_CAP - spent))
+    return dict(cap=max(0.0, NIGHT_CAP - spent), results=results, snapshot_id=snap, purpose=purpose, night=night, skipped=skipped, b2b=b2b, model=model)
 
 
 def save(db: DB, out: dict, version: str) -> int:
@@ -230,7 +235,7 @@ def print_card(out: dict):
             print("      -", n)
     for s in out["skipped"]:
         print("skipped", s)
-    print(f"\nNight total: ${out['night']:.2f} (cap $120)")
+    print(f"\nNight total: ${out['night']:.2f} (cap ${out.get('cap', 120):.0f})")
 
 
 def main(argv=None):
@@ -239,11 +244,13 @@ def main(argv=None):
     ap.add_argument("--goalie", action="append", help='TEAM=Name, "!" = confirmed (e.g. "BOS=Swayman!")')
     ap.add_argument("--b2b", default="", help="extra back-to-back teams, comma-separated")
     ap.add_argument("--out", default=r"C:\MaverickPicks\cards", help="folder for the graphics")
+    ap.add_argument("--spent", type=float, default=0.0, help="dollars already bet today on earlier games (lowers the $120 cap)")
+    ap.add_argument("--include-started", action="store_true", help="also price games that have already started")
     ap.add_argument("--dry-run", action="store_true", help="print only; do not save or render")
     a = ap.parse_args(argv)
     gdate = dt.date.fromisoformat(a.date) if a.date else dt.datetime.now(ET).date()
     with session() as db:
-        out = build(db, gdate, a.goalie, [t for t in a.b2b.split(",") if t])
+        out = build(db, gdate, a.goalie, [t for t in a.b2b.split(",") if t], a.include_started, a.spent)
         print_card(out)
         if not out["results"]:
             tip = (" The open pull has no team totals; run after the 6:00 PM pregame pull "
