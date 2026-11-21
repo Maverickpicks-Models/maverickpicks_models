@@ -73,7 +73,7 @@ def test_slate_from_database(tmp_path=None):
     nw.load(db, path, dt.date(2026, 11, 18), verbose=False)
     gdate = dt.date(2026, 11, 19)
     _seed_odds(db, gdate)
-    out = nhl_slate.build(db, gdate, ["SJS=Askarov!"])
+    out = nhl_slate.build(db, gdate, ["SJS=Askarov!"], include_started=True)
     r = out["results"][0]
     assert r.game.tt_source == "consensus" and r.game.g_home == "Yaroslav Askarov"
     assert r.game.total_line == 6.5 and (r.game.over_price, r.game.under_price) == (105, -125)   # main line, Novig price
