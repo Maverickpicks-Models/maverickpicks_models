@@ -32,7 +32,9 @@ fl=lambda v: f"+{v:g}" if v>0 else f"-{abs(v):g}"
 B=json.load(open('work/bets_1120.json'))
 BETS={}
 for x in B: BETS.setdefault((x['aw'],x['hm']),[]).append((x['market'],x['side'],x['odds'],x['units'],x['rules']))
-SC={}   # games in progress; scores added with results
+SC={('Charlotte Hornets','Atlanta Hawks'):(97,111),('Indiana Pacers','Cleveland Cavaliers'):(119,128),('Orlando Magic','Brooklyn Nets'):(113,111),
+('Toronto Raptors','Detroit Pistons'):(105,102),('New Orleans Pelicans','Oklahoma City Thunder'):(120,126),('Washington Wizards','Chicago Bulls'):(98,94),
+('Phoenix Suns','Utah Jazz'):(111,101),('Sacramento Kings','Los Angeles Lakers'):(104,106),('Houston Rockets','Denver Nuggets'):(124,133)}
 TAGS={}
 for r,t in TAGS.items(): s=set_vals(s,int(r),{'AW':t['rules']})
 ROW=[254]
