@@ -1,0 +1,76 @@
+[
+ {
+  "game": "Detroit Pistons|Atlanta Hawks",
+  "tier": "DET #8 vs ATL #14",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C2 road fav <=4.5",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Pistons -1.5",
+    "odds": -108,
+    "size": "0.75u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Pistons -1.5",
+    "odds": -108,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T12 more tired team (fatigue 1 vs 0)",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Pistons -1.5",
+    "odds": -108,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T10 ML fav spread <=4.5",
+    "mk": "ml",
+    "side": "away",
+    "lab": "Pistons ML",
+    "odds": -122,
+    "size": "0.5u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "Pistons -1.5",
+    "odds": -108,
+    "codes": [
+     "C2",
+     "K1",
+     "T12"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   },
+   {
+    "mk": "ml",
+    "side": "away",
+    "lab": "Pistons ML",
+    "odds": -122,
+    "codes": [
+     "T10"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
+   }
+  ],
+  "notes": [
+   "X2 home dog Hawks +1.5 removed (P1 fade 3P-lucky Pistons (luck +3.7, gap +3.3))"
+  ],
+  "skips": []
+ }
+]
