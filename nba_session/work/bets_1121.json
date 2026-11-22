@@ -1,0 +1,110 @@
+[
+ {
+  "date": "2026-11-21",
+  "aw": "Portland Trail Blazers",
+  "hm": "New York Knicks",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.49,
+  "odds": 104,
+  "stake": 20,
+  "units": 1.0,
+  "rules": "C4+T1+T2+P3"
+ },
+ {
+  "date": "2026-11-21",
+  "aw": "LA Clippers",
+  "hm": "Dallas Mavericks",
+  "market": "Total",
+  "side": "Over",
+  "price_pct": 0.5,
+  "odds": 100,
+  "stake": 15,
+  "units": 0.75,
+  "rules": "C4+T2"
+ },
+ {
+  "date": "2026-11-21",
+  "aw": "LA Clippers",
+  "hm": "Dallas Mavericks",
+  "market": "TT Away",
+  "side": "Over",
+  "price_pct": 0.53,
+  "odds": -113,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "T7"
+ },
+ {
+  "date": "2026-11-21",
+  "aw": "LA Clippers",
+  "hm": "Dallas Mavericks",
+  "market": "TT Home",
+  "side": "Over",
+  "price_pct": 0.545,
+  "odds": -120,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "T7"
+ },
+ {
+  "date": "2026-11-21",
+  "aw": "Memphis Grizzlies",
+  "hm": "Minnesota Timberwolves",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.48,
+  "odds": 108,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "K2+T12"
+ },
+ {
+  "date": "2026-11-21",
+  "aw": "Memphis Grizzlies",
+  "hm": "Minnesota Timberwolves",
+  "market": "TT Away",
+  "side": "Over",
+  "price_pct": 0.575,
+  "odds": -135,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "T7"
+ },
+ {
+  "date": "2026-11-21",
+  "aw": "Memphis Grizzlies",
+  "hm": "Minnesota Timberwolves",
+  "market": "TT Home",
+  "side": "Over",
+  "price_pct": 0.605,
+  "odds": -153,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "T7"
+ },
+ {
+  "date": "2026-11-21",
+  "aw": "Boston Celtics",
+  "hm": "Sacramento Kings",
+  "market": "ML",
+  "side": "Away",
+  "price_pct": 0.84,
+  "odds": -525,
+  "stake": 25,
+  "units": 1.25,
+  "rules": "C3+P2"
+ },
+ {
+  "date": "2026-11-21",
+  "aw": "Boston Celtics",
+  "hm": "Sacramento Kings",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.505,
+  "odds": -102,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "P3"
+ }
+]
