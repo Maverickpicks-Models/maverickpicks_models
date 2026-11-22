@@ -1,0 +1,67 @@
+[
+ {
+  "game": "Oklahoma City Thunder|Miami Heat",
+  "tier": "OKC #9 vs MIA #16",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Thunder +4.5",
+    "odds": 100,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CRAFTED",
+    "code": "K2 dog we agree",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Thunder +4.5",
+    "odds": 100,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 226.5",
+    "odds": -104,
+    "size": "0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "Thunder +4.5",
+    "odds": 100,
+    "codes": [
+     "C1",
+     "K2"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 226.5",
+    "odds": -104,
+    "codes": [
+     "T2l"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": ""
+   }
+  ],
+  "notes": [
+   "X6 C3 ML fav 60%+ (Heat ML) passed: opposite CraftedNBA's pick",
+   "X6 T11 home fav <=4.5 (Heat -4.5) passed: opposite CraftedNBA's pick"
+  ],
+  "skips": []
+ }
+]
