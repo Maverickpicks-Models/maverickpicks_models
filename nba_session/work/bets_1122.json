@@ -1,0 +1,122 @@
+[
+ {
+  "date": "2026-11-22",
+  "aw": "Detroit Pistons",
+  "hm": "Atlanta Hawks",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.52,
+  "odds": -108,
+  "stake": 15,
+  "units": 0.75,
+  "rules": "C2+K1+T12"
+ },
+ {
+  "date": "2026-11-22",
+  "aw": "Oklahoma City Thunder",
+  "hm": "Miami Heat",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.5,
+  "odds": 100,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "K2 (C1 cut: injuries)"
+ },
+ {
+  "date": "2026-11-22",
+  "aw": "Oklahoma City Thunder",
+  "hm": "Miami Heat",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.51,
+  "odds": -104,
+  "stake": 10,
+  "units": 0.5,
+  "rules": "T2"
+ },
+ {
+  "date": "2026-11-22",
+  "aw": "Orlando Magic",
+  "hm": "Washington Wizards",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.52,
+  "odds": -108,
+  "stake": 20,
+  "units": 1.0,
+  "rules": "C2+K1+T6"
+ },
+ {
+  "date": "2026-11-22",
+  "aw": "Orlando Magic",
+  "hm": "Washington Wizards",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.51,
+  "odds": -104,
+  "stake": 10,
+  "units": 0.5,
+  "rules": "T2+P3"
+ },
+ {
+  "date": "2026-11-22",
+  "aw": "Denver Nuggets",
+  "hm": "Chicago Bulls",
+  "market": "Spread",
+  "side": "Home",
+  "price_pct": 0.49,
+  "odds": 104,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "T6 (C1 cut: injuries)"
+ },
+ {
+  "date": "2026-11-22",
+  "aw": "Indiana Pacers",
+  "hm": "New York Knicks",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.52,
+  "odds": -108,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "P1 (C1 cut: injuries)"
+ },
+ {
+  "date": "2026-11-22",
+  "aw": "Indiana Pacers",
+  "hm": "New York Knicks",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.53,
+  "odds": -113,
+  "stake": 15,
+  "units": 0.75,
+  "rules": "T2+T3+P3"
+ },
+ {
+  "date": "2026-11-22",
+  "aw": "Boston Celtics",
+  "hm": "Golden State Warriors",
+  "market": "Spread",
+  "side": "Home",
+  "price_pct": 0.52,
+  "odds": -108,
+  "stake": 15,
+  "units": 0.75,
+  "rules": "C1+K2+T6+P1"
+ },
+ {
+  "date": "2026-11-22",
+  "aw": "Boston Celtics",
+  "hm": "Golden State Warriors",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.48,
+  "odds": 108,
+  "stake": 15,
+  "units": 0.75,
+  "rules": "C4+T1+P3"
+ }
+]
