@@ -11,12 +11,12 @@ from dataclasses import dataclass, field
 
 from .nhl_model import Model, american, cross_prop_gap, ev, no_vig
 
-RULEBOOK = "nhl-2026-11-18"
+RULEBOOK = "nhl-2026-11-23"
 CORE_RULES = {"A", "B", "D", "E", "X", "HU"}
 
-# ---- bankroll plan (Nov 18, 2026): $1,000, quarter-Kelly on shrunk rule edges. Tracker units = $10.
+# ---- bankroll plan (Nov 18, 2026; re-sized Nov 23 at $972: UU and BB cut to $5): $1,000, quarter-Kelly on shrunk rule edges. Tracker units = $10.
 BANKROLL = 1000
-STAKE = {"E": 20, "XM": 20, "GU": 15, "HU": 15, "X-under": 15, "UU": 10, "BB": 10, "OD": 10, "D": 10,
+STAKE = {"E": 20, "XM": 20, "GU": 15, "HU": 15, "X-under": 15, "UU": 5, "BB": 5, "OD": 10, "D": 10,
          "B": 5, "A": 5, "RF": 5, "XMB": 5}
 # XMB = XM measured against the books' team totals (Novig team totals are not in the odds feed). XM was found on
 # Novig's thin team totals, so the book-priced version is tracked separately at a small stake until it proves itself.
