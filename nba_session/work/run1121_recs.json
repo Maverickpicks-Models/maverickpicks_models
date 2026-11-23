@@ -88,15 +88,6 @@
     "lab": "Over 230.5",
     "odds": 100,
     "size": "0.25u"
-   },
-   {
-    "sec": "TEST",
-    "code": "T7 both TT Overs",
-    "mk": "tt",
-    "side": "over",
-    "lab": "Both TT Overs (112.5/116.5)",
-    "odds": null,
-    "size": "0.25u each"
    }
   ],
   "plays": [
@@ -112,22 +103,11 @@
     "units": "0.75u",
     "sec": "CORE",
     "why": "stacked totals: no extra size"
-   },
-   {
-    "mk": "tt",
-    "side": "over",
-    "lab": "Both TT Overs (112.5/116.5)",
-    "odds": null,
-    "codes": [
-     "T7"
-    ],
-    "units": "0.25u",
-    "sec": "TEST",
-    "why": "0.25u each leg"
    }
   ],
   "notes": [
-   "C3 v5: ML favorite with a 5.5-pt spread not played (5-9.5 favorites leak)"
+   "C3 v5: ML favorite with a 5.5-pt spread not played (5-9.5 favorites leak)",
+   "T7 paper (11/23, 0-5 live): both TT Overs (112.5/116.5)"
   ],
   "skips": [
    {
@@ -162,15 +142,6 @@
     "lab": "Grizzlies +5.5",
     "odds": 108,
     "size": "0.25u"
-   },
-   {
-    "sec": "TEST",
-    "code": "T7 both TT Overs",
-    "mk": "tt",
-    "side": "over",
-    "lab": "Both TT Overs (110.5/115.5)",
-    "odds": null,
-    "size": "0.25u each"
    }
   ],
   "plays": [
@@ -186,22 +157,11 @@
     "units": "0.25u",
     "sec": "CRAFTED",
     "why": ""
-   },
-   {
-    "mk": "tt",
-    "side": "over",
-    "lab": "Both TT Overs (110.5/115.5)",
-    "odds": null,
-    "codes": [
-     "T7"
-    ],
-    "units": "0.25u",
-    "sec": "TEST",
-    "why": "0.25u each leg"
    }
   ],
   "notes": [
-   "C3 v5: ML favorite at 66% no-vig not played (65-75% leak, -6.7%)"
+   "C3 v5: ML favorite at 66% no-vig not played (65-75% leak, -6.7%)",
+   "T7 paper (11/23, 0-5 live): both TT Overs (110.5/115.5)"
   ],
   "skips": []
  },
@@ -226,6 +186,24 @@
     "lab": "Spurs -18.5",
     "odds": -104,
     "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T1 juiced Over",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 228.5",
+    "odds": 106,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 228.5",
+    "odds": 106,
+    "size": "0.25u"
    }
   ],
   "plays": [
@@ -241,16 +219,29 @@
     "units": "0.5u",
     "sec": "CRAFTED",
     "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 228.5",
+    "odds": 106,
+    "codes": [
+     "T1",
+     "T2l"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": "stacked totals: no extra size"
    }
   ],
   "notes": [
    "C1 paper only: Spurs -18.5 is a 10+ point favorite",
    "X7 ML favorite Spurs -1150 is over 87% no-vig: pass",
+   "T7 paper (11/23, 0-5 live): both TT Overs (105.5/121.5)",
    "T4 (paper since 11/17): rested home vs road B2B -> would be home spread",
    "P2 Spurs ML over 87% no-vig: pass (X7)",
    "X6 T12 more tired team (fatigue 3 vs 0) (Pelicans +18.5) passed: opposite CraftedNBA's pick",
-   "X6 T6 team missing star (Pelicans +18.5) passed: opposite CraftedNBA's pick",
-   "T7 TT Overs vs total Under conflict -> pass both"
+   "X6 T6 team missing star (Pelicans +18.5) passed: opposite CraftedNBA's pick"
   ],
   "skips": []
  },

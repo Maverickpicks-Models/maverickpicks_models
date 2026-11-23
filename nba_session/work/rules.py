@@ -1,4 +1,4 @@
-"""Rules engine (Rulebook v5.1 + P1/P2/P3 from 11/20). usage: python3 work/rules.py RUN.json CONFIG.json  -> prints sections, writes RUN_recs.json
+"""Rules engine (Rulebook v5.1 + P1/P2/P3 from 11/20; 11/23: T7 paper, spread<2 -> no ML on the same team). usage: python3 work/rules.py RUN.json CONFIG.json  -> prints sections, writes RUN_recs.json
 CONFIG: {"date":"2026-11-12","crafted":{"AW|HM":{"home_margin":x,"total":y,"picks":["spread","under",...]}}, "stars_out":["Team",...], "b2b":["Team",...]}"""
 import json,sys,runpy,io,contextlib,datetime as dt,numpy as np
 RUN,CFG=sys.argv[1],sys.argv[2]
@@ -108,7 +108,7 @@ for g in D:
         aU=L[f"{aw} TT Over {g['att'][0]}"]['model']<.5; hU=L[f"{hm} TT Over {g['htt'][0]}"]['model']<.5
         favU,dogU=(aU,hU) if U<0 else (hU,aU)
         if favU and not dogU: add('TEST','T3 fav TT U + dog TT O','total','under',f'Under {P:g}',un['odds'],'0.25u')
-        if g['att'][0]+g['htt'][0]<=P-1.5: add('TEST','T7 both TT Overs','tt','over',f"Both TT Overs ({g['att'][0]}/{g['htt'][0]})",None,'0.25u each')
+        if g['att'][0]+g['htt'][0]<=P-1.5: pre_notes.append(f"T7 paper (11/23, 0-5 live): both TT Overs ({g['att'][0]}/{g['htt'][0]})")
     fa,fa_d=fatigue(a); fh,fh_d=fatigue(h)
     if awb and not hb: pre_notes.append('T4 (paper since 11/17): rested home vs road B2B -> would be home spread')
     if abs(fa-fh)>=1:
@@ -208,6 +208,11 @@ for g in D:
         if mk=='tt': u=0.25; why.append('0.25u each leg')
         if pc: u+=0.25; why.append((f'{pc[0]} $5' if not base else f'plus $5 for {pc[0]}'))
         plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units=f'{u:g}u',sec=('CORE' if 'CORE' in secs else 'CRAFTED' if 'CRAFTED' in secs else 'TEST'),why='; '.join(why)))
+    # 11/23: spread under 2 points -> spread or ML on the same team, not both (keep the spread)
+    if abs(U)<2:
+        for sp in [x for x in plays if x['mk']=='spread']:
+            for ml in [x for x in plays if x['mk']=='ml' and x['side']==sp['side']]:
+                plays.remove(ml); notes.append(f"spread under 2: {ml['lab']} [{'+'.join(ml['codes'])}] dropped, same bet as {sp['lab']}")
     tier=f"{a} #{rank[a]} vs {h} #{rank[h]}"
     out.append(dict(game=f'{aw}|{hm}',tier=tier,recs=final,plays=plays,notes=notes,skips=[r for r in keep if r['sec']=='SKIP']))
 json.dump(out,open(RUN.replace('.json','_recs.json'),'w'),indent=1)

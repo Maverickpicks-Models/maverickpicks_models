@@ -99,6 +99,15 @@
     "lab": "Magic -6.5",
     "odds": -102,
     "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "P3 slow-pace Under (pace -2.3)",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 223.5",
+    "odds": -104,
+    "size": "0.25u"
    }
   ],
   "plays": [
@@ -113,12 +122,24 @@
     "units": "0.25u",
     "sec": "TEST",
     "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 223.5",
+    "odds": -104,
+    "codes": [
+     "P3"
+    ],
+    "units": "0.25u",
+    "sec": "TEST",
+    "why": "P3 $5"
    }
   ],
   "notes": [
    "C2 v5: road fav -6.5 not played (favorites 5-9.5 ATS 28-39, -17%)",
    "C3 v5: ML favorite at 70% no-vig not played (65-75% leak, -6.7%)",
-   "T7 TT Overs vs total Under conflict -> pass both"
+   "T7 paper (11/23, 0-5 live): both TT Overs (113.5/107.5)"
   ],
   "skips": []
  },
@@ -385,22 +406,11 @@
     "units": "0.25u",
     "sec": "TEST",
     "why": "T8 stacked with T2/T3 Unders 2-7"
-   },
-   {
-    "mk": "ml",
-    "side": "home",
-    "lab": "Bulls ML",
-    "odds": -117,
-    "codes": [
-     "T10"
-    ],
-    "units": "0.5u",
-    "sec": "TEST",
-    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
    }
   ],
   "notes": [
-   "X6 T12 more tired team (fatigue 1 vs 0) (Wizards +1.5) passed: opposite CraftedNBA's pick"
+   "X6 T12 more tired team (fatigue 1 vs 0) (Wizards +1.5) passed: opposite CraftedNBA's pick",
+   "spread under 2: Bulls ML [T10] dropped, same bet as Bulls -1.5"
   ],
   "skips": []
  },
@@ -499,6 +509,33 @@
   "tier": "HOU #1 vs DEN #12",
   "recs": [
    {
+    "sec": "CRAFTED",
+    "code": "K3 Under",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 227.5",
+    "odds": -102,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 227.5",
+    "odds": -102,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "P3 slow-pace Under (pace -4.2)",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 227.5",
+    "odds": -102,
+    "size": "0.25u"
+   },
+   {
     "sec": "TEST",
     "code": "T10 ML fav spread <=4.5",
     "mk": "ml",
@@ -509,6 +546,20 @@
    }
   ],
   "plays": [
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 227.5",
+    "odds": -102,
+    "codes": [
+     "K3",
+     "T2l",
+     "P3"
+    ],
+    "units": "0.75u",
+    "sec": "CRAFTED",
+    "why": "stacked totals: no extra size; plus $5 for P3"
+   },
    {
     "mk": "ml",
     "side": "home",
@@ -523,8 +574,8 @@
    }
   ],
   "notes": [
-   "conflict on spread: T11 home fav <=4.5->Nuggets -1.5, T12 more tired team (fatigue 1 vs 0)->Rockets +1.5 -> pass",
-   "T7 TT Overs vs total Under conflict -> pass both"
+   "T7 paper (11/23, 0-5 live): both TT Overs (112.5/112.5)",
+   "conflict on spread: T11 home fav <=4.5->Nuggets -1.5, T12 more tired team (fatigue 1 vs 0)->Rockets +1.5 -> pass"
   ],
   "skips": []
  }
