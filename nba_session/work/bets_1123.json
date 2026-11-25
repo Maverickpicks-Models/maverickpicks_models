@@ -1,0 +1,122 @@
+[
+ {
+  "date": "2026-11-23",
+  "aw": "Memphis Grizzlies",
+  "hm": "Charlotte Hornets",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.53,
+  "odds": -113,
+  "stake": 20,
+  "units": 1.0,
+  "rules": "C2+K1+T12+T5"
+ },
+ {
+  "date": "2026-11-23",
+  "aw": "Memphis Grizzlies",
+  "hm": "Charlotte Hornets",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.48,
+  "odds": 108,
+  "stake": 10,
+  "units": 0.5,
+  "rules": "T1+T3+P3"
+ },
+ {
+  "date": "2026-11-23",
+  "aw": "Portland Trail Blazers",
+  "hm": "Philadelphia 76ers",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.52,
+  "odds": -108,
+  "stake": 10,
+  "units": 0.5,
+  "rules": "K2+P1"
+ },
+ {
+  "date": "2026-11-23",
+  "aw": "Portland Trail Blazers",
+  "hm": "Philadelphia 76ers",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.5,
+  "odds": 100,
+  "stake": 10,
+  "units": 0.5,
+  "rules": "T1+T2+T3"
+ },
+ {
+  "date": "2026-11-23",
+  "aw": "Oklahoma City Thunder",
+  "hm": "Indiana Pacers",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.51,
+  "odds": -104,
+  "stake": 8,
+  "units": 0.4,
+  "rules": "C2 (half: Siakam Q)"
+ },
+ {
+  "date": "2026-11-23",
+  "aw": "Milwaukee Bucks",
+  "hm": "Toronto Raptors",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.51,
+  "odds": -104,
+  "stake": 10,
+  "units": 0.5,
+  "rules": "T2"
+ },
+ {
+  "date": "2026-11-23",
+  "aw": "Phoenix Suns",
+  "hm": "New Orleans Pelicans",
+  "market": "Spread",
+  "side": "Away",
+  "price_pct": 0.49,
+  "odds": 104,
+  "stake": 15,
+  "units": 0.75,
+  "rules": "C2+K1"
+ },
+ {
+  "date": "2026-11-23",
+  "aw": "Cleveland Cavaliers",
+  "hm": "Chicago Bulls",
+  "market": "Spread",
+  "side": "Home",
+  "price_pct": 0.49,
+  "odds": 104,
+  "stake": 15,
+  "units": 0.75,
+  "rules": "K2+T12+T9+P1"
+ },
+ {
+  "date": "2026-11-23",
+  "aw": "Cleveland Cavaliers",
+  "hm": "Chicago Bulls",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.51,
+  "odds": -104,
+  "stake": 5,
+  "units": 0.25,
+  "rules": "T2+T3+T8"
+ },
+ {
+  "date": "2026-11-23",
+  "aw": "LA Clippers",
+  "hm": "Houston Rockets",
+  "market": "Total",
+  "side": "Under",
+  "price_pct": 0.5,
+  "odds": 100,
+  "stake": 15,
+  "units": 0.75,
+  "rules": "T1+T3+P3"
+ }
+]
