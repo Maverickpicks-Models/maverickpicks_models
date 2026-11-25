@@ -36,6 +36,14 @@ def season_margin(aw,hm,ab,hb):
     ra=pace/100*(a['o']+h['d']-_PM.LB); rh=pace/100*(h['o']+a['d']-_PM.LB)
     ta=-(A[13] if ab else 0); th=-(A[13] if hb else 0)
     return (ra+(ta-th)/2-A[12]/2)-(rh+(th-ta)/2+A[12]/2), (a['o']-a['d'])-(h['o']-h['d'])
+# replay (11/25): ASOF=json {team: {o,d,p,gp,netluck}, "_LP": league pace} -> season-to-date ratings as of the card date
+if _os.environ.get('ASOF'):
+    _AS=json.load(open(_os.environ['ASOF']))
+    _NETLUCK={t:v['netluck'] for t,v in _AS.items() if not t.startswith('_')}
+    def season_team(t):
+        c=_AS.get(t)
+        return None if not c or c['gp']<8 else dict(o=c['o'],d=c['d'],p=c['p'],gp=c['gp'])
+    _PM.R27={t:dict(p=v['p'],gp=v['gp']) for t,v in _AS.items() if not t.startswith('_')}; _PM.LP=_AS['_LP']; _PM.LB=_AS['_LB']
 P_GAP,P_LUCK,P_NET=1.8,0.47,3.63
 P_PACE=-1.15   # P3: away pace + home pace - 2 x league pace (season-to-date) in the slowest third of 2025-26
 def dec(o): return 100/-o if o<0 else o/100
