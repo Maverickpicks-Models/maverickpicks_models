@@ -9,9 +9,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from .nhl_model import Model, american, cross_prop_gap, ev, no_vig
+from .nhl_model import Model, american, cross_prop_gap, ev, no_vig, payout
 
-RULEBOOK = "nhl-2026-11-23"
+RULEBOOK = "nhl-2026-11-25"
 CORE_RULES = {"A", "B", "D", "E", "X", "HU"}
 
 # ---- bankroll plan (Nov 18, 2026; re-sized Nov 23 at $972: UU and BB cut to $5): $1,000, quarter-Kelly on shrunk rule edges. Tracker units = $10.
@@ -23,6 +23,10 @@ STAKE = {"E": 20, "XM": 20, "GU": 15, "HU": 15, "X-under": 15, "UU": 5, "BB": 5,
 TRACK_ONLY = {"X-over", "C", "H", "F", "LR", "G2", "G1", "G3", "XU", "T"}
 MAX_BET, GAME_CAP, NIGHT_CAP = 30, 40, 120
 VIG_ALLOW = 0.02          # min Novig price = fair no-vig probability + 2 points
+# Price scaling (Nov 25): at the same edge per dollar, Kelly stakes a favorite more than an underdog
+# (stake ~ edge / net payout). The base stake is multiplied by 1 / net payout, clamped to [0.67, 1.5]:
+# -150 -> 1.5x, -110 -> 1.1x, +100 -> 1.0x, +150 -> 0.67x. MAX_BET and the game/night caps still apply.
+PRICE_SCALE = (0.67, 1.5)
 
 
 @dataclass
@@ -92,6 +96,11 @@ class Slate:
 def main_line(tts):
     tts = [t for t in tts if abs(t[0] - int(t[0]) - 0.5) < 1e-9] or tts
     return min(tts, key=lambda t: abs(no_vig(t[1], t[2]) - 0.5))
+
+
+def price_factor(price) -> float:
+    lo, hi = PRICE_SCALE
+    return min(hi, max(lo, 1 / payout(price)))
 
 
 def stake(rules, side) -> float:
@@ -210,7 +219,7 @@ def evaluate(sl: Slate, g: Game) -> Result:
                 notes.append(f"dropped test {pl.market} {pl.side} [{pl.code}]: leans against another play"); continue
         keep.append(pl)
     for pl in keep:
-        pl.stake = stake(pl.rules, pl.side)
+        pl.stake = round(min(MAX_BET, stake(pl.rules, pl.side) * price_factor(pl.price)), 2)
         pl.min_price = american(min(0.97, pl.fair_p + VIG_ALLOW))
         if pl.market.startswith("TT") and g.tt_source != "novig":
             pl.note = f"team total priced from the books; bet only if Novig is {pl.min_price:+d} or better"

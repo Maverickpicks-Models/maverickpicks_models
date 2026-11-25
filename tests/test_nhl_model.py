@@ -135,3 +135,12 @@ def test_goalie_names_tolerate_typos_and_accents():
     assert g["SJS"] == "Leevi Meriläinen" and g["NYI"] == "Ilya Sorokin" and "Ilya Sorokin" in conf
     g, _ = nhl_slate.parse_goalies(m, ["SJS=MerilÃ¤inen"])
     assert g["SJS"] == "Leevi Meriläinen"
+
+
+def test_price_factor_scales_favorites_up_and_dogs_down():
+    from mpm.nhl_rules import price_factor
+    assert abs(price_factor(-150) - 1.5) < 1e-9
+    assert abs(price_factor(100) - 1.0) < 1e-9
+    assert abs(price_factor(150) - 0.67) < 1e-9
+    assert abs(price_factor(-110) - 1.1) < 1e-9
+    assert price_factor(-300) == 1.5 and price_factor(300) == 0.67
