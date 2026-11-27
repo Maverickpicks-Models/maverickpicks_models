@@ -9,8 +9,8 @@
   "sec": "CRAFTED",
   "price_pct": 0.505,
   "odds": -102,
-  "stake": 6.5,
-  "units": 0.316,
+  "stake": 7.0,
+  "units": 0.353,
   "rules": "T11+K1+T6"
  },
  {
@@ -23,8 +23,8 @@
   "sec": "TEST",
   "price_pct": 0.51,
   "odds": -104,
-  "stake": 3.0,
-  "units": 0.158,
+  "stake": 3.5,
+  "units": 0.176,
   "rules": "T2l+T8"
  },
  {
@@ -37,8 +37,8 @@
   "sec": "TEST",
   "price_pct": 0.522,
   "odds": -109,
-  "stake": 3.0,
-  "units": 0.158,
+  "stake": 3.5,
+  "units": 0.176,
   "rules": "T6"
  },
  {
@@ -51,8 +51,8 @@
   "sec": "TEST",
   "price_pct": 0.5,
   "odds": 100,
-  "stake": 6.5,
-  "units": 0.316,
+  "stake": 7.0,
+  "units": 0.353,
   "rules": "T1"
  },
  {
@@ -65,8 +65,8 @@
   "sec": "TEST",
   "price_pct": 0.51,
   "odds": -104,
-  "stake": 6.5,
-  "units": 0.316,
+  "stake": 7.0,
+  "units": 0.353,
   "rules": "T11"
  },
  {
@@ -79,8 +79,8 @@
   "sec": "CORE",
   "price_pct": 0.515,
   "odds": -106,
-  "stake": 9.5,
-  "units": 0.474,
+  "stake": 10.5,
+  "units": 0.529,
   "rules": "C4"
  },
  {
@@ -93,8 +93,8 @@
   "sec": "CRAFTED",
   "price_pct": 0.49,
   "odds": 104,
-  "stake": 5.5,
-  "units": 0.271,
+  "stake": 6.0,
+  "units": 0.303,
   "rules": "T11+K1"
  },
  {
@@ -107,8 +107,8 @@
   "sec": "TEST",
   "price_pct": 0.502,
   "odds": -101,
-  "stake": 8.0,
-  "units": 0.406,
+  "stake": 9.0,
+  "units": 0.454,
   "rules": "T2l+P3"
  },
  {
@@ -121,8 +121,8 @@
   "sec": "TEST",
   "price_pct": 0.595,
   "odds": -147,
-  "stake": 5.5,
-  "units": 0.271,
+  "stake": 6.0,
+  "units": 0.303,
   "rules": "T10"
  },
  {
@@ -135,8 +135,8 @@
   "sec": "CORE",
   "price_pct": 0.505,
   "odds": -102,
-  "stake": 12.5,
-  "units": 0.632,
+  "stake": 14.0,
+  "units": 0.706,
   "rules": "C1+K1+T5"
  },
  {
@@ -149,8 +149,8 @@
   "sec": "TEST",
   "price_pct": 0.714,
   "odds": -250,
-  "stake": 3.0,
-  "units": 0.158,
+  "stake": 3.5,
+  "units": 0.176,
   "rules": "P2"
  },
  {
@@ -163,8 +163,8 @@
   "sec": "TEST",
   "price_pct": 0.512,
   "odds": -105,
-  "stake": 6.5,
-  "units": 0.316,
+  "stake": 7.0,
+  "units": 0.353,
   "rules": "T11"
  },
  {
@@ -177,8 +177,8 @@
   "sec": "CORE",
   "price_pct": 0.524,
   "odds": -110,
-  "stake": 9.5,
-  "units": 0.474,
+  "stake": 10.5,
+  "units": 0.529,
   "rules": "C1+P1"
  },
  {
@@ -191,8 +191,8 @@
   "sec": "CORE",
   "price_pct": 0.502,
   "odds": -101,
-  "stake": 9.5,
-  "units": 0.474,
+  "stake": 10.5,
+  "units": 0.529,
   "rules": "C4+T2l+P3"
  },
  {
@@ -205,8 +205,8 @@
   "sec": "TEST",
   "price_pct": 0.517,
   "odds": -107,
-  "stake": 6.5,
-  "units": 0.316,
+  "stake": 7.0,
+  "units": 0.353,
   "rules": "T2l"
  },
  {
@@ -219,23 +219,9 @@
   "sec": "CORE",
   "price_pct": 0.515,
   "odds": -106,
-  "stake": 8.0,
-  "units": 0.406,
-  "rules": "C1"
- },
- {
-  "date": "2026-11-25",
-  "aw": "Sacramento Kings",
-  "hm": "Golden State Warriors",
-  "market": "Total",
-  "side": "Under",
-  "lab": "Under 217.5",
-  "sec": "CORE",
-  "price_pct": 0.51,
-  "odds": -104,
-  "stake": 8.0,
-  "units": 0.406,
-  "rules": "C4"
+  "stake": 5.5,
+  "units": 0.265,
+  "rules": "C1 (half: Lendeborg Q)"
  },
  {
   "date": "2026-11-25",
@@ -247,8 +233,8 @@
   "sec": "TEST",
   "price_pct": 0.711,
   "odds": -246,
-  "stake": 2.5,
-  "units": 0.135,
-  "rules": "P2"
+  "stake": 2.0,
+  "units": 0.088,
+  "rules": "P2 (half: Lendeborg Q)"
  }
 ]

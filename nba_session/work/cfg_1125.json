@@ -8,7 +8,8 @@
   "Cleveland Cavaliers",
   "Philadelphia 76ers",
   "New York Knicks",
-  "Chicago Bulls"
+  "Chicago Bulls",
+  "Sacramento Kings"
  ],
  "crafted": {
   "Miami Heat|Philadelphia 76ers": {
@@ -40,5 +41,9 @@
    "home_margin": 6.5
   }
  },
- "crafted_note": "CraftedNBA picks only (no projections): home_margin set 2 pts past our line toward their side; Overs set total+2"
+ "crafted_note": "CraftedNBA picks only (no projections): home_margin set 2 pts past our line toward their side; Overs set total+2",
+ "q_half": {
+  "San Antonio Spurs": "Wembanyama Q",
+  "Golden State Warriors": "Lendeborg Q"
+ }
 }

@@ -558,15 +558,6 @@
     "size": "0.5u"
    },
    {
-    "sec": "CORE",
-    "code": "C4 fade model total 6+",
-    "mk": "total",
-    "side": "under",
-    "lab": "Under 217.5",
-    "odds": -104,
-    "size": "0.25u"
-   },
-   {
     "sec": "TEST",
     "code": "P2 better team ML (net +8.8, gap +4.2)",
     "mk": "ml",
@@ -590,18 +581,6 @@
     "why": ""
    },
    {
-    "mk": "total",
-    "side": "under",
-    "lab": "Under 217.5",
-    "odds": -104,
-    "codes": [
-     "C4"
-    ],
-    "units": "0.75u",
-    "sec": "CORE",
-    "why": ""
-   },
-   {
     "mk": "ml",
     "side": "home",
     "lab": "Warriors ML",
@@ -615,7 +594,8 @@
    }
   ],
   "notes": [
-   "C3 v5: ML favorite at 70% no-vig not played (65-75% leak, -6.7%)"
+   "C3 v5: ML favorite at 70% no-vig not played (65-75% leak, -6.7%)",
+   "test T6 team missing star (Kings +6.5) dropped: opposite a core/CraftedNBA play"
   ],
   "skips": []
  }

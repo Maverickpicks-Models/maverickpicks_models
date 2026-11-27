@@ -12,9 +12,9 @@ Continues `nba-daily-log.md` (10/31-11/17). From 11/18 every bet is sized in dol
 | 11/22 | 10 | 5-5 | $115 | −$15.47 (−0.77u) | $917.20 | strict v5 ≈ +$2 (my injury cuts cost ≈ $17.7 net) |
 | 11/23 | 10 | 6-4 | $118 | +$39.97 (+2.00u) | $1,028.97 (from the $989 rebase) | cuts saved ≈ $36 net |
 | 11/24 | – | – | – | – (not carded; user did not say if he bet) | $1,028.97 | – |
-| 11/25 | 18 (paper) | 11-7 | $120 (paper) | +$4.90 (+0.27u), not bet | $1,028.97 (unchanged) | rebuilt 11/27; CraftedNBA X6 saved ≈ $16.50 |
+| 11/25 | 17 (paper) | 11-6 | $119.50 (paper) | +$11.28 (+0.55u), not bet | $1,028.97 (unchanged) | rebuilt 11/27 with CraftedNBA picks and the 7 PM report |
 
-Week of 11/18 (5 nights): 22-27 on graded bets, −$82.80 on $1,000 (−8.3%). User's Novig balance 11/23: $989 (rebased). Week of 11/23 so far: 6-4, +$39.97 real; plus 11/25 paper 11-7, +$4.90. Season tracker 90-73, +4.65u (includes the 11/25 paper rows).
+Week of 11/18 (5 nights): 22-27 on graded bets, −$82.80 on $1,000 (−8.3%). User's Novig balance 11/23: $989 (rebased). Week of 11/23 so far: 6-4, +$39.97 real; plus 11/25 paper 11-6, +$11.28. Season tracker 90-72, +4.94u (includes the 11/25 paper rows).
 
 ## 2026-11-18 (Wed) · 12 games · first bankroll card
 Inputs: 5:30 PM report (re-checked at 6:30 and 8:15), Novig 6:28-6:33 PM, CraftedNBA 6:12 PM. B2B: DET, TOR, UTA, LAL. The rulebook flagged $235 of plays; cut to $118 (weakest rules dropped, $30 game cap, then scaled).
@@ -156,7 +156,7 @@ Notes: the cap discipline worked: the heaviest ML favorites were the weakest par
 ## 2026-11-25 (Wed) · 9 games · PAPER card (not bet), rebuilt 11/27
 No Novig capture or injury report that night. The card was rebuilt on 11/27 with the v5.2 engine. Inputs:
 - **Lines:** DraftKings lines and prices from the 11/25 DraftKings Network article, adjusted to Novig's usual ~2% margin.
-- **Injuries:** the official 11/23 report carried forward, plus the Covers 11/25 notes (Anunoby out; Towns, Giannis and Wembanyama questionable).
+- **Injuries:** the official 11/25 7:00 PM report (user-supplied 11/27; the 9:00 PM report only added Spencer and Timme out for GSW and cleared Lendeborg). Giannis, Towns, Brunson and Hart were available. Wembanyama, Fox and Lendeborg were questionable. Curry, LaVine, Embiid, Mobley, Anunoby, Edwards, Holmgren and J. Williams were out.
 - **CraftedNBA:** the user sent their 11/25 picks but no projected scores, so each pick was entered as a side 2 points past our line and each Over as total + 2. That is enough for K1, X6 and K4 but not K3.
 - **Missing:** no team totals (no T7). Nobody was on a back-to-back.
 - **Sizing:** same as the season replay (0 unit, caps of 0 a bet, 0 a game and 20 a night). The flagged 90 was scaled to 63%.
@@ -168,30 +168,30 @@ Scores: MIA 104-111 PHI (215), CHI 107-105 CHA (212), MIN 113-106 OKC (219), CLE
 
 | Bet | Rules | Stake | Price | Result | P/L |
 |---|---|---|---|---|---|
-| 76ers -1.5 | T11+K1+T6 | $6.5 | −102 | W | +$6.37 |
-| MIA/PHI Under 237.5 | T2l+T8 | $3 | −104 | W (215) | +$2.88 |
-| Bulls +3.5 | T6 | $3 | −109 | W | +$2.75 |
-| CHI/CHA Under 220.5 | T1 | $6.5 | +100 | W (212) | +$6.50 |
-| Thunder -1.5 | T11 | $6.5 | −104 | L | −$6.50 |
-| MIN/OKC Over 222.5 | C4 | $9.5 | −106 | L (219) | −$9.50 |
-| Knicks -3.5 | T11+K1 | $5.5 | +104 | W | +$5.72 |
-| CLE/NYK Under 218.5 | T2l+P3 | $8 | −101 | L (223) | −$8.00 |
-| Knicks ML | T10 | $5.5 | −147 | W | +$3.74 |
-| Grizzlies -7.5 | C1+K1+T5 | $12.5 | −102 | W | +$12.25 |
-| Grizzlies ML | P2 | $3 | −250 | W | +$1.20 |
-| Bucks -1.5 | T11 | $6.5 | −105 | L | −$6.50 |
-| Suns +9.5 | C1+P1 | $9.5 | −110 | L | −$9.50 |
-| PHX/HOU Under 223.5 | C4+T2l+P3 | $9.5 | −101 | W (220) | +$9.41 |
-| SAS/POR Under 225.5 | T2l | $6.5 | −107 | L (227) | −$6.50 |
-| Warriors -6.5 | C1 | $8 | −106 | W | +$7.55 |
-| SAC/GSW Under 217.5 | C4 | $8 | −104 | L (239) | −$8.00 |
-| Warriors ML | P2 | $2.5 | −246 | W | +$1.02 |
+| 76ers −1.5 | T11+K1+T6 | $7 | −102 | W | +$6.86 |
+| MIA/PHI Under 237.5 | T2l+T8 | $3.5 | −104 | W (215) | +$3.37 |
+| Bulls +3.5 | T6 | $3.5 | −109 | W | +$3.21 |
+| CHI/CHA Under 220.5 | T1 | $7 | +100 | W (212) | +$7.00 |
+| Thunder −1.5 | T11 | $7 | −104 | L | −$7.00 |
+| MIN/OKC Over 222.5 | C4 | $10.5 | −106 | L (219) | −$10.50 |
+| Knicks −3.5 | T11+K1 | $6 | +104 | W | +$6.24 |
+| CLE/NYK Under 218.5 | T2l+P3 | $9 | −101 | L (223) | −$9.00 |
+| Knicks ML | T10 | $6 | −147 | W | +$4.08 |
+| Grizzlies −7.5 | C1+K1+T5 | $14 | −102 | W | +$13.73 |
+| Grizzlies ML | P2 | $3.5 | −250 | W | +$1.40 |
+| Bucks −1.5 | T11 | $7 | −105 | L | −$7.00 |
+| Suns +9.5 | C1+P1 | $10.5 | −110 | L | −$10.50 |
+| PHX/HOU Under 223.5 | C4+T2l+P3 | $10.5 | −101 | W (220) | +$10.40 |
+| SAS/POR Under 225.5 | T2l | $7 | −107 | L (227) | −$7.00 |
+| Warriors −6.5 | C1 (half: Lendeborg Q) | $5.5 | −106 | W | +$5.19 |
+| Warriors ML | P2 (half: Lendeborg Q) | $2 | −246 | W | +$0.81 |
 
-Night 11-7, +$4.90 (+0.27u), in Tracking rows 302-319, tagged "(paper: not bet, rebuilt 11/27)". Bankroll unchanged.
-- By group: CraftedNBA-led sides 2-0, +$12.09; core 3-3, +$2.21; test 6-4, −$9.41.
-- **X6 was the story.** It passed Spurs −2.5, Spurs ML and Hornets ML, all of which lost; that saved ≈ $16.50. It also flipped the CHI@CHA side to Bulls +3.5 (T6), which won. Without CraftedNBA the same engine went 10-10, −$13.60, so CraftedNBA was worth ≈ +$18.50 on the night.
-- C1 2-1. C4 1-2. P1 0-1 (Suns). P3 1-1. P2 2-0, but only +$2.22 at those prices. T11 2-2.
-- K4 (skip CraftedNBA's Overs) was right on 3 of 5; their CLE/NYK and SAC/GSW Overs beat our Unders.
-- Season tracker including this paper night: 90-73, +4.65u.
+Night 11-6, +$11.28 (+0.55u), in Tracking rows 302-318, tagged "(paper: not bet, rebuilt 11/27)". Bankroll unchanged.
+- By group: CraftedNBA-led sides 2-0, +$13.10; core 3-2, +$8.31; test 6-4, −$10.13.
+- **X6 was the story.** It passed Spurs −2.5, Spurs ML and Hornets ML, all of which lost, and flipped the CHI@CHA side to Bulls +3.5 (T6), which won. Without CraftedNBA or the real injury report the engine went 10-10, −$13.60.
+- **The real injury report** dropped the SAC/GSW Under (C4, lost at 239). With Curry and Lendeborg listed, our total fell 0.5 to 223.1, 5.6 off the line and under C4's 6-point trigger. It also half-staked the Warriors plays, which won.
+- C1 2-1. C4 1-1. P1 0-1 (Suns). P3 1-1. P2 2-0, but tiny at those prices. T11 2-2.
+- K4 (skip CraftedNBA's Overs): their CLE/NYK Over beat our Under.
+- Season tracker including this paper night: 90-72, +4.94u.
 
 Correction to 11/23: the cuts saved ≈ $36 net, not ≈ $31.

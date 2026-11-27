@@ -1,15 +1,2 @@
-# 11/25 (no Novig/injury capture): 11/23 official report carried forward + Covers 11/25 notes
-OUTS={'Cameron Boozer':1,'Jerami Grant':1,'GG Jackson':1,'Scotty Pippen Jr.':1,'Richie Saunders':1,
-'Grayson Allen':1,'Kon Knueppel':1,'Dennis Schroder':1,'Grant Williams':1,
-'Vit Krejci':1,'Ja Morant':1,'Shaedon Sharpe':1,'Chris Youngblood':1,'Joel Embiid':1,'Ariel Hukporti':1,'Nolan Traore':1,
-'Jaylen Clark':1,'Donte DiVincenzo':1,'Anthony Edwards':1,
-'RJ Barrett':1,'Kawhi Leonard':1,
-'Alex Caruso':1,'Chet Holmgren':1,'Aday Mara':1,'Thomas Sorber':1,'Nikola Topic':1,'Cason Wallace':1,'Jalen Williams':1,'Jaylin Williams':1,
-'Johnny Furphy':1,'Tyrese Haliburton':1,'T.J. McConnell':1,'Aaron Nesmith':1,'Ben Sheppard':1,'Pascal Siakam':.5,
-'Evan Mobley':1,"Nae'Qwan Tomlin":1,'Nic Claxton':.5,'Norman Powell':1,'Caleb Wilson':1,
-'Mark Williams':1,'Bennedict Mathurin':1,'Dejounte Murray':1,'Trendon Watford':1,
-'Bradley Beal':1,'Jordan Miller':1,
-"De'Aaron Fox":.5,'Dylan Harper':1,'Tobias Harris':1,'Jordan McLaughlin':.5,'Jayden Quaintance':1,'Victor Wembanyama':.5,
-'Maxime Raynaud':1,'Ben Simmons':1,
-'Jaxson Hayes':1,'Jaren Jackson Jr.':1,'Lauri Markkanen':1,'Jusuf Nurkic':1,'Austin Reaves':1,
-'OG Anunoby':1,'Karl-Anthony Towns':.5,'Giannis Antetokounmpo':.5}
+# 11/25 official 7:00 PM report (user-supplied 11/27)
+OUTS={'Tre Donaldson': 1, 'Vladislav Goldin': 1, 'Joel Embiid': 1, 'Ariel Hukporti': 1, 'Tobe Awaka': 1, 'Norman Powell': 1, 'Jaylin Sellers': 1, 'Jalen Smith': 1, 'Caleb Wilson': 1, 'Michael Ajayi': 1, 'Grayson Allen': 1, 'Kylan Boswell': 1, 'Ryan Kalkbrenner': 1, 'Kon Knueppel': 1, 'Dennis Schroder': 1, 'Zack Austin': 1, 'Khalifa Diop': 1, 'Evan Mobley': 1, "Nae'Qwan Tomlin": 1, 'Ernest Udeh Jr.': 1, 'OG Anunoby': 1, 'Jordan Clarkson': 1, 'Miles McBride': 1, 'Jaylen Clark': 1, 'Donte DiVincenzo': 1, 'Anthony Edwards': 1, 'Rocco Zikarsky': 1, 'Chet Holmgren': 1, 'Aday Mara': 1, 'Thomas Sorber': 1, 'Nikola Topic': 1, 'Cason Wallace': 1, 'Jalen Williams': 1, 'Jaylin Williams': 1, 'Tyler Bilodeau': 1, 'Joshua Jefferson': 1, 'Chaney Johnson': 1, 'Drake Powell': 1, 'Ben Saraf': 1, 'Nolan Traore': 1, 'Bradley Beal': 1, 'Nick Martinelli': 1, 'Jordan Miller': 1, 'Jalen Pickett': 1, 'Cameron Boozer': 1, 'Jerami Grant': 1, 'GG Jackson': 1, 'Scotty Pippen Jr.': 1, 'Richie Saunders': 1, 'Mark Williams': 1, 'Quadir Copeland': 1, 'Julian Phillips': 1, 'Zach LaVine': 1, 'Jonathan Mogbo': 1, 'Maxime Raynaud': 1, 'Ben Simmons': 1, 'Jimmy Butler III': 1, 'Stephen Curry': 1, 'Yaxel Lendeborg': 0.5, 'Moses Moody': 1, 'Kristaps Porzingis': 1, 'Brandon Williams': 0.5, "De'Aaron Fox": 0.5, 'Dylan Harper': 1, 'Tobias Harris': 1, 'Jayden Quaintance': 1, 'Victor Wembanyama': 0.5, 'Vit Krejci': 1, 'Ja Morant': 1, 'Shaedon Sharpe': 1, 'Chris Youngblood': 1}
