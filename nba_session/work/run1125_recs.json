@@ -13,6 +13,15 @@
     "size": "0.5u"
    },
    {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "home",
+    "lab": "76ers -1.5",
+    "odds": -102,
+    "size": "0.5u"
+   },
+   {
     "sec": "TEST",
     "code": "T6 team missing star",
     "mk": "spread",
@@ -57,10 +66,11 @@
     "odds": -102,
     "codes": [
      "T11",
+     "K1",
      "T6"
     ],
     "units": "0.5u",
-    "sec": "TEST",
+    "sec": "CRAFTED",
     "why": ""
    },
    {
@@ -88,24 +98,36 @@
   "recs": [
    {
     "sec": "TEST",
+    "code": "T6 team missing star",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Bulls +3.5",
+    "odds": -109,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
     "code": "T1 juiced Over",
     "mk": "total",
     "side": "under",
     "lab": "Under 220.5",
     "odds": 100,
     "size": "0.25u"
-   },
-   {
-    "sec": "TEST",
-    "code": "T10 ML fav spread <=4.5",
-    "mk": "ml",
-    "side": "home",
-    "lab": "Hornets ML",
-    "odds": -146,
-    "size": "0.5u"
    }
   ],
   "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "Bulls +3.5",
+    "odds": -109,
+    "codes": [
+     "T6"
+    ],
+    "units": "0.25u",
+    "sec": "TEST",
+    "why": ""
+   },
    {
     "mk": "total",
     "side": "under",
@@ -117,24 +139,23 @@
     "units": "0.5u",
     "sec": "TEST",
     "why": ""
-   },
-   {
-    "mk": "ml",
-    "side": "home",
-    "lab": "Hornets ML",
-    "odds": -146,
-    "codes": [
-     "T10"
-    ],
-    "units": "0.5u",
-    "sec": "TEST",
-    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
    }
   ],
   "notes": [
-   "conflict on spread: T11 home fav <=4.5->Hornets -3.5, T6 team missing star->Bulls +3.5 -> pass"
+   "X6 T11 home fav <=4.5 (Hornets -3.5) passed: opposite CraftedNBA's pick",
+   "X6 T10 ML fav spread <=4.5 (Hornets ML) passed: opposite CraftedNBA's pick"
   ],
-  "skips": []
+  "skips": [
+   {
+    "sec": "SKIP",
+    "code": "K2 dog we disagree",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Bulls +3.5",
+    "odds": null,
+    "size": ""
+   }
+  ]
  },
  {
   "game": "Minnesota Timberwolves|Oklahoma City Thunder",
@@ -214,6 +235,15 @@
     "size": "0.5u"
    },
    {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Knicks -3.5",
+    "odds": 104,
+    "size": "0.5u"
+   },
+   {
     "sec": "TEST",
     "code": "T2 low turnovers",
     "mk": "total",
@@ -248,10 +278,11 @@
     "lab": "Knicks -3.5",
     "odds": 104,
     "codes": [
-     "T11"
+     "T11",
+     "K1"
     ],
     "units": "0.5u",
-    "sec": "TEST",
+    "sec": "CRAFTED",
     "why": ""
    },
    {
@@ -297,6 +328,15 @@
     "size": "0.5u"
    },
    {
+    "sec": "CRAFTED",
+    "code": "K1 fav",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Grizzlies -7.5",
+    "odds": -102,
+    "size": "0.5u"
+   },
+   {
     "sec": "TEST",
     "code": "T5 top-10 vs bottom-10",
     "mk": "spread",
@@ -323,6 +363,7 @@
     "odds": -102,
     "codes": [
      "C1",
+     "K1",
      "T5"
     ],
     "units": "1u",
@@ -469,42 +510,6 @@
   "tier": "SAS #2 vs POR #5",
   "recs": [
    {
-    "sec": "CORE",
-    "code": "C1 model 3-6 off",
-    "mk": "spread",
-    "side": "away",
-    "lab": "Spurs -2.5",
-    "odds": -106,
-    "size": "0.5u"
-   },
-   {
-    "sec": "CORE",
-    "code": "C2 road fav <=4.5",
-    "mk": "spread",
-    "side": "away",
-    "lab": "Spurs -2.5",
-    "odds": -106,
-    "size": "0.75u"
-   },
-   {
-    "sec": "TEST",
-    "code": "T6 team missing star",
-    "mk": "spread",
-    "side": "away",
-    "lab": "Spurs -2.5",
-    "odds": -106,
-    "size": "0.25u"
-   },
-   {
-    "sec": "TEST",
-    "code": "P1 fade 3P-lucky Blazers (luck +1.3, gap +5.4)",
-    "mk": "spread",
-    "side": "away",
-    "lab": "Spurs -2.5",
-    "odds": -106,
-    "size": "0.25u"
-   },
-   {
     "sec": "TEST",
     "code": "T2 low turnovers",
     "mk": "total",
@@ -512,42 +517,9 @@
     "lab": "Under 225.5",
     "odds": -107,
     "size": "0.25u"
-   },
-   {
-    "sec": "TEST",
-    "code": "T10 ML fav spread <=4.5",
-    "mk": "ml",
-    "side": "away",
-    "lab": "Spurs ML",
-    "odds": -147,
-    "size": "0.5u"
-   },
-   {
-    "sec": "TEST",
-    "code": "P2 better team ML (net +10.0, gap +5.4)",
-    "mk": "ml",
-    "side": "away",
-    "lab": "Spurs ML",
-    "odds": -147,
-    "size": "0.25u"
    }
   ],
   "plays": [
-   {
-    "mk": "spread",
-    "side": "away",
-    "lab": "Spurs -2.5",
-    "odds": -106,
-    "codes": [
-     "C1",
-     "C2",
-     "T6",
-     "P1"
-    ],
-    "units": "1.25u",
-    "sec": "CORE",
-    "why": "core+test spread combo 17-5, +55%; plus $5 for P1"
-   },
    {
     "mk": "total",
     "side": "under",
@@ -559,22 +531,17 @@
     "units": "0.5u",
     "sec": "TEST",
     "why": ""
-   },
-   {
-    "mk": "ml",
-    "side": "away",
-    "lab": "Spurs ML",
-    "odds": -147,
-    "codes": [
-     "T10",
-     "P2"
-    ],
-    "units": "0.75u",
-    "sec": "TEST",
-    "why": "T10 0.5u + P2 0.25u"
    }
   ],
-  "notes": [],
+  "notes": [
+   "X2 home dog Blazers +2.5 removed (K2 dog we disagree)",
+   "X6 C1 model 3-6 off (Spurs -2.5) passed: opposite CraftedNBA's pick",
+   "X6 C2 road fav <=4.5 (Spurs -2.5) passed: opposite CraftedNBA's pick",
+   "X6 T10 ML fav spread <=4.5 (Spurs ML) passed: opposite CraftedNBA's pick",
+   "X6 T6 team missing star (Spurs -2.5) passed: opposite CraftedNBA's pick",
+   "X6 P1 fade 3P-lucky Blazers (luck +1.3, gap +5.4) (Spurs -2.5) passed: opposite CraftedNBA's pick",
+   "X6 P2 better team ML (net +10.0, gap +5.4) (Spurs ML) passed: opposite CraftedNBA's pick"
+  ],
   "skips": []
  },
  {

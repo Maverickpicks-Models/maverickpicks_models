@@ -6,12 +6,12 @@
   "market": "Spread",
   "side": "Home",
   "lab": "76ers -1.5",
-  "sec": "TEST",
+  "sec": "CRAFTED",
   "price_pct": 0.505,
   "odds": -102,
-  "stake": 5.5,
-  "units": 0.279,
-  "rules": "T11+T6"
+  "stake": 6.5,
+  "units": 0.316,
+  "rules": "T11+K1+T6"
  },
  {
   "date": "2026-11-25",
@@ -24,8 +24,22 @@
   "price_pct": 0.51,
   "odds": -104,
   "stake": 3.0,
-  "units": 0.14,
+  "units": 0.158,
   "rules": "T2l+T8"
+ },
+ {
+  "date": "2026-11-25",
+  "aw": "Chicago Bulls",
+  "hm": "Charlotte Hornets",
+  "market": "Spread",
+  "side": "Away",
+  "lab": "Bulls +3.5",
+  "sec": "TEST",
+  "price_pct": 0.522,
+  "odds": -109,
+  "stake": 3.0,
+  "units": 0.158,
+  "rules": "T6"
  },
  {
   "date": "2026-11-25",
@@ -37,23 +51,9 @@
   "sec": "TEST",
   "price_pct": 0.5,
   "odds": 100,
-  "stake": 5.5,
-  "units": 0.279,
+  "stake": 6.5,
+  "units": 0.316,
   "rules": "T1"
- },
- {
-  "date": "2026-11-25",
-  "aw": "Chicago Bulls",
-  "hm": "Charlotte Hornets",
-  "market": "ML",
-  "side": "Home",
-  "lab": "Hornets ML",
-  "sec": "TEST",
-  "price_pct": 0.593,
-  "odds": -146,
-  "stake": 5.5,
-  "units": 0.279,
-  "rules": "T10"
  },
  {
   "date": "2026-11-25",
@@ -65,8 +65,8 @@
   "sec": "TEST",
   "price_pct": 0.51,
   "odds": -104,
-  "stake": 5.5,
-  "units": 0.279,
+  "stake": 6.5,
+  "units": 0.316,
   "rules": "T11"
  },
  {
@@ -79,8 +79,8 @@
   "sec": "CORE",
   "price_pct": 0.515,
   "odds": -106,
-  "stake": 8.5,
-  "units": 0.419,
+  "stake": 9.5,
+  "units": 0.474,
   "rules": "C4"
  },
  {
@@ -90,12 +90,12 @@
   "market": "Spread",
   "side": "Home",
   "lab": "Knicks -3.5",
-  "sec": "TEST",
+  "sec": "CRAFTED",
   "price_pct": 0.49,
   "odds": 104,
-  "stake": 5.0,
-  "units": 0.239,
-  "rules": "T11"
+  "stake": 5.5,
+  "units": 0.271,
+  "rules": "T11+K1"
  },
  {
   "date": "2026-11-25",
@@ -107,8 +107,8 @@
   "sec": "TEST",
   "price_pct": 0.502,
   "odds": -101,
-  "stake": 7.0,
-  "units": 0.359,
+  "stake": 8.0,
+  "units": 0.406,
   "rules": "T2l+P3"
  },
  {
@@ -121,8 +121,8 @@
   "sec": "TEST",
   "price_pct": 0.595,
   "odds": -147,
-  "stake": 5.0,
-  "units": 0.239,
+  "stake": 5.5,
+  "units": 0.271,
   "rules": "T10"
  },
  {
@@ -135,9 +135,9 @@
   "sec": "CORE",
   "price_pct": 0.505,
   "odds": -102,
-  "stake": 11.0,
-  "units": 0.558,
-  "rules": "C1+T5"
+  "stake": 12.5,
+  "units": 0.632,
+  "rules": "C1+K1+T5"
  },
  {
   "date": "2026-11-25",
@@ -150,7 +150,7 @@
   "price_pct": 0.714,
   "odds": -250,
   "stake": 3.0,
-  "units": 0.14,
+  "units": 0.158,
   "rules": "P2"
  },
  {
@@ -163,8 +163,8 @@
   "sec": "TEST",
   "price_pct": 0.512,
   "odds": -105,
-  "stake": 5.5,
-  "units": 0.279,
+  "stake": 6.5,
+  "units": 0.316,
   "rules": "T11"
  },
  {
@@ -177,8 +177,8 @@
   "sec": "CORE",
   "price_pct": 0.524,
   "odds": -110,
-  "stake": 8.5,
-  "units": 0.419,
+  "stake": 9.5,
+  "units": 0.474,
   "rules": "C1+P1"
  },
  {
@@ -191,23 +191,9 @@
   "sec": "CORE",
   "price_pct": 0.502,
   "odds": -101,
-  "stake": 8.5,
-  "units": 0.419,
+  "stake": 9.5,
+  "units": 0.474,
   "rules": "C4+T2l+P3"
- },
- {
-  "date": "2026-11-25",
-  "aw": "San Antonio Spurs",
-  "hm": "Portland Trail Blazers",
-  "market": "Spread",
-  "side": "Away",
-  "lab": "Spurs -2.5",
-  "sec": "CORE",
-  "price_pct": 0.515,
-  "odds": -106,
-  "stake": 7.5,
-  "units": 0.372,
-  "rules": "C1+C2+T6+P1"
  },
  {
   "date": "2026-11-25",
@@ -219,23 +205,9 @@
   "sec": "TEST",
   "price_pct": 0.517,
   "odds": -107,
-  "stake": 3.5,
-  "units": 0.186,
+  "stake": 6.5,
+  "units": 0.316,
   "rules": "T2l"
- },
- {
-  "date": "2026-11-25",
-  "aw": "San Antonio Spurs",
-  "hm": "Portland Trail Blazers",
-  "market": "ML",
-  "side": "Away",
-  "lab": "Spurs ML",
-  "sec": "TEST",
-  "price_pct": 0.595,
-  "odds": -147,
-  "stake": 5.5,
-  "units": 0.279,
-  "rules": "T10+P2"
  },
  {
   "date": "2026-11-25",
@@ -247,8 +219,8 @@
   "sec": "CORE",
   "price_pct": 0.515,
   "odds": -106,
-  "stake": 7.0,
-  "units": 0.359,
+  "stake": 8.0,
+  "units": 0.406,
   "rules": "C1"
  },
  {
@@ -261,8 +233,8 @@
   "sec": "CORE",
   "price_pct": 0.51,
   "odds": -104,
-  "stake": 7.0,
-  "units": 0.359,
+  "stake": 8.0,
+  "units": 0.406,
   "rules": "C4"
  },
  {
@@ -276,7 +248,7 @@
   "price_pct": 0.711,
   "odds": -246,
   "stake": 2.5,
-  "units": 0.12,
+  "units": 0.135,
   "rules": "P2"
  }
 ]

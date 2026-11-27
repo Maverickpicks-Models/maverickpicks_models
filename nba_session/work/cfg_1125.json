@@ -1,1 +1,44 @@
-{"date": "2026-11-25", "b2b": [], "stars_out": ["Minnesota Timberwolves", "Oklahoma City Thunder", "San Antonio Spurs", "Cleveland Cavaliers", "Philadelphia 76ers", "New York Knicks", "Chicago Bulls"], "crafted": {}}
+{
+ "date": "2026-11-25",
+ "b2b": [],
+ "stars_out": [
+  "Minnesota Timberwolves",
+  "Oklahoma City Thunder",
+  "San Antonio Spurs",
+  "Cleveland Cavaliers",
+  "Philadelphia 76ers",
+  "New York Knicks",
+  "Chicago Bulls"
+ ],
+ "crafted": {
+  "Miami Heat|Philadelphia 76ers": {
+   "home_margin": 3.5,
+   "total": null
+  },
+  "Chicago Bulls|Charlotte Hornets": {
+   "home_margin": 1.5,
+   "total": 222.5
+  },
+  "Minnesota Timberwolves|Oklahoma City Thunder": {
+   "total": 224.5,
+   "home_margin": 1.5
+  },
+  "Cleveland Cavaliers|New York Knicks": {
+   "home_margin": 5.5,
+   "total": 220.5
+  },
+  "LA Clippers|Memphis Grizzlies": {
+   "home_margin": 9.5,
+   "total": 229.5
+  },
+  "San Antonio Spurs|Portland Trail Blazers": {
+   "home_margin": -0.5,
+   "total": null
+  },
+  "Sacramento Kings|Golden State Warriors": {
+   "total": 219.5,
+   "home_margin": 6.5
+  }
+ },
+ "crafted_note": "CraftedNBA picks only (no projections): home_margin set 2 pts past our line toward their side; Overs set total+2"
+}
