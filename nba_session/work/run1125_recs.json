@@ -1,0 +1,655 @@
+[
+ {
+  "game": "Miami Heat|Philadelphia 76ers",
+  "tier": "MIA #15 vs PHI #12",
+  "recs": [
+   {
+    "sec": "TEST",
+    "code": "T11 home fav <=4.5",
+    "mk": "spread",
+    "side": "home",
+    "lab": "76ers -1.5",
+    "odds": -102,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T6 team missing star",
+    "mk": "spread",
+    "side": "home",
+    "lab": "76ers -1.5",
+    "odds": -102,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 237.5",
+    "odds": -104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T8 total 235+",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 237.5",
+    "odds": -104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T10 ML fav spread <=4.5",
+    "mk": "ml",
+    "side": "home",
+    "lab": "76ers ML",
+    "odds": -112,
+    "size": "0.5u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "76ers -1.5",
+    "odds": -102,
+    "codes": [
+     "T11",
+     "T6"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 237.5",
+    "odds": -104,
+    "codes": [
+     "T2l",
+     "T8"
+    ],
+    "units": "0.25u",
+    "sec": "TEST",
+    "why": "T8 stacked with T2/T3 Unders 2-7"
+   }
+  ],
+  "notes": [
+   "spread under 2: 76ers ML [T10] dropped, same bet as 76ers -1.5"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Chicago Bulls|Charlotte Hornets",
+  "tier": "CHI #23 vs CHA #27",
+  "recs": [
+   {
+    "sec": "TEST",
+    "code": "T1 juiced Over",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 220.5",
+    "odds": 100,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T10 ML fav spread <=4.5",
+    "mk": "ml",
+    "side": "home",
+    "lab": "Hornets ML",
+    "odds": -146,
+    "size": "0.5u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 220.5",
+    "odds": 100,
+    "codes": [
+     "T1"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": ""
+   },
+   {
+    "mk": "ml",
+    "side": "home",
+    "lab": "Hornets ML",
+    "odds": -146,
+    "codes": [
+     "T10"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
+   }
+  ],
+  "notes": [
+   "conflict on spread: T11 home fav <=4.5->Hornets -3.5, T6 team missing star->Bulls +3.5 -> pass"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Minnesota Timberwolves|Oklahoma City Thunder",
+  "tier": "MIN #1 vs OKC #11",
+  "recs": [
+   {
+    "sec": "TEST",
+    "code": "T11 home fav <=4.5",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Thunder -1.5",
+    "odds": -104,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C4 fade model total 6+",
+    "mk": "total",
+    "side": "over",
+    "lab": "Over 222.5",
+    "odds": -106,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T10 ML fav spread <=4.5",
+    "mk": "ml",
+    "side": "home",
+    "lab": "Thunder ML",
+    "odds": -119,
+    "size": "0.5u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Thunder -1.5",
+    "odds": -104,
+    "codes": [
+     "T11"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "over",
+    "lab": "Over 222.5",
+    "odds": -106,
+    "codes": [
+     "C4"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   }
+  ],
+  "notes": [
+   "test T2 low turnovers (Under 222.5) dropped: opposite a core/CraftedNBA play",
+   "spread under 2: Thunder ML [T10] dropped, same bet as Thunder -1.5"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Cleveland Cavaliers|New York Knicks",
+  "tier": "CLE #13 vs NYK #9",
+  "recs": [
+   {
+    "sec": "TEST",
+    "code": "T11 home fav <=4.5",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Knicks -3.5",
+    "odds": 104,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 218.5",
+    "odds": -101,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "P3 slow-pace Under (pace -3.7)",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 218.5",
+    "odds": -101,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T10 ML fav spread <=4.5",
+    "mk": "ml",
+    "side": "home",
+    "lab": "Knicks ML",
+    "odds": -147,
+    "size": "0.5u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Knicks -3.5",
+    "odds": 104,
+    "codes": [
+     "T11"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 218.5",
+    "odds": -101,
+    "codes": [
+     "T2l",
+     "P3"
+    ],
+    "units": "0.75u",
+    "sec": "TEST",
+    "why": "stacked totals: no extra size; plus $5 for P3"
+   },
+   {
+    "mk": "ml",
+    "side": "home",
+    "lab": "Knicks ML",
+    "odds": -147,
+    "codes": [
+     "T10"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
+   }
+  ],
+  "notes": [],
+  "skips": []
+ },
+ {
+  "game": "LA Clippers|Memphis Grizzlies",
+  "tier": "LAC #25 vs MEM #4",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Grizzlies -7.5",
+    "odds": -102,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T5 top-10 vs bottom-10",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Grizzlies -7.5",
+    "odds": -102,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "P2 better team ML (net +10.6, gap +5.1)",
+    "mk": "ml",
+    "side": "home",
+    "lab": "Grizzlies ML",
+    "odds": -250,
+    "size": "0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Grizzlies -7.5",
+    "odds": -102,
+    "codes": [
+     "C1",
+     "T5"
+    ],
+    "units": "1u",
+    "sec": "CORE",
+    "why": "core+test spread combo 17-5, +55%"
+   },
+   {
+    "mk": "ml",
+    "side": "home",
+    "lab": "Grizzlies ML",
+    "odds": -250,
+    "codes": [
+     "P2"
+    ],
+    "units": "risk 0.25u",
+    "sec": "TEST",
+    "why": "P2 $5"
+   }
+  ],
+  "notes": [
+   "C3 v5: ML favorite at 70% no-vig not played (65-75% leak, -6.7%)"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Brooklyn Nets|Milwaukee Bucks",
+  "tier": "BKN #28 vs MIL #29",
+  "recs": [
+   {
+    "sec": "TEST",
+    "code": "T11 home fav <=4.5",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Bucks -1.5",
+    "odds": -105,
+    "size": "0.5u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Bucks -1.5",
+    "odds": -105,
+    "codes": [
+     "T11"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": ""
+   }
+  ],
+  "notes": [
+   "conflict on ml: T10 ML fav spread <=4.5->Bucks ML, P2 better team ML (net +4.3, gap +3.8)->Nets ML -> pass"
+  ],
+  "skips": []
+ },
+ {
+  "game": "Phoenix Suns|Houston Rockets",
+  "tier": "PHX #17 vs HOU #3",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Suns +9.5",
+    "odds": -110,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "P1 fade 3P-lucky Rockets (luck +4.0, gap +3.2)",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Suns +9.5",
+    "odds": -110,
+    "size": "0.25u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C4 fade model total 6+",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 223.5",
+    "odds": -101,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 223.5",
+    "odds": -101,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "P3 slow-pace Under (pace -2.7)",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 223.5",
+    "odds": -101,
+    "size": "0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "Suns +9.5",
+    "odds": -110,
+    "codes": [
+     "C1",
+     "P1"
+    ],
+    "units": "1u",
+    "sec": "CORE",
+    "why": "plus $5 for P1"
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 223.5",
+    "odds": -101,
+    "codes": [
+     "C4",
+     "T2l",
+     "P3"
+    ],
+    "units": "1u",
+    "sec": "CORE",
+    "why": "stacked totals: no extra size; plus $5 for P3"
+   }
+  ],
+  "notes": [
+   "C3 v5: ML favorite with a 9.5-pt spread not played (5-9.5 favorites leak)"
+  ],
+  "skips": []
+ },
+ {
+  "game": "San Antonio Spurs|Portland Trail Blazers",
+  "tier": "SAS #2 vs POR #5",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Spurs -2.5",
+    "odds": -106,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C2 road fav <=4.5",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Spurs -2.5",
+    "odds": -106,
+    "size": "0.75u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T6 team missing star",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Spurs -2.5",
+    "odds": -106,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "P1 fade 3P-lucky Blazers (luck +1.3, gap +5.4)",
+    "mk": "spread",
+    "side": "away",
+    "lab": "Spurs -2.5",
+    "odds": -106,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T2 low turnovers",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 225.5",
+    "odds": -107,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "T10 ML fav spread <=4.5",
+    "mk": "ml",
+    "side": "away",
+    "lab": "Spurs ML",
+    "odds": -147,
+    "size": "0.5u"
+   },
+   {
+    "sec": "TEST",
+    "code": "P2 better team ML (net +10.0, gap +5.4)",
+    "mk": "ml",
+    "side": "away",
+    "lab": "Spurs ML",
+    "odds": -147,
+    "size": "0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "away",
+    "lab": "Spurs -2.5",
+    "odds": -106,
+    "codes": [
+     "C1",
+     "C2",
+     "T6",
+     "P1"
+    ],
+    "units": "1.25u",
+    "sec": "CORE",
+    "why": "core+test spread combo 17-5, +55%; plus $5 for P1"
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 225.5",
+    "odds": -107,
+    "codes": [
+     "T2l"
+    ],
+    "units": "0.5u",
+    "sec": "TEST",
+    "why": ""
+   },
+   {
+    "mk": "ml",
+    "side": "away",
+    "lab": "Spurs ML",
+    "odds": -147,
+    "codes": [
+     "T10",
+     "P2"
+    ],
+    "units": "0.75u",
+    "sec": "TEST",
+    "why": "T10 0.5u + P2 0.25u"
+   }
+  ],
+  "notes": [],
+  "skips": []
+ },
+ {
+  "game": "Sacramento Kings|Golden State Warriors",
+  "tier": "SAC #30 vs GSW #18",
+  "recs": [
+   {
+    "sec": "CORE",
+    "code": "C1 model 3-6 off",
+    "mk": "spread",
+    "side": "home",
+    "lab": "Warriors -6.5",
+    "odds": -106,
+    "size": "0.5u"
+   },
+   {
+    "sec": "CORE",
+    "code": "C4 fade model total 6+",
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 217.5",
+    "odds": -104,
+    "size": "0.25u"
+   },
+   {
+    "sec": "TEST",
+    "code": "P2 better team ML (net +8.8, gap +4.2)",
+    "mk": "ml",
+    "side": "home",
+    "lab": "Warriors ML",
+    "odds": -246,
+    "size": "0.25u"
+   }
+  ],
+  "plays": [
+   {
+    "mk": "spread",
+    "side": "home",
+    "lab": "Warriors -6.5",
+    "odds": -106,
+    "codes": [
+     "C1"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   },
+   {
+    "mk": "total",
+    "side": "under",
+    "lab": "Under 217.5",
+    "odds": -104,
+    "codes": [
+     "C4"
+    ],
+    "units": "0.75u",
+    "sec": "CORE",
+    "why": ""
+   },
+   {
+    "mk": "ml",
+    "side": "home",
+    "lab": "Warriors ML",
+    "odds": -246,
+    "codes": [
+     "P2"
+    ],
+    "units": "risk 0.25u",
+    "sec": "TEST",
+    "why": "P2 $5"
+   }
+  ],
+  "notes": [
+   "C3 v5: ML favorite at 70% no-vig not played (65-75% leak, -6.7%)"
+  ],
+  "skips": []
+ }
+]

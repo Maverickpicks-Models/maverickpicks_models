@@ -1,0 +1,15 @@
+# 11/25 (no Novig/injury capture): 11/23 official report carried forward + Covers 11/25 notes
+OUTS={'Cameron Boozer':1,'Jerami Grant':1,'GG Jackson':1,'Scotty Pippen Jr.':1,'Richie Saunders':1,
+'Grayson Allen':1,'Kon Knueppel':1,'Dennis Schroder':1,'Grant Williams':1,
+'Vit Krejci':1,'Ja Morant':1,'Shaedon Sharpe':1,'Chris Youngblood':1,'Joel Embiid':1,'Ariel Hukporti':1,'Nolan Traore':1,
+'Jaylen Clark':1,'Donte DiVincenzo':1,'Anthony Edwards':1,
+'RJ Barrett':1,'Kawhi Leonard':1,
+'Alex Caruso':1,'Chet Holmgren':1,'Aday Mara':1,'Thomas Sorber':1,'Nikola Topic':1,'Cason Wallace':1,'Jalen Williams':1,'Jaylin Williams':1,
+'Johnny Furphy':1,'Tyrese Haliburton':1,'T.J. McConnell':1,'Aaron Nesmith':1,'Ben Sheppard':1,'Pascal Siakam':.5,
+'Evan Mobley':1,"Nae'Qwan Tomlin":1,'Nic Claxton':.5,'Norman Powell':1,'Caleb Wilson':1,
+'Mark Williams':1,'Bennedict Mathurin':1,'Dejounte Murray':1,'Trendon Watford':1,
+'Bradley Beal':1,'Jordan Miller':1,
+"De'Aaron Fox":.5,'Dylan Harper':1,'Tobias Harris':1,'Jordan McLaughlin':.5,'Jayden Quaintance':1,'Victor Wembanyama':.5,
+'Maxime Raynaud':1,'Ben Simmons':1,
+'Jaxson Hayes':1,'Jaren Jackson Jr.':1,'Lauri Markkanen':1,'Jusuf Nurkic':1,'Austin Reaves':1,
+'OG Anunoby':1,'Karl-Anthony Towns':.5,'Giannis Antetokounmpo':.5}
