@@ -8,21 +8,18 @@ keys={p['key']:p for p in m.players}
 print('outs in PlayerRatings:',sorted(p['name']+'('+p['team'][:3]+f",{p['mpg']:.0f}mpg)" for k,p in keys.items() if k in OK))
 print('not on any roster (no 2026-27 minutes):',[k for k in OK if k not in keys])
 B2B=set()   # no games on Thanksgiving 11/26
-def _p(o): return -o/(-o+100) if o<0 else 100/(o+100)
-def pair(o1,o2,s=1.02):          # DraftKings prices squeezed to a typical Novig overround (~2%)
-    a,b=_p(o1),_p(o2); k=s/(a+b); return round(a*k,3),round(b*k,3)
-DK=[('Miami Heat','New York Knicks',2.5,-108,-112,222.5,-105,-115,124,-148),
-('Brooklyn Nets','Toronto Raptors',9.5,-112,-108,219.5,-108,-112,297,-374),
-('Milwaukee Bucks','Detroit Pistons',9.5,-103,-117,219.5,-107,-113,351,-452),
-('Philadelphia 76ers','Indiana Pacers',-3.5,-108,-112,229.5,-105,-115,-170,142),
-('Atlanta Hawks','Boston Celtics',8.5,-103,-118,223.5,-112,-108,300,-378),
-('Memphis Grizzlies','Minnesota Timberwolves',2.5,-102,-118,220.5,-107,-113,130,-155),
-('Dallas Mavericks','Phoenix Suns',3.5,-114,-106,225.5,-110,-110,130,-155),
-('Denver Nuggets','Utah Jazz',-9.5,-116,-105,232.5,-112,-108,-438,341),
-('Golden State Warriors','Portland Trail Blazers',7.5,-108,-112,217.5,-110,-110,241,-297),
-('New Orleans Pelicans','LA Clippers',2.5,-110,-110,230.5,-110,-110,114,-135),
-('Los Angeles Lakers','San Antonio Spurs',6.5,-119,-102,225.5,-115,-105,180,-217)]
-G=[(aw,hm,(sp,*pair(sa,sh)),(t,*pair(o,u)),pair(ma,mh),None,None) for aw,hm,sp,sa,sh,t,o,u,ma,mh in DK]
+# Novig 6:24-6:34 PM (user screenshots); team totals = middle line shown
+G=[('Miami Heat','New York Knicks',(2.5,.475,.535),(221.5,.53,.48),(.43,.575),(111.5,.47,.585),(114.5,.445,.60)),
+('Philadelphia 76ers','Indiana Pacers',(-3.5,.495,.51),(228.5,.475,.53),(.61,.395),(119.5,.435,.67),(115.5,.415,.625)),
+('Milwaukee Bucks','Detroit Pistons',(9.5,.48,.525),(219.5,.50,.51),(.22,.785),(103.5,.56,.48),(116.5,.46,.585)),
+('Brooklyn Nets','Toronto Raptors',(9.5,.515,.49),(218.5,.495,.515),(.24,.765),(105.5,.48,.56),(116.5,.43,.62)),
+('Atlanta Hawks','Boston Celtics',(8.5,.475,.53),(225.5,.50,.51),(.24,.77),(105.5,.60,.455),(117.5,.52,.53)),
+('Memphis Grizzlies','Minnesota Timberwolves',(2.5,.49,.515),(219.5,.53,.475),(.42,.585),(109.5,.485,.535),(113.5,.46,.60)),
+('Dallas Mavericks','Phoenix Suns',(3.5,.52,.485),(225.5,.515,.49),(.425,.58),(111.5,.535,.495),(114.5,.57,.575)),
+('Denver Nuggets','Utah Jazz',(-9.5,.505,.505),(232.5,.505,.505),(.78,.225),(119.5,.575,.445),(108.5,.625,.425)),
+('Golden State Warriors','Portland Trail Blazers',(7.5,.485,.52),(216.5,.495,.51),(.275,.73),(106.5,.455,.60),(116.5,.39,.675)),
+('New Orleans Pelicans','LA Clippers',(2.5,.515,.49),(230.5,.495,.515),(.455,.555),(112.5,.59,.465),(116.5,.485,.54)),
+('Los Angeles Lakers','San Antonio Spurs',(6.5,.535,.475),(225.5,.525,.49),(.35,.655),(110.5,.50,.515),(115.5,.525,.505))]
 def am(p): return round(-100*p/(1-p)) if p>0.5 else (round(100*(1-p)/p) if p<0.5 else 100)
 def imp(o): return -o/(-o+100) if o<0 else 100/(o+100)
 def dec(o): return 100/-o if o<0 else o/100
