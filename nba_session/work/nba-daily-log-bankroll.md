@@ -11,9 +11,9 @@ Continues `nba-daily-log.md` (10/31-11/17). From 11/18 every bet is sized in dol
 | 11/21 | 9 | 2-7 | $90 | −$39.30 (−1.96u) | $932.67 | Spurs −18.5 pass would have won |
 | 11/22 | 10 | 5-5 | $115 | −$15.47 (−0.77u) | $917.20 | strict v5 ≈ +$2 (my injury cuts cost ≈ $17.7 net) |
 | 11/23 | 10 | 6-4 | $118 | +$39.97 (+2.00u) | $1,028.97 (from the $989 rebase) | cuts saved ≈ $36 net |
-| 11/24 | – | – | – | – (not carded; user did not say if he bet) | $1,028.97 | – |
+| 11/24 | 0 | – | – | – (no bets; user confirmed 11/28) | $1,028.97 | – |
 | 11/25 | 17 (paper) | 11-6 | $119.50 (paper) | +$11.28 (+0.55u), not bet | $1,028.97 (unchanged) | rebuilt 11/27 with CraftedNBA picks and the 7 PM report |
-| 11/27 | 21 | 10-11 | $119 | +$2.44 (+0.12u) | $1,031.41 | v5.3 re-run +$37.52 (in-sample) |
+| 11/27 | 21 | 10-11 | $119 | +$2.44 (+0.12u) | $1,031.41 (Novig balance matches, user 11/28) | v5.3 re-run +$37.52 (in-sample) |
 
 Week of 11/18 (5 nights): 22-27 on graded bets, −$82.80 on $1,000 (−8.3%). User's Novig balance 11/23: $989 (rebased). Week of 11/23: 16-15 real, +$42.41 (11/23 +$39.97, 11/27 +$2.44); plus 11/25 paper 11-6, +$11.28. Season tracker 100-83, +5.06u (includes the 11/25 paper rows).
 

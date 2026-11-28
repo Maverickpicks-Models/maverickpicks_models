@@ -23,7 +23,7 @@ User, 11/28: "Analyze the results and make changes to rules if necessary." The l
 Rulebook v6.1 is **parked**, not live. Evidence: `claude/nba-backtest-2025-26.md`, `claude/nba-season-quarters.md`, `claude/nba-season-months.md`, `claude/nba-season-replay.md`.
 
 ## Sizing policy
-- **1 unit = 2% of the current bankroll: $20 at $989 (rebased 11/23).** Recalculated every Monday from the balance the user reports, rounded to the dollar.
+- **1 unit = 2% of the current bankroll: $20 at $989 (rebased 11/23); $21 from Monday 11/30 if the balance is still ≈ $1,031 (2% = $20.63).** Recalculated every Monday from the balance the user reports, rounded to the dollar.
 - **Caps:** single bet $20 (1u); same game $30; night $120. If the card is bigger, cut big-favorite MLs (75%+) first, then scale the rest down in proportion.
 - **Rule caps:** core 1u, CraftedNBA 0.75u, test 0.5u (P1/P2/P3 add on top, below).
 - **Max price:** spreads/ML current Novig % + 1.5; totals current + 1.0.
@@ -79,4 +79,4 @@ Live jobs ≈ 10,000/month. 2024-25 December-January window (~1,800) next.
 | Week of | Start | Unit | Bets | Risked | P/L | End | Notes |
 |---|---|---|---|---|---|---|---|
 | 11/18 | $1,000 | $20 | 49 | ≈ $475 | −$82.80 tracked | **$989 reported 11/23** | Tracked $917.20 vs Novig balance $989 (+$71.80 unreconciled). Rebased on $989. |
-| 11/23 | $989 | $20 | 31 | $237 | +$42.41 tracked | $1,031.41 tracked | 11/23 +$39.97 (v5.2); 11/24 nothing carded; 11/25 paper only (11-6, +$11.28, not in bankroll); 11/27 all 21 played, +$2.44. v5.3 from 11/28. |
+| 11/23 | $989 | $20 | 31 | $237 | +$42.41 | **$1,031.41 (user confirmed 11/28: Novig balance matches tracked)** | 11/23 +$39.97 (v5.2); 11/24 no bets (user confirmed); 11/25 paper only (11-6, +$11.28, not in bankroll); 11/27 all 21 played, +$2.44. v5.3 from 11/28. |
