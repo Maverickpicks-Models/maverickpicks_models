@@ -1,4 +1,4 @@
-"""Rules engine (Rulebook v5.1 + P1/P2/P3 from 11/20; 11/23: T7 paper, spread<2 -> no ML on the same team). usage: python3 work/rules.py RUN.json CONFIG.json  -> prints sections, writes RUN_recs.json
+"""Rules engine (Rulebook v5.3 from 11/28: T11, T10 and T6 paper; one bet per team per game (no ML on a team we back on the spread); C4 $20; P1/P3 $10. v5.2 11/23: T7 paper. v5.1 + P1/P2/P3 from 11/20). usage: python3 work/rules.py RUN.json CONFIG.json  -> prints sections, writes RUN_recs.json
 CONFIG: {"date":"2026-11-12","crafted":{"AW|HM":{"home_margin":x,"total":y,"picks":["spread","under",...]}}, "stars_out":["Team",...], "b2b":["Team",...]}"""
 import json,sys,runpy,io,contextlib,datetime as dt,numpy as np
 RUN,CFG=sys.argv[1],sys.argv[2]
@@ -187,7 +187,8 @@ for g in D:
         if sp_sides and r['side'] not in sp_sides:
             final.remove(r); notes.append(f"X8 {r['lab']} passed: a spread rule backs the other team (ML 16-8, -10% ROI in that spot)")
     # PRICING v4 (11/16): units from shrunk backtest ROI (ROI x n/(n+40)); see Rules tab
-    UN={'C1':0.75,'C2':0.75,'C4':0.75,'K1':0.5,'K2':0.25,'K3':0.25,'T1':0.5,'T2h':0.5,'T2l':0.5,'T3':0.5,'T4':0.25,'T5':0.5,'T6':0.25,'T7':0.25,'T8':0.25,'T9':0.5,'T10':0.5,'T11':0.5,'T12':0.25}
+    PAPER53={'T11','T10','T6'}   # T10 = the ML twin of T11 (live 5-7, -25%; 3-7 since 11/18)
+    UN={'C1':0.75,'C2':0.75,'C4':1.0,'K1':0.5,'K2':0.25,'K3':0.25,'T1':0.5,'T2h':0.5,'T2l':0.5,'T3':0.5,'T4':0.25,'T5':0.5,'T6':0.25,'T7':0.25,'T8':0.25,'T9':0.5,'T10':0.5,'T11':0.5,'T12':0.25}
     CAP={'CORE':1.0,'CRAFTED':0.75,'TEST':0.5}; TIERS=[0.25,0.5,0.75,1.0]
     def rc(r):
         c=r['code'].split()[0]
@@ -195,6 +196,12 @@ for g in D:
     plays=[]
     for key in dict.fromkeys((r['mk'],r['side']) for r in final):
         rows=[r for r in final if (r['mk'],r['side'])==key]; mk,side=key
+        # v5.3 (11/28): T11 (live 2-9, -63%) and T6 (live 7-8; replay 3-9) to paper
+        gone=[r for r in rows if rc(r) in PAPER53]
+        if gone:
+            rows=[r for r in rows if rc(r) not in PAPER53]
+            notes.append(f"v5.3 paper: {'+'.join(rc(r) for r in gone)} on {gone[0]['lab']}" + ('' if rows else ' (no other rule: not played)'))
+            if not rows: continue
         codes=[rc(r) for r in rows]; secs={r['sec'] for r in rows}
         why=[]
         if mk=='ml':
@@ -214,13 +221,15 @@ for g in D:
         if mk=='spread' and abs(gap)>=6 and side==('away' if gap>0 else 'home') and u in TIERS: u=TIERS[max(0,TIERS.index(u)-1)]; why.append('X1 flag, one tier down')
         cap=max(CAP[x] for x in secs if x in CAP); u=min(u,cap)
         if mk=='tt': u=0.25; why.append('0.25u each leg')
-        if pc: u+=0.25; why.append((f'{pc[0]} $5' if not base else f'plus $5 for {pc[0]}'))
+        if pc:
+            add=0.5 if pc[0] in ('P1','P3') else 0.25      # v5.3: P1/P3 $10, P2 $5
+            u+=add; why.append((f'{pc[0]} ${int(add*20)}' if not base else f'plus ${int(add*20)} for {pc[0]}'))
         plays.append(dict(mk=mk,side=side,lab=rows[0]['lab'],odds=rows[0]['odds'],codes=codes,units=f'{u:g}u',sec=('CORE' if 'CORE' in secs else 'CRAFTED' if 'CRAFTED' in secs else 'TEST'),why='; '.join(why)))
-    # 11/23: spread under 2 points -> spread or ML on the same team, not both (keep the spread)
-    if abs(U)<2:
+    # 11/23: spread under 2 -> no ML on the same team; v5.3 (11/28): any spread (home favs spread+ML went 0-8 on 11/27)
+    if True:
         for sp in [x for x in plays if x['mk']=='spread']:
             for ml in [x for x in plays if x['mk']=='ml' and x['side']==sp['side']]:
-                plays.remove(ml); notes.append(f"spread under 2: {ml['lab']} [{'+'.join(ml['codes'])}] dropped, same bet as {sp['lab']}")
+                plays.remove(ml); notes.append(f"one bet per team: {ml['lab']} [{'+'.join(ml['codes'])}] dropped, same bet as {sp['lab']}")
     tier=f"{a} #{rank[a]} vs {h} #{rank[h]}"
     out.append(dict(game=f'{aw}|{hm}',tier=tier,recs=final,plays=plays,notes=notes,skips=[r for r in keep if r['sec']=='SKIP']))
 json.dump(out,open(RUN.replace('.json','_recs.json'),'w'),indent=1)

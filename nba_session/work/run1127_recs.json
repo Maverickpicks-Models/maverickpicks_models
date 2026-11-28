@@ -74,9 +74,7 @@
     "lab": "Knicks -2.5",
     "odds": -115,
     "codes": [
-     "T11",
-     "K1",
-     "T6"
+     "K1"
     ],
     "units": "0.5u",
     "sec": "CRAFTED",
@@ -92,24 +90,15 @@
      "T2l",
      "P3"
     ],
-    "units": "0.75u",
+    "units": "1u",
     "sec": "TEST",
-    "why": "stacked totals: no extra size; plus $5 for P3"
-   },
-   {
-    "mk": "ml",
-    "side": "home",
-    "lab": "Knicks ML",
-    "odds": -135,
-    "codes": [
-     "T10"
-    ],
-    "units": "0.5u",
-    "sec": "TEST",
-    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
+    "why": "stacked totals: no extra size; plus $10 for P3"
    }
   ],
-  "notes": [],
+  "notes": [
+   "v5.3 paper: T11+T6 on Knicks -2.5",
+   "v5.3 paper: T10 on Knicks ML (no other rule: not played)"
+  ],
   "skips": []
  },
  {
@@ -217,8 +206,7 @@
     "codes": [
      "C1",
      "K1",
-     "T5",
-     "T6"
+     "T5"
     ],
     "units": "1u",
     "sec": "CORE",
@@ -235,22 +223,12 @@
     "units": "0.5u",
     "sec": "TEST",
     "why": ""
-   },
-   {
-    "mk": "ml",
-    "side": "home",
-    "lab": "Pistons ML",
-    "odds": -365,
-    "codes": [
-     "P2"
-    ],
-    "units": "risk 0.25u",
-    "sec": "TEST",
-    "why": "P2 $5"
    }
   ],
   "notes": [
-   "C3 v5: ML favorite with a 9.5-pt spread not played (5-9.5 favorites leak)"
+   "C3 v5: ML favorite with a 9.5-pt spread not played (5-9.5 favorites leak)",
+   "v5.3 paper: T6 on Pistons -9.5",
+   "one bet per team: Pistons ML [P2] dropped, same bet as Pistons -9.5"
   ],
   "skips": []
  },
@@ -279,18 +257,6 @@
   ],
   "plays": [
    {
-    "mk": "spread",
-    "side": "home",
-    "lab": "Raptors -9.5",
-    "odds": 104,
-    "codes": [
-     "T6"
-    ],
-    "units": "0.25u",
-    "sec": "TEST",
-    "why": ""
-   },
-   {
     "mk": "ml",
     "side": "home",
     "lab": "Raptors ML",
@@ -305,7 +271,8 @@
   ],
   "notes": [
    "C3 v5: ML favorite with a 9.5-pt spread not played (5-9.5 favorites leak)",
-   "conflict on total: T2 high turnovers->Over 218.5, P3 slow-pace Under (pace -2.3)->Under 218.5 -> pass"
+   "conflict on total: T2 high turnovers->Over 218.5, P3 slow-pace Under (pace -2.3)->Under 218.5 -> pass",
+   "v5.3 paper: T6 on Raptors -9.5 (no other rule: not played)"
   ],
   "skips": []
  },
@@ -421,13 +388,11 @@
     "lab": "Timberwolves -2.5",
     "odds": -106,
     "codes": [
-     "T11",
-     "T6",
      "P1"
     ],
-    "units": "0.75u",
+    "units": "0.5u",
     "sec": "TEST",
-    "why": "plus $5 for P1"
+    "why": "P1 $10"
    },
    {
     "mk": "total",
@@ -440,21 +405,12 @@
     "units": "0.5u",
     "sec": "TEST",
     "why": ""
-   },
-   {
-    "mk": "ml",
-    "side": "home",
-    "lab": "Timberwolves ML",
-    "odds": -141,
-    "codes": [
-     "T10"
-    ],
-    "units": "0.5u",
-    "sec": "TEST",
-    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
    }
   ],
-  "notes": [],
+  "notes": [
+   "v5.3 paper: T11+T6 on Timberwolves -2.5",
+   "v5.3 paper: T10 on Timberwolves ML (no other rule: not played)"
+  ],
   "skips": []
  },
  {
@@ -496,27 +452,17 @@
     "lab": "Suns -3.5",
     "odds": 106,
     "codes": [
-     "T11",
      "K1"
     ],
     "units": "0.5u",
     "sec": "CRAFTED",
     "why": ""
-   },
-   {
-    "mk": "ml",
-    "side": "home",
-    "lab": "Suns ML",
-    "odds": -138,
-    "codes": [
-     "T10"
-    ],
-    "units": "0.5u",
-    "sec": "TEST",
-    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
    }
   ],
-  "notes": [],
+  "notes": [
+   "v5.3 paper: T11 on Suns -3.5",
+   "v5.3 paper: T10 on Suns ML (no other rule: not played)"
+  ],
   "skips": []
  },
  {
@@ -576,8 +522,7 @@
     "lab": "Jazz +9.5",
     "odds": -102,
     "codes": [
-     "K2",
-     "T6"
+     "K2"
     ],
     "units": "0.25u",
     "sec": "CRAFTED",
@@ -601,7 +546,8 @@
   "notes": [
    "C3 v5: ML favorite with a 9.5-pt spread not played (5-9.5 favorites leak)",
    "T7 paper (11/23, 0-5 live): both TT Overs (119.5/108.5)",
-   "X6 T5 top-10 vs bottom-10 (Nuggets -9.5) passed: opposite CraftedNBA's pick"
+   "X6 T5 top-10 vs bottom-10 (Nuggets -9.5) passed: opposite CraftedNBA's pick",
+   "v5.3 paper: T6 on Jazz +9.5"
   ],
   "skips": []
  },
@@ -638,7 +584,7 @@
      "C4",
      "T3"
     ],
-    "units": "0.75u",
+    "units": "1u",
     "sec": "CORE",
     "why": "stacked totals: no extra size"
    }
@@ -682,34 +628,11 @@
     "size": "0.5u"
    }
   ],
-  "plays": [
-   {
-    "mk": "spread",
-    "side": "home",
-    "lab": "Clippers -2.5",
-    "odds": 104,
-    "codes": [
-     "T11"
-    ],
-    "units": "0.5u",
-    "sec": "TEST",
-    "why": ""
-   },
-   {
-    "mk": "ml",
-    "side": "home",
-    "lab": "Clippers ML",
-    "odds": -125,
-    "codes": [
-     "T10"
-    ],
-    "units": "0.5u",
-    "sec": "TEST",
-    "why": "T10 ML favorite <=4.5 (36-23, +9.9%)"
-   }
-  ],
+  "plays": [],
   "notes": [
-   "T7 paper (11/23, 0-5 live): both TT Overs (112.5/116.5)"
+   "T7 paper (11/23, 0-5 live): both TT Overs (112.5/116.5)",
+   "v5.3 paper: T11 on Clippers -2.5 (no other rule: not played)",
+   "v5.3 paper: T10 on Clippers ML (no other rule: not played)"
   ],
   "skips": []
  },

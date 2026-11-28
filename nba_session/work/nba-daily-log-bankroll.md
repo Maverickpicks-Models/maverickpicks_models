@@ -13,8 +13,9 @@ Continues `nba-daily-log.md` (10/31-11/17). From 11/18 every bet is sized in dol
 | 11/23 | 10 | 6-4 | $118 | +$39.97 (+2.00u) | $1,028.97 (from the $989 rebase) | cuts saved ≈ $36 net |
 | 11/24 | – | – | – | – (not carded; user did not say if he bet) | $1,028.97 | – |
 | 11/25 | 17 (paper) | 11-6 | $119.50 (paper) | +$11.28 (+0.55u), not bet | $1,028.97 (unchanged) | rebuilt 11/27 with CraftedNBA picks and the 7 PM report |
+| 11/27 | 21 | 10-11 | $119 | +$2.44 (+0.12u) | $1,031.41 | v5.3 re-run +$37.52 (in-sample) |
 
-Week of 11/18 (5 nights): 22-27 on graded bets, −$82.80 on $1,000 (−8.3%). User's Novig balance 11/23: $989 (rebased). Week of 11/23 so far: 6-4, +$39.97 real; plus 11/25 paper 11-6, +$11.28. Season tracker 90-72, +4.94u (includes the 11/25 paper rows).
+Week of 11/18 (5 nights): 22-27 on graded bets, −$82.80 on $1,000 (−8.3%). User's Novig balance 11/23: $989 (rebased). Week of 11/23: 16-15 real, +$42.41 (11/23 +$39.97, 11/27 +$2.44); plus 11/25 paper 11-6, +$11.28. Season tracker 100-83, +5.06u (includes the 11/25 paper rows).
 
 ## 2026-11-18 (Wed) · 12 games · first bankroll card
 Inputs: 5:30 PM report (re-checked at 6:30 and 8:15), Novig 6:28-6:33 PM, CraftedNBA 6:12 PM. B2B: DET, TOR, UTA, LAL. The rulebook flagged $235 of plays; cut to $118 (weakest rules dropped, $30 game cap, then scaled).
@@ -195,3 +196,48 @@ Night 11-6, +$11.28 (+0.55u), in Tracking rows 302-318, tagged "(paper: not bet,
 - Season tracker including this paper night: 90-72, +4.94u.
 
 Correction to 11/23: the cuts saved ≈ $36 net, not ≈ $31.
+
+## 2026-11-27 (Fri) · 11 games · v5.2 · all 21 recommendations played
+Inputs:
+- **Injuries:** official 6:15 PM report.
+- **CraftedNBA:** 6:15 PM text with projected lines.
+- **Prices:** first card built on DraftKings lines via VegasInsider, then re-run on the user's Novig screenshots (6:24-6:34 PM).
+- **No back-to-backs** (no games on Thanksgiving).
+- **Model is two days stale:** the workbook stops at 11/23.
+- **Cuts:** the rulebook flagged ≈ $190; Raptors ML and Pistons ML (77-78%) were cut first, then everything was scaled to $119.
+- **Questionable starters, half stake:** Knicks (Towns), Spurs (Harper).
+- Prices are logged at the card's Novig price (user did not send fills).
+
+Scores: MIA 108-105 NYK (213), PHI 111-87 IND (198), MIL 98-113 DET (211), BKN 100-124 TOR (224), ATL 87-86 BOS (173), MEM 114-109 MIN (223), DAL 113-109 PHX (222), DEN 120-107 UTA (227), GSW 94-116 POR (210), NOP 105-104 LAC (209), LAL 96-99 SAS (195).
+
+| Bet | Rules | Stake | Price | Result | P/L |
+|---|---|---|---|---|---|
+| Knicks −2.5 | T11+K1+T6 (half: Towns Q) | $3 | 53.5% (−115) | L (by 3) | −$3.00 |
+| MIA/NYK Under 221.5 | T1+T2l+P3 | $10 | 48.1% (+108) | W (213) | +$10.80 |
+| Knicks ML | T10 (half: Towns Q) | $3 | 57.4% (−135) | L | −$3.00 |
+| PHI/IND Under 228.5 | T2l | $6 | 53.1% (−113) | W (198) | +$5.31 |
+| Pistons −9.5 | C1+K1+T5+T6 | $13 | 52.6% (−111) | W (by 15) | +$11.71 |
+| MIL/DET Under 219.5 | T2l | $6 | 51.0% (−104) | W (211) | +$5.77 |
+| Raptors −9.5 | T6 | $3 | 49.0% (+104) | W (by 24) | +$3.12 |
+| Celtics −8.5 | K1 | $6 | 53.1% (−113) | L (by 1) | −$6.00 |
+| ATL/BOS Under 225.5 | T3 | $3 | 51.0% (−104) | W (173) | +$2.88 |
+| Timberwolves −2.5 | T11+T6+P1 | $8 | 51.5% (−106) | L (by 5) | −$8.00 |
+| MEM/MIN Under 219.5 | T1 | $5 | 47.4% (+111) | L (223) | −$5.00 |
+| Timberwolves ML | T10 | $5 | 58.5% (−141) | L | −$5.00 |
+| Suns −3.5 | T11+K1 | $6 | 48.5% (+106) | L (by 4) | −$6.00 |
+| Suns ML | T10 | $6 | 58.0% (−138) | L | −$6.00 |
+| Jazz +9.5 | K2+T6 | $3 | 50.5% (−102) | L (by 13) | −$3.00 |
+| DEN/UTA Under 232.5 | K3+T2l+T3 | $3 | 50.5% (−102) | W (227) | +$2.94 |
+| GSW/POR Under 216.5 | C4+T3 | $10 | 51.0% (−104) | W (210) | +$9.62 |
+| Clippers −2.5 | T11 | $6 | 49.0% (+104) | L (by 1) | −$6.00 |
+| Clippers ML | T10 | $6 | 55.6% (−125) | L | −$6.00 |
+| LAL/SAS Under 225.5 | T1 | $6 | 49.0% (+104) | W (195) | +$6.24 |
+| Spurs ML | P2 (half: Harper Q) | $2 | 65.5% (−190) | W | +$1.05 |
+
+Night 10-11, +$2.44 on $119 (Tracking rows 319-339). Tracked bankroll $1,031.41. Season tracker 100-83, +5.06u (includes the 11/25 paper rows).
+- **Good: Unders went 7-1.** Every Under won except MEM/MIN (223). C4's GSW/POR Under (210 vs 216.5) and P3's MIA/NYK Under (213 vs 221.5) were the two biggest bets. Pistons −9.5 (C1) covered by 15 and Raptors −9.5 by 24.
+- **Ugly: home favorites of 4.5 or less, spread and ML, went 0-8.** The Knicks, Wolves, Suns and Clippers all lost outright, for −$43 (T11+T10, with K1 or P1 stacked on top).
+- **Bad: X6 passed two big covers.** 76ers −3.5 won by 24 and Blazers −7.5 by 22; CraftedNBA was on the other side both times. Their sides went 3-5 tonight. X6 since 11/20: cost ≈ $19 (Suns 11/20), saved ≈ $16.50 (11/25 paper), and tonight missed two wins worth ≈ $25. Still roughly even; keep tracking.
+- Celtics −8.5 (K1 alone) lost outright 87-86; Jazz +9.5 (K2) lost by 13.
+- **Rule records since 11/18** (flat 1u, Tracking incl. 11/25 paper): T11 2-8, T10 3-7, T6 6-6, T12 3-5, K1 7-8; C4 7-2, P3 8-3, P1 5-3, T1 6-4, T2 12-10, T3 6-4, T5 4-1.
+- **Rulebook v5.3 from 11/28** (see `nba-bankroll.md`): T11, T10 and T6 to paper; one bet per team per game (no ML on a team we back on the spread); C4 $20; P1 and P3 $10. Re-run of tonight under v5.3: 9-6, +$37.52 on $120.50. That re-run is in-sample, so it doesn't prove v5.3.
